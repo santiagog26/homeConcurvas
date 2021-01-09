@@ -1,0 +1,20 @@
+*{
+    padding: none;
+    margin: none;
+}
+
+body{
+    height: 100%;
+}
+
+#divPrincipal{
+    height: 100%;
+}
+
+#divMenu{
+    background-color: rgb(245, 255, 255);
+}
+
+#divContent{
+    background-color: rgb(94, 46, 46);
+}
