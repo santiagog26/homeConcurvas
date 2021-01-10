@@ -2,7 +2,22 @@
     padding: none;
     margin: none;
 }
-
+body{
+    font-family: Aktiv Grotesk,-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+}
+#subti_Ventas{
+    color:rgb(184, 185, 186) ;
+}
+#titulo_venta{
+    font-size: 24px;
+    color: rgb(55, 72, 89);
+}
+#bc{
+    border-bottom:2px solid rgb(163, 159, 159);
+    padding: 8px;
+    font-size: 20px;
+    margin-left: 200px;
+}
 #divPrincipal{
     height: 101.8%;
 }
@@ -12,17 +27,26 @@
 }
 
 #divContent{
-    background-color: rgb(250, 250, 250);
+    background-color:rgb(250, 250, 250); 
 }
-
+#divMenuF1{
+    display: flex;
+    align-items: center;
+}
+#imgcara_icon{
+    margin-top: 18px;
+    margin-left: 14px;
+    color: rgb(233, 231, 231);
+    font-size: 20px;
+}
 #divMenuF1 img{
-    height: 80px;
-    margin-left: 42px;
+    height: 60px;
     margin-top: 20px;
+    margin-left: 60px;
 }
 
 #divMenuF2{
-    padding-top: 60%;
+    margin-top: 200px;
     padding-left: 30px;
     height: 80%;
     font-size: 18px;
@@ -44,6 +68,7 @@
 }
 
 #divContentTitulo{
+    margin-top: 18px;
     display: flex;
     align-items: center;
 }
@@ -51,7 +76,7 @@
 #divContentTitulo button{
     margin-left: auto;
     margin-right: 40px;
-    background-color: rgb(224, 30, 75);
+    background-color:rgb(212, 4, 76);
     color: white;
     width: 180px;
 }
@@ -64,10 +89,56 @@
     margin-bottom: 2px;
 }
 
-#divContentTabla{
-    margin-top: 40px;
-    overflow-x: scroll;
-    margin-right: 15px;
-    overflow: scroll;
-    height: 410px;
+
+
+
+#tabla{
+    margin: auto;
+    margin-top: 50px;
+}
+
+
+table{
+    background-color:white;
+    border-bottom: solid 5px rgb(255, 255, 255);
+	text-align: left;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th, td{
+    padding: 7px;
+}
+
+tr{
+    border-bottom: solid 20px rgb(250, 250, 250);
+
+}
+
+thead{
+	background-color: rgb(250, 250, 250);
+	color: rgb(145, 139, 139);
+}
+
+tr:nth-child(even){
+	background-color: white;
+}
+
+#boton {
+    background-color: white; 
+    border: none;
+    color: rgb(0, 131, 242);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    outline:0px;
+}
+
+#tabla img{
+    height: 40px;
+    width: auto;
+    
 }

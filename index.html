@@ -10,10 +10,12 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
 <body>
     <div id="divPrincipal" class="ui grid">
-        <div id="divMenu" class="ui vertical menu three wide column"> 
+        <div id="divMenu" class="ui vertical menu two wide column"> 
             <div id="divMenuF1" class="row">
                 <img src="img/avatar.png" alt="Avatar">
+                <i id="imgcara_icon" class="angle down icon"></i>
             </div>
+
             <div id="divMenuF2" class="row">
                 <div class="menu">
                   <a class="item">Ventas</a>
@@ -27,49 +29,100 @@
             </div>
                 
         </div>
-        <div id="divContent" class="thirteen wide column">
+        <div id="divContent" class="fourteen wide column">
             <div id="divContentHeader" class="row">
-                <div class="ui icon input">
-                    <i class="search icon"></i>
+                <div id="bc" class="ui transparent left icon input">
                     <input type="text" placeholder="Buscar cliente...">
-                  </div>
+                    <i class="search icon"></i>
+                </div>
                 <img src="https://concurvas.com/wp-content/themes/mainteam_Concurvas/imagenes/iconos/LOGO.png" alt="Logo Concurvas" id="imgLogo">
             </div>
             <div id="divContentTitulo" class="row">
                 <div class="letras">
-                    <h1>Ventas</h1>
-                    <p>Bienvenido a Ventas</p>
+                    <i id="titulo_venta"><i class="chart bar icon"></i>Ventas <i class="angle down icon"></i></i>
+                    <p id="subti_Ventas">¡Bienvenido! Registra aqui tus ventas</p>
                 </div>
-                <button class="ui button">+ Agregar lead</button>
+                <button class="ui button"> <i class="plus icon"></i>    Agregar lead</button>
             </div>
             <div id="divContentTabla" class="row">
-                <table class="ui celled table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Age</th>
-                            <th>divContentTabla</th>
-                            <th>Job</th>
-                            <th>Job</th>
-                            <th>divContentTabla</th>
-                            <th>Job</th>
-                            <th>Job</th>
-                            <th>divContentTabla</th>
-                            <th>divContentTabla</th>
-                            <th>Job</th>
-                            <th>divContentTabla</th>
-                            <th>divContentTabla</th>
-                            <th>Job</th>
-                            <th>divContentTabla</th>
-                            <th>Job</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                    </tbody>
-                </table>
+                <div id="tabla" style="">
+	                <div  id = " main-container " >  
+                        <table>
+                            <thead>
+                                <th>Fecha <i class="angle down icon"></i> </th>
+                                <th>Cliente <i class="angle down icon"></i></th>
+                                <th>Telefono<i class="angle down icon"></i></th>
+                                <th>Direccion<i class="angle down icon"></i></th>
+                                <th>Estado<i class="angle down icon"></i></th>
+                                <th>Fecha de entrega<i class="angle down icon"></i></th>
+                                <th>Vendedor<i class="angle down icon"></i></th>
+                                <th>Domiciliario<i class="angle down icon"></i></th>
+                                <th></th>
+                            </thead>
+                            <tbody>                           
+                                <tr >
+                                    <td>
+                                        10/20/2021    
+                                    </td>
+                                    <td>
+                                        Carlos
+                                    </td>
+                                    <td>
+                                        3051745484
+                                    </td>
+                                    <td>
+                                        Cra 7 #10-45
+                                    </td>
+                                    <td>
+                                        Empacado
+                                    </td>
+                                    <td>
+                                        10/30/2021
+                                    </td>
+                                    <td>
+                                        <img src="img/avatar.png" alt="Avatar">
+                                    </td>
+                                    <td>
+                                        <img src="img/avatar.png" alt="Avatar">
+                                    </td>
+                                    <td>
+                                        <button id= "boton" type="button " class="submit-btn">Ver historia </button>
+                                    </td>
+                                </tr>
+                                 <tr >
+                                    <td>
+                                        10/20/2021    
+                                    </td>
+                                    <td>
+                                        Carlos
+                                    </td>
+                                    <td>
+                                        3051745484
+                                    </td>
+                                    <td>
+                                        Cra 7 #10-45
+                                    </td>
+                                    <td>
+                                        Empacado
+                                    </td>
+                                    <td>
+                                        10/30/2021
+                                    </td>
+                                    <td>
+                                        <img src="img/avatar.png" alt="Avatar">
+                                    </td>
+                                    <td>
+                                        <img src="img/avatar.png" alt="Avatar">
+                                    </td>
+                                    <td>
+                                        <button id= "boton" type="button " class="submit-btn">Ver historia </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+	                </div>
+                </div>
             </div>
-        </div>
     </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
