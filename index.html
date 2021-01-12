@@ -58,6 +58,23 @@
                     <form class="ui form">
                         <h4 class="ui dividing header"></h4>
                         <div class="field">
+                            <label>Fecha de la venta</label>
+                            <input type="date" id="start" name="trip-start "value=""  min="2021-01-01" max="2220-12-31">
+                        </div>
+                        <div class="field">
+                            <label>Cliente</label>
+                            <select class="ui fluid search dropdown">
+                                <option value="">Número de Documento del cliente</option>
+                                <option value="1">1013690898</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label>Método de Compra</label>  
+                            <select class="ui fluid dropdown" > 
+                                <option value="">Metodo</option>
+                            </select>
+                        </div>
+                        <div class="field">
                             <label>Name</label>
                             <div class="two fields">
                                 <div class="field">
@@ -211,7 +228,7 @@
                                     <label>Dirección</label>
                                     <input type="text" name="shipping[first-name]" placeholder="Dirección">
                                 </div>
-                                 <button id="agregarcliente" class="ui button"> <i class="plus icon"></i>   Agregar Ciente</button>
+                                 <button id="scliente" class="ui button"> <i class="plus icon"></i>   Agregar Ciente</button>
                             </form> 
                         </div>
                     </div>
