@@ -141,3 +141,6 @@ tr:nth-child(even){
     width: auto;
     
 }
+input[type=date]:required:invalid::-webkit-datetime-edit {
+    color: grey;
+}
