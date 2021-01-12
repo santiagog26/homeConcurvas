@@ -12,11 +12,18 @@
 <body>
     <div id="divPrincipal" class="ui grid">
         <div id="divMenu" class="ui vertical menu two wide column"> 
-            <div id="divMenuF1" class="row">
+            <div id="divMenuF1" class="ui text menu row">
                 <img src="img/avatar.png" alt="Avatar">
-                <i id="imgcara_icon" class="angle down icon"></i>
+                <div id="imgcara_icon" class="ui dropdown item">
+                    <i id="micon" class="angle right icon"></i>
+                    <div class="menu">
+                      <div class="item">Mi perfil</div>
+                      <div class="item">Cerrar sesión</div>
+                    </div>
+                  </div>
             </div>
-
+            
+            
             <div id="divMenuF2" class="row">
                 <div class="menu">
                   <a class="item">Ventas</a>

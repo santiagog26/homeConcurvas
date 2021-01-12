@@ -10,3 +10,7 @@ $("#agregarcliente").click(function(e){
 $('select.dropdown')
   .dropdown()
 ;
+
+$('.ui.dropdown')
+  .dropdown()
+;
