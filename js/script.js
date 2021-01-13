@@ -7,9 +7,13 @@ $("#agregarcliente").click(function(e){
     e.preventDefault();
     $('#mod2').modal('show');
 });
-$("#scliente").click(function(e){
+$("#atras").click(function(e){
   e.preventDefault();
   $('#mod').modal('show');
+});
+$("#productos").click(function(e){
+  e.preventDefault();
+  $('#mod3').modal('show');
 });
 $('select.dropdown')
   .dropdown()
