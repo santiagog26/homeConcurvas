@@ -173,9 +173,26 @@ input[type=date]:required:invalid::-webkit-datetime-edit {
 .mas-menos{
     margin-top: 5px ;
 }
+
 .can{
     text-align: center !important;
+    width: 31% !important;
 }
 .escan{
     margin-bottom: 20px !important;
+}
+.xv2{
+    font-size: 15px !important;
+    margin-bottom: 15px !important;
+    margin-left: 17px !important;
+}
+
+.circle:hover{
+    cursor: pointer;
+    transform:scale(1.25);
+}
+
+.x{
+    align-self: flex-end;
+    width: 30px !important;
 }
