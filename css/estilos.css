@@ -159,3 +159,23 @@ tr:nth-child(even){
 input[type=date]:required:invalid::-webkit-datetime-edit {
     color: grey;
 }
+
+#cantidad{
+    width: 100px;
+    text-align: center !important;
+    border: 0px !important;
+}
+#cantidad1{
+    justify-content: center;
+    text-align: center;
+    display:flex !important;
+}
+.mas-menos{
+    margin-top: 5px ;
+}
+.can{
+    text-align: center !important;
+}
+.escan{
+    margin-bottom: 20px !important;
+}
