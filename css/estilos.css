@@ -126,7 +126,7 @@ tr:nth-child(even){
 	background-color: white;
 }
 
-#boton {
+.boton {
     background-color: white; 
     border: none;
     color: rgb(0, 131, 242);
@@ -138,7 +138,19 @@ tr:nth-child(even){
     font-weight: bold;
     outline:0px;
 }
-
+#atras{
+    background-color: white; 
+    border: none;
+    color: rgb(181, 183, 185);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+    font-weight: bold;
+    outline:0px;
+    margin-left:550px;
+}
 #tabla img{
     height: 40px;
     width: auto;
@@ -146,4 +158,24 @@ tr:nth-child(even){
 }
 input[type=date]:required:invalid::-webkit-datetime-edit {
     color: grey;
+}
+
+#cantidad{
+    width: 100px;
+    text-align: center !important;
+    border: 0px !important;
+}
+#cantidad1{
+    justify-content: center;
+    text-align: center;
+    display:flex !important;
+}
+.mas-menos{
+    margin-top: 5px ;
+}
+.can{
+    text-align: center !important;
+}
+.escan{
+    margin-bottom: 20px !important;
 }

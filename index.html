@@ -63,176 +63,242 @@
                         </div>
                         <div class="field">
                             <label>Cliente</label>
-                            <select class="ui fluid search dropdown">
-                                <option value="">Número de Documento del cliente</option>
-                                <option value="1">1013690898</option>
-                            </select>
+                            <div class="two fields">
+                                <div class="field">
+                                    <select class="ui fluid search dropdown">
+                                        <option value="">Número de Telefono </option>
+                                        <option value="1">1013690898</option>
+                                    </select>
+                                </div>
+                                <div class="field">
+                                    <input type="text" name="Nombre_Cliente" value="" placeholder="Nombre" readonly>
+                                </div>
+                            </div>
                         </div>
                         <div class="field">
                             <label>Método de Compra</label>  
                             <select class="ui fluid dropdown" > 
-                                <option value="">Metodo</option>
+                                <option value="">Método de Compra</option>
+                            </select>
+                        </div>
+                        <div class="ui form">
+                            <div class="inline fields">
+                                <label for="fruit">Tipo de Venta  : </label>
+                                <div class="field">
+                                    <div class="ui radio checkbox">
+                                        <input type="radio" name="Por Mayor" checked="" tabindex="0" class="hidden">
+                                        <label>Por Mayor</label>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="ui radio checkbox">
+                                        <input type="radio" name="Detal" tabindex="0" class="hidden">
+                                        <label>Detal</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Prenda</label>  
+                            <button id="productos" class="ui button "> <i class="shopping cart icon"></i></button>
+                        </div>
+                        <div class="field">
+                            <label>Modalidad de pago</label>  
+                            <select class="ui fluid dropdown" > 
+                                <option value="">Modalidad de pago</option>
                             </select>
                         </div>
                         <div class="field">
-                            <label>Name</label>
+                            <label>Precio</label>  
+                            <input type="text" name="precio_orden_venta" value="" placeholder="Precio" readonly>
+                        </div>
+                        <div class="field">
                             <div class="two fields">
                                 <div class="field">
-                                    <input type="text" name="shipping[first-name]" placeholder="First Name">
+                                    <label>Motivo</label>  
+                                    <select class="ui fluid dropdown" > 
+                                        <option value="">Motivo</option>
+                                    </select>
                                 </div>
                                 <div class="field">
-                                    <input type="text" name="shipping[last-name]" placeholder="Last Name">
+                                    <label>Origen</label>  
+                                    <select class="ui fluid dropdown" > 
+                                        <option value="">Origen</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
                         <div class="field">
-                            <label>Billing Address</label>
-                            <div class="fields">
-                                <div class="twelve wide field">
-                                    <input type="text" name="shipping[address]" placeholder="Street Address">
-                                </div>
-                                <div class="four wide field">
-                                    <input type="text" name="shipping[address-2]" placeholder="Apt #">
-                                </div>
-                            </div>
+                            <label>Fecha de Entrega</label>
+                            <input type="date" id="start" name="trip-start "value=""  min="2021-01-01" max="2220-12-31">
+                        </div>
+                        <div class="field">
+                            <label>Notas</label>
+                            <textarea rows="3"></textarea>
                         </div>
                         <button id="agregarcliente" class="ui button"> <i class="plus icon"></i>   Agregar Ciente</button>
                     </form> 
                 </div>
+                <div class="ui modal" id="mod3">
+                    <div class="header"><i class="cart plus icon"></i> Pedido</div>
+                    <div class="content">
+                        <div id="Pedido" class="ui form">
+                            <div class="three fields">
+                                <div class="field can">
+                                    <label class="escan">Descripcion del Producto</label>
+                                    <select id ="p" class="ui fluid search dropdown">
+                                        <option value="">Descripcion del Producto</option>
+                                        <option value="1">buzos</option>
+                                        <option value="2">chaquetas</option>
+                                    </select>
+                                </div>
+                                <div class="field can">
+                                    <label class="escan">Cantidad</label>
+                                    <div id="cantidad1">
+                                        <div class="mas-menos">
+                                            <i class="minus circle icon"></i>
+                                        </div>
+                                        <div>
+                                            <input id="cantidad" type="text" name="Catidad" value=""  placeholder="1" readonly>
+                                        </div>
+                                        <div class="mas-menos">
+                                            <i class="plus circle icon"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="field can">
+                                    <label class="escan">Precio</label>
+                                    <input type="text" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <button id="agregarpedi" class="ui button "> Agregar Productos</button>
+                    </div>
+                </div>
                 <div class="ui modal" id="mod2">
                     <div class="header"><i class="id badge outline icon"></i> Cliente </div>
-                        <div class="content">
-                            <form class="ui form">
-                                <div class="field">
+                    <div class="content">
+                        <form class="ui form">
+                            <div class="field">
                                 <h4 class="ui dividing header">Datos Personales </h4>
-                                    <label>Nombres</label>
-                                    <div class="two fields">
-                                        <div class="field">
-                                            <input type="text" name="shipping[first-name]" placeholder="Primer Nombre">
-                                        </div>
-                                        <div class="field">
-                                            <input type="text" name="shipping[last-name]" placeholder="Segundo Nombre">
-                                        </div>
+                                <label>Nombres</label>
+                                <div class="two fields">
+                                    <div class="field">
+                                        <input type="text" name="PrimerNombreCliente" placeholder="Primer Nombre">
                                     </div>
-                                    <label>Apellidos</label>
-                                    <div class="two fields">
-                                        <div class="field">
-                                            <input type="text" name="shipping[first-name]" placeholder="Primer Apellido">
-                                        </div>
-                                        <div class="field">
-                                            <input type="text" name="shipping[last-name]" placeholder="Segundo Apellido">
-                                        </div>
+                                    <div class="field">
+                                        <input type="text" name="SegundoNombreCliente]" placeholder="Segundo Nombre">
                                     </div>
-                                    <div class="two fields">
-                                        <div class="field">
-                                            <label>Tipo de Documento</label>
-                                            <select class="ui fluid dropdown" >
-                                                <option value="">Tipo de Documento</option>
-                                                <option value="1">Tarjeta de Identidad</option>
-                                                <option value="2">Cédula de Ciudadanía</option>
-                                            </select>
-                                        </div>
-                                        <div class="field">
-                                            <label>Número de Documento</label>
-                                            <input type="text" name="shipping[last-name]" placeholder="Número de Documento ">
-                                        </div>
+                                </div>
+                                <label>Apellidos</label>
+                                <div class="two fields">
+                                    <div class="field">
+                                        <input type="text" name="PrimerApellidoCliente" placeholder="Primer Apellido">
+                                    </div>
+                                    <div class="field">
+                                        <input type="text" name="SegundoApellidoCliente" placeholder="Segundo Apellido">
                                     </div>
                                 </div>
                                 <div class="field">
                                     <label>Telefono</label>
-                                    <input type="text" name="shipping[first-name]" placeholder="Telefono">
+                                    <input type="text" name="TelefonoCliente" placeholder="Telefono">
                                 </div>
                                 <div class="field">
                                     <label>Correo</label>
-                                    <input type="text" name="shipping[first-name]" placeholder="Correo">
+                                    <input type="text" name="CorreoCliente" placeholder="Correo">
                                 </div>
-                                <h4 class="ui dividing header">Direccion </h4>
-                                <div class="two fields">
-                                    <div class="field">
-                                        <label>Departamento</label>  
-                                        <select class="ui fluid dropdown" > 
-                                            <option value="">Departamento</option>
-                                            <option value="Antioquía">Antioquía</option>
-                                            <option value="Arauca">Arauca</option>
-                                            <option value="Atlántico">Atlántico</option>
-                                            <option value="Bolívar">Bolívar</option>
-                                            <option value="Boyacá">Boyacá</option>
-                                            <option value="Caldas">Caldas</option>
-                                            <option value="Caquetá">Caquetá</option>
-                                            <option value="Casanare">Casanare</option>
-                                            <option value="Cauca">Cauca</option>
-                                            <option value="Cesar">Cesar</option>
-                                            <option value="Chocó">Chocó</option>
-                                            <option value="Córdoba">Córdoba</option>
-                                            <option value="Cundinamarca">Cundinamarca</option>
-                                            <option value="Guainía ">uainía</option>
-                                            <option value="Guaviare">Guaviare</option>
-                                            <option value="Huila">Huila</option>
-                                            <option value="La Guajira">La Guajira</option>
-                                            <option value="Magdalena">Magdalena</option>
-                                            <option value="Meta">Meta</option>
-                                            <option value="Nariño">Nariño</option>
-                                            <option value="Norte de Santander">Norte de Santander</option>
-                                            <option value="Putumayo">Putumayo</option>
-                                            <option value="Quindío">Quindío</option>
-                                            <option value="Risaralda">Risaralda</option>
-                                            <option value="San Andrés y Providencia">San Andrés y Providencia</option>
-                                            <option value="Santander">Santander</option>
-                                            <option value="Sucre">Sucre</option>
-                                            <option value="Tolima">Tolima</option>
-                                            <option value="Valle del Cauca">Valle del Cauca</option>
-                                            <option value="vaupés">Vaupés</option>
-                                            <option value="Vichada">Vichada</option> 
-                                        </select>
-                                    </div>
-                                    <div class="field">
-                                        <label>Ciudad</label>
-                                        <select class="ui fluid dropdown" >
-                                            <option value="">Ciudad</option>
-                                            <option value="Arauca">Arauca</option>
-                                            <option value="Armenia">Armenia</option>
-                                            <option value="Barranquilla">Barranquilla</option>
-                                            <option value="Bogotá">Bogotá</option>
-                                            <option value="Bucaramanga">Bucaramanga</option>
-                                            <option value="Cali">Cali</option>
-                                            <option value="Cartagena">Cartagena</option>
-                                            <option value="Cúcuta">Cúcuta</option>
-                                            <option value="Florencia">Florencia</option>
-                                            <option value="Ibagué">Ibagué</option>
-                                            <option value="Leticia">Leticia</option>
-                                            <option value="Manizales">Manizales</option>
-                                            <option value="Medellín">Medellín</option>
-                                            <option value="Mitú">Mitú</option>
-                                            <option value="Mocoa">Mocoa</option>
-                                            <option value="Montería">Montería</option>
-                                            <option value="Neiva">Neiva</option>
-                                            <option value="Pasto">Pasto</option>
-                                            <option value="Pereira">Pereira</option>
-                                            <option value="Popayán">Popayán</option>
-                                            <option value="Puerto Carreño">Puerto Carreño</option>
-                                            <option value="Puerto Inírida">Puerto Inírida</option>
-                                            <option value="Quibdó">Quibdó</option>
-                                            <option value="Riohacha">Riohacha</option>
-                                            <option value="San Andrés">San Andrés</option>
-                                            <option value="San José del Guaviare">San José del Guaviare</option>
-                                            <option value="Santa Marta">Santa Marta</option>
-                                            <option value="Sincelejo">Sincelejo</option>
-                                            <option value="Tunja">Tunja</option>
-                                            <option value="Valledupar">Valledupar</option>
-                                            <option value="Villavicencio">Villavicencio</option>
-                                            <option value="Yopal">Yopal</option>
-                                        </select>
-                                    </div>
+                            </div> 
+                            <h4 class="ui dividing header">Direccion </h4>
+                            <div class="two fields">
+                                <div class="field">
+                                    <label>Departamento</label>  
+                                    <select class="ui fluid dropdown" > 
+                                        <option value="">Departamento</option>
+                                        <option value="Antioquía">Antioquía</option>
+                                        <option value="Arauca">Arauca</option>
+                                        <option value="Atlántico">Atlántico</option>
+                                        <option value="Bolívar">Bolívar</option>
+                                        <option value="Boyacá">Boyacá</option>
+                                        <option value="Caldas">Caldas</option>
+                                        <option value="Caquetá">Caquetá</option>
+                                        <option value="Casanare">Casanare</option>
+                                        <option value="Cauca">Cauca</option>
+                                        <option value="Cesar">Cesar</option>
+                                        <option value="Chocó">Chocó</option>                                            
+                                        <option value="Córdoba">Córdoba</option>
+                                        <option value="Cundinamarca">Cundinamarca</option>
+                                        <option value="Guainía ">uainía</option>
+                                        <option value="Guaviare">Guaviare</option>
+                                        <option value="Huila">Huila</option>
+                                        <option value="La Guajira">La Guajira</option>
+                                        <option value="Magdalena">Magdalena</option>
+                                        <option value="Meta">Meta</option>
+                                        <option value="Nariño">Nariño</option>
+                                        <option value="Norte de Santander">Norte de Santander</option>
+                                        <option value="Putumayo">Putumayo</option>
+                                        <option value="Quindío">Quindío</option>
+                                        <option value="Risaralda">Risaralda</option>
+                                        <option value="San Andrés y Providencia">San Andrés y Providencia</option>
+                                        <option value="Santander">Santander</option>
+                                        <option value="Sucre">Sucre</option>
+                                        <option value="Tolima">Tolima</option>
+                                        <option value="Valle del Cauca">Valle del Cauca</option>
+                                        <option value="vaupés">Vaupés</option>
+                                        <option value="Vichada">Vichada</option> 
+                                    </select>
                                 </div>
                                 <div class="field">
-                                    <label>Dirección</label>
-                                    <input type="text" name="shipping[first-name]" placeholder="Dirección">
+                                    <label>Ciudad</label>
+                                    <select class="ui fluid dropdown" >
+                                        <option value="">Ciudad</option>
+                                        <option value="Arauca">Arauca</option>
+                                        <option value="Armenia">Armenia</option>
+                                        <option value="Barranquilla">Barranquilla</option>
+                                        <option value="Bogotá">Bogotá</option>
+                                        <option value="Bucaramanga">Bucaramanga</option>
+                                        <option value="Cali">Cali</option>
+                                        <option value="Cartagena">Cartagena</option>
+                                        <option value="Cúcuta">Cúcuta</option>
+                                        <option value="Florencia">Florencia</option>
+                                        <option value="Ibagué">Ibagué</option>
+                                        <option value="Leticia">Leticia</option>
+                                        <option value="Manizales">Manizales</option>
+                                        <option value="Medellín">Medellín</option>
+                                        <option value="Mitú">Mitú</option>
+                                        <option value="Mocoa">Mocoa</option>
+                                        <option value="Montería">Montería</option>
+                                        <option value="Neiva">Neiva</option>
+                                        <option value="Pasto">Pasto</option>
+                                        <option value="Pereira">Pereira</option>
+                                        <option value="Popayán">Popayán</option>
+                                        <option value="Puerto Carreño">Puerto Carreño</option>
+                                        <option value="Puerto Inírida">Puerto Inírida</option>
+                                        <option value="Quibdó">Quibdó</option>
+                                        <option value="Riohacha">Riohacha</option>
+                                        <option value="San Andrés">San Andrés</option>
+                                        <option value="San José del Guaviare">San José del Guaviare</option>                                            <option value="Santa Marta">Santa Marta</option>
+                                        <option value="Sincelejo">Sincelejo</option>
+                                        <option value="Tunja">Tunja</option>
+                                        <option value="Valledupar">Valledupar</option>
+                                        <option value="Villavicencio">Villavicencio</option>
+                                        <option value="Yopal">Yopal</option>
+                                    </select>
                                 </div>
-                                 <button id="scliente" class="ui button"> <i class="plus icon"></i>   Agregar Ciente</button>
-                            </form> 
-                        </div>
+                            </div>
+                            <div class="field">
+                                <label>Dirección</label>
+                                <input type="text" name="DireccionCliente" placeholder="Dirección">
+                            </div>
+                            <div class="field">
+                                <label>Barrio</label>
+                                <input type="text" name="BarrioCliente" placeholder="Barrio">
+                            </div>
+                            <button id="scliente" class="ui button"> <i class="plus icon"></i>   Agregar Ciente</button>
+                            <button id="atras" class="ui button "> <i class="reply icon"></i></button>
+                        </form> 
                     </div>
-			    </div>
+                </div>
+		    </div>    
             <div id="divContentTabla" class="row">
                 <div id="tabla" style="">
 	                <div  id = " main-container " >  
@@ -275,7 +341,7 @@
                                         <img src="img/avatar.png" alt="Avatar">
                                     </td>
                                     <td>
-                                        <button id= "boton" type="button " class="submit-btn">Ver historia </button>
+                                        <button class= "boton" type="button " class="submit-btn">Ver historia </button>
                                     </td>
                                 </tr>
                                  <tr >
@@ -304,7 +370,7 @@
                                         <img src="img/avatar.png" alt="Avatar">
                                     </td>
                                     <td>
-                                        <button id= "boton" type="button " class="submit-btn">Ver historia </button>
+                                        <button class= "boton" type="button " class="submit-btn">Ver historia </button>
                                     </td>
                                 </tr>
                                 
