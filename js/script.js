@@ -51,6 +51,11 @@ function mostrar_productos(e){
           <div class="field can">
             <input type="text" placeholder="">
           </div>
-        </div>`
+        </div>
+        <script>
+        $('.ui.dropdown')
+          .dropdown()
+        ;
+        </script>`
         $("#Pedido").append(texto);
 }
