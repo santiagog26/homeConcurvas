@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concurvas</title>
+    <link href="https://concurvas.com/wp-content/themes/mainteam_Concurvas/imagenes/iconos/concurvas.ico" rel="shortcut icon" type="image/x-icon">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+<body>
+    <div id="divPrincipal" class="ui grid">
+        <div id="divMenu" class="ui vertical menu two wide column"> 
+            <div id="divMenuF1" class="ui text menu row">
+                <img src="img/avatar.png" alt="Avatar">
+                <div id="imgcara_icon" class="ui dropdown item">
+                    <i id="micon" class="angle right icon"></i>
+                    <div class="menu">
+                      <div class="item">Mi perfil</div>
+                      <div class="item">Cerrar sesión</div>
+                    </div>
+                  </div>
+            </div>
+            
+            
+            <div id="divMenuF2" class="row">
+                <div class="menu">
+                  <a class="item">Ventas</a>
+                  <a class="item">Estadísticas</a>
+                  <a class="item">Inventario</a>
+                  <a class="item">Empaque</a>
+                  <a class="item">Despacho</a>
+                  <a class="item">Distribución</a>
+                  <a class="item">Finanzas</a>
+                </div>
+            </div>
+                
+        </div>
+        <div id="divContent" class="fourteen wide column">
+            <div id="divContentHeader" class="row">
+                <div id="bc" class="ui transparent left icon input">
+                    <input type="text" placeholder="Buscar orden...">
+                    <i class="search icon"></i>
+                </div>
+                <img src="https://concurvas.com/wp-content/themes/mainteam_Concurvas/imagenes/iconos/LOGO.png" alt="Logo Concurvas" id="imgLogo">
+            </div>
+            <div id="divContentTitulo" class="row">
+                <div class="letras">
+                    <i id="titulo_venta"><i class="truck icon"></i> Distribución <i class="angle down icon"></i></i>
+                    <p id="subti_Ventas">¡Bienvenido! Registra aqui tus despachos</p>
+                </div>
+                <button id="agregarorden" class="ui button"> <i class="plus icon"></i>    Agregar despacho</button>
+            </div>
+            <div class="ui modal" id="mod">
+                <div class="header"><i class="cart plus icon"></i> Orden de venta</div>
+                <div class="content">
+                    <form class="ui form">
+                        <h4 class="ui dividing header"></h4>
+                        <div class="field">
+                            <label>Fecha de la venta</label>
+                            <input type="date" id="start" name="trip-start "value=""  min="2021-01-01" max="2220-12-31">
+                        </div>
+                        <div class="field">
+                            <label>Cliente</label>
+                            <select class="ui fluid search dropdown">
+                                <option value="">Número de Documento del cliente</option>
+                                <option value="1">1013690898</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label>Método de Compra</label>  
+                            <select class="ui fluid dropdown" > 
+                                <option value="">Metodo</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label>Name</label>
+                            <div class="two fields">
+                                <div class="field">
+                                    <input type="text" name="shipping[first-name]" placeholder="First Name">
+                                </div>
+                                <div class="field">
+                                    <input type="text" name="shipping[last-name]" placeholder="Last Name">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Billing Address</label>
+                            <div class="fields">
+                                <div class="twelve wide field">
+                                    <input type="text" name="shipping[address]" placeholder="Street Address">
+                                </div>
+                                <div class="four wide field">
+                                    <input type="text" name="shipping[address-2]" placeholder="Apt #">
+                                </div>
+                            </div>
+                        </div>
+                        <button id="agregarcliente" class="ui button"> <i class="plus icon"></i>   Agregar Ciente</button>
+                    </form> 
+                </div>
+                <div class="ui modal" id="mod2">
+                    <div class="header"><i class="id badge outline icon"></i> Cliente </div>
+                        <div class="content">
+                            <form class="ui form">
+                                <div class="field">
+                                <h4 class="ui dividing header">Datos Personales </h4>
+                                    <label>Nombres</label>
+                                    <div class="two fields">
+                                        <div class="field">
+                                            <input type="text" name="shipping[first-name]" placeholder="Primer Nombre">
+                                        </div>
+                                        <div class="field">
+                                            <input type="text" name="shipping[last-name]" placeholder="Segundo Nombre">
+                                        </div>
+                                    </div>
+                                    <label>Apellidos</label>
+                                    <div class="two fields">
+                                        <div class="field">
+                                            <input type="text" name="shipping[first-name]" placeholder="Primer Apellido">
+                                        </div>
+                                        <div class="field">
+                                            <input type="text" name="shipping[last-name]" placeholder="Segundo Apellido">
+                                        </div>
+                                    </div>
+                                    <div class="two fields">
+                                        <div class="field">
+                                            <label>Tipo de Documento</label>
+                                            <select class="ui fluid dropdown" >
+                                                <option value="">Tipo de Documento</option>
+                                                <option value="1">Tarjeta de Identidad</option>
+                                                <option value="2">Cédula de Ciudadanía</option>
+                                            </select>
+                                        </div>
+                                        <div class="field">
+                                            <label>Número de Documento</label>
+                                            <input type="text" name="shipping[last-name]" placeholder="Número de Documento ">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label>Telefono</label>
+                                    <input type="text" name="shipping[first-name]" placeholder="Telefono">
+                                </div>
+                                <div class="field">
+                                    <label>Correo</label>
+                                    <input type="text" name="shipping[first-name]" placeholder="Correo">
+                                </div>
+                                <h4 class="ui dividing header">Direccion </h4>
+                                <div class="two fields">
+                                    <div class="field">
+                                        <label>Departamento</label>  
+                                        <select class="ui fluid dropdown" > 
+                                            <option value="">Departamento</option>
+                                            <option value="Antioquía">Antioquía</option>
+                                            <option value="Arauca">Arauca</option>
+                                            <option value="Atlántico">Atlántico</option>
+                                            <option value="Bolívar">Bolívar</option>
+                                            <option value="Boyacá">Boyacá</option>
+                                            <option value="Caldas">Caldas</option>
+                                            <option value="Caquetá">Caquetá</option>
+                                            <option value="Casanare">Casanare</option>
+                                            <option value="Cauca">Cauca</option>
+                                            <option value="Cesar">Cesar</option>
+                                            <option value="Chocó">Chocó</option>
+                                            <option value="Córdoba">Córdoba</option>
+                                            <option value="Cundinamarca">Cundinamarca</option>
+                                            <option value="Guainía ">uainía</option>
+                                            <option value="Guaviare">Guaviare</option>
+                                            <option value="Huila">Huila</option>
+                                            <option value="La Guajira">La Guajira</option>
+                                            <option value="Magdalena">Magdalena</option>
+                                            <option value="Meta">Meta</option>
+                                            <option value="Nariño">Nariño</option>
+                                            <option value="Norte de Santander">Norte de Santander</option>
+                                            <option value="Putumayo">Putumayo</option>
+                                            <option value="Quindío">Quindío</option>
+                                            <option value="Risaralda">Risaralda</option>
+                                            <option value="San Andrés y Providencia">San Andrés y Providencia</option>
+                                            <option value="Santander">Santander</option>
+                                            <option value="Sucre">Sucre</option>
+                                            <option value="Tolima">Tolima</option>
+                                            <option value="Valle del Cauca">Valle del Cauca</option>
+                                            <option value="vaupés">Vaupés</option>
+                                            <option value="Vichada">Vichada</option> 
+                                        </select>
+                                    </div>
+                                    <div class="field">
+                                        <label>Ciudad</label>
+                                        <select class="ui fluid dropdown" >
+                                            <option value="">Ciudad</option>
+                                            <option value="Arauca">Arauca</option>
+                                            <option value="Armenia">Armenia</option>
+                                            <option value="Barranquilla">Barranquilla</option>
+                                            <option value="Bogotá">Bogotá</option>
+                                            <option value="Bucaramanga">Bucaramanga</option>
+                                            <option value="Cali">Cali</option>
+                                            <option value="Cartagena">Cartagena</option>
+                                            <option value="Cúcuta">Cúcuta</option>
+                                            <option value="Florencia">Florencia</option>
+                                            <option value="Ibagué">Ibagué</option>
+                                            <option value="Leticia">Leticia</option>
+                                            <option value="Manizales">Manizales</option>
+                                            <option value="Medellín">Medellín</option>
+                                            <option value="Mitú">Mitú</option>
+                                            <option value="Mocoa">Mocoa</option>
+                                            <option value="Montería">Montería</option>
+                                            <option value="Neiva">Neiva</option>
+                                            <option value="Pasto">Pasto</option>
+                                            <option value="Pereira">Pereira</option>
+                                            <option value="Popayán">Popayán</option>
+                                            <option value="Puerto Carreño">Puerto Carreño</option>
+                                            <option value="Puerto Inírida">Puerto Inírida</option>
+                                            <option value="Quibdó">Quibdó</option>
+                                            <option value="Riohacha">Riohacha</option>
+                                            <option value="San Andrés">San Andrés</option>
+                                            <option value="San José del Guaviare">San José del Guaviare</option>
+                                            <option value="Santa Marta">Santa Marta</option>
+                                            <option value="Sincelejo">Sincelejo</option>
+                                            <option value="Tunja">Tunja</option>
+                                            <option value="Valledupar">Valledupar</option>
+                                            <option value="Villavicencio">Villavicencio</option>
+                                            <option value="Yopal">Yopal</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label>Dirección</label>
+                                    <input type="text" name="shipping[first-name]" placeholder="Dirección">
+                                </div>
+                                 <button id="scliente" class="ui button"> <i class="plus icon"></i>   Agregar Ciente</button>
+                            </form> 
+                        </div>
+                    </div>
+			    </div>
+            <div id="divContentTabla" class="row">
+                <div id="tabla">
+	                <div  id = " main-container " >  
+                        <table>
+                            <thead>
+                                <th>Número de orden <i class="angle down icon"></i> </th>
+                                <th>Resultado de distribución <i class="angle down icon"></i> </th>
+                                <th>Motivo de no entrega <i class="angle down icon"></i> </th>
+                                <th>Número de prendas <i class="angle down icon"></i> </th>
+                                <th></th>
+                            </thead>
+                            <tbody>                           
+                                <tr>
+                                    <td>12</td>
+                                    <td>Exitoso</td>
+                                    <td>Sin motivo</td>
+                                    <td>4</td>
+                                    <td>
+                                        <button id= "boton" type="button " class="submit-btn">Ver orden </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>15</td>
+                                    <td>Fracaso</td>
+                                    <td>Nadie abre la puerta</td>
+                                    <td>2</td>
+                                    <td>
+                                        <button id= "boton" type="button " class="submit-btn">Ver orden </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+	                </div>
+                </div>
+            </div>
+    </div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<script src="js/script.js"></script>
+</html>
