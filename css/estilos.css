@@ -4,6 +4,7 @@
 }
 body{
     font-family: Aktiv Grotesk,-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+    height: 102.3% !important;
 }
 #subti_Ventas{
     color:rgb(184, 185, 186) ;
@@ -19,10 +20,13 @@ body{
     margin-left: 200px;
 }
 #divPrincipal{
-    height: 101.8%;
+    height: 100%;
+    width: 100%;
+    
 }
 
 #divMenu{
+    margin-bottom: 0px;
     background-color: rgb(255, 255, 255);
 }
 
@@ -35,7 +39,7 @@ body{
 }
 #imgcara_icon{
     margin-top: 18px;
-    margin-left: -10%;
+    margin-left: -15%;
     color: rgb(73, 68, 68);
     font-size: 14px;
 }
@@ -195,4 +199,98 @@ input[type=date]:required:invalid::-webkit-datetime-edit {
 .x{
     align-self: flex-end;
     width: 30px !important;
+}
+.header-menu{
+    width: 100%;
+    height: 90px;
+    position: fixed;
+    top:0;left: 0;
+}
+.container{
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+.container .btn-menu{
+    float:left;
+    line-height: 70px;
+}
+#bar{
+    color:grey;
+    font-size: 25px;
+    cursor: pointer;
+}
+#btn-menu{
+    display: none;
+}
+.container-menu{
+    position: absolute;
+    background: rgba(0,0,0,0.5);
+    width: 100%;
+    height: 100vh;
+    top: 0;left: 0;
+    transition: all 500ms ease;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1;
+}
+
+#btn-menu:checked ~ .container-menu{
+    opacity: 1;
+    visibility: visible;
+}
+.cont-menu{
+    width: 100%;
+    max-width: 250px;
+    background: #1c1c1c;
+    height: 100vh;
+    position: relative;
+    transition: all 500ms ease;
+    transform: translateX(-100%);
+}
+#btn-menu:checked ~ .container-menu .cont-menu{
+    transform: translateX(0%);
+}
+.cont-menu nav{
+    transform: translateY(15%);
+}
+.cont-menu nav a{
+    display: block;
+    text-decoration: none;
+    padding: 20px;
+    color: #c7c7c7;
+    border-left: 5px solid transparent;
+    transition: all 400ms ease;
+}
+.cont-menu nav a:hover{
+    border-left: 5px solid #c7c7c7;
+    background: #1f1f1f ;
+}
+.cont-menu label{
+    position: absolute;
+    right: 5px;
+    top: 10px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+}
+#x{
+    color: #fff;
+    font-size: 14px;
+}
+@media screen and (max-width: 1320px){
+    #divMenu{
+        display: none;
+    }
+    #divContent{
+        width: 100%;   
+
+        margin: 60px auto;     
+    }
+
+}
+@media screen and (max-width: 4000px){
+    .content-all{
+        display: none;
+    }
 }

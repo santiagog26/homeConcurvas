@@ -26,7 +26,9 @@ $('.ui.dropdown')
 $('select.dropdown')
   .dropdown()
 ;
-
+$('#xv').click(function(){
+  $('#v').remove();
+});
 
 function mostrar_productos(e){
   texto=  '<div class="four fields " id="v'+e+'">'+

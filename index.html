@@ -6,11 +6,38 @@
     <title>Concurvas</title>
     <link href="https://concurvas.com/wp-content/themes/mainteam_Concurvas/imagenes/iconos/concurvas.ico" rel="shortcut icon" type="image/x-icon">
     <link rel="stylesheet" href="css/estilos.css">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
 <body>
-    <div id="divPrincipal" class="ui grid">
+    <header class="header-menu">
+    <div class="container" >
+        <div class="btn-menu">
+            <label for="btn-menu">
+            <i id="bar"  class="bars icon"></i>
+            </label>
+        </div>
+    </div>
+    </header>
+    <input type="checkbox" id="btn-menu" >
+    <div class="container-menu">
+        <div class="cont-menu">
+            <nav>
+                <a class="item">Ventas</a>
+                <a class="item">Estadísticas</a>
+                <a class="item">Inventario</a>
+                <a class="item">Empaque</a>
+                <a class="item">Despacho</a>
+                <a class="item">Distribución</a>
+                <a class="item">Finanzas</a>
+            </nav>
+            <label for="btn-menu" >
+                <i id="x"  class="x icon"></i>
+            </label>
+        </div>
+    </div>
+    <div id="divPrincipal" class="ui grid contenedor">
         <div id="divMenu" class="ui vertical menu two wide column"> 
             <div id="divMenuF1" class="ui text menu row">
                 <img src="img/avatar.png" alt="Avatar">
@@ -22,8 +49,6 @@
                     </div>
                   </div>
             </div>
-            
-            
             <div id="divMenuF2" class="row">
                 <div class="menu">
                   <a class="item">Ventas</a>
@@ -35,7 +60,7 @@
                   <a class="item">Finanzas</a>
                 </div>
             </div>
-                
+            
         </div>
         <div id="divContent" class="fourteen wide column">
             <div id="divContentHeader" class="row">
@@ -82,17 +107,17 @@
                         </div>
                         <div class="ui form">
                             <div class="inline fields">
-                                <label for="fruit">Tipo de Venta  : </label>
+                                <label>Tipo de Venta : </label>
                                 <div class="field">
                                     <div class="ui radio checkbox">
-                                        <input type="radio" name="Por Mayor" checked="" tabindex="0" class="hidden">
-                                        <label>Por Mayor</label>
+                                        <input type="radio" name="frequency" checked="checked">
+                                        <label>Detal</label>
                                     </div>
                                 </div>
                                 <div class="field">
                                     <div class="ui radio checkbox">
-                                        <input type="radio" name="Detal" tabindex="0" class="hidden">
-                                        <label>Detal</label>
+                                        <input type="radio" name="frequency">
+                                        <label>Por Mayor</label>
                                     </div>
                                 </div>
                             </div>
@@ -142,9 +167,21 @@
                     <div class="header"><i class="cart plus icon"></i> Pedido</div>
                     <div class="content">
                         <div id="Pedido" class="ui form">
-                            <div class="four fields" id="v">
+                            <div class="four fields" >
                                 <div class="field can">
                                     <label class="escan">Descripcion del Producto</label>
+                                </div>
+                                <div class="field can">
+                                    <label class="escan">Cantidad</label>
+                                </div>
+                                <div class="field can">
+                                    <label class="escan">Precio</label>
+                                </div>
+                                <div class="field can x">
+                                </div>
+                            </div>
+                            <div class="four fields" id="v">
+                                <div class="field can">
                                     <select id ="p" class="ui fluid search dropdown">
                                         <option value="">Descripcion del Producto</option>
                                         <option value="1">buzos</option>
@@ -152,7 +189,6 @@
                                     </select>
                                 </div>
                                 <div class="field can">
-                                    <label class="escan">Cantidad</label>
                                     <div id="cantidad1">
                                         <div class="mas-menos">
                                             <i class="minus circle icon"></i>
@@ -166,7 +202,6 @@
                                     </div>
                                 </div>
                                 <div class="field can">
-                                    <label class="escan">Precio</label>
                                     <input type="text" placeholder="">
                                 </div>
                                 <div class="field can x">
