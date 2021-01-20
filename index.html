@@ -12,18 +12,33 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
 <body>
     <header class="header-menu">
-    <div class="container" >
+    <img src="https://concurvas.com/wp-content/themes/mainteam_Concurvas/imagenes/iconos/LOGO.png" alt="Logo Concurvas" id="imgL">
+    <div class="container" class="row"> 
         <div class="btn-menu">
             <label for="btn-menu">
             <i id="bar"  class="bars icon"></i>
             </label>
+        </div>
+        <div id="b" class="ui transparent left icon input">
+            <input id="bus" type="text" placeholder="Buscar cliente...">
+            <i id="lu" class="search icon"></i>
         </div>
     </div>
     </header>
     <input type="checkbox" id="btn-menu" >
     <div class="container-menu">
         <div class="cont-menu">
-            <nav>
+            <div id="divMenuF1" class="ui text menu row">
+                <img src="img/avatar.png" alt="Avatar">
+                <div id="imgcar" class="ui dropdown item">
+                    <i id="fle" class="angle right icon"></i>
+                    <div class="menu">
+                      <div class="item">Mi perfil</div>
+                      <div class="item">Cerrar sesión</div>
+                    </div>
+                  </div>
+            </div>
+            <nav id="d">
                 <a class="item">Ventas</a>
                 <a class="item">Estadísticas</a>
                 <a class="item">Inventario</a>
