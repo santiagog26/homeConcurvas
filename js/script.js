@@ -1,12 +1,3 @@
-
-
-$(document).ready(function(){
-    if (getCookie("token")==""){
-        window.location.assign("login.html");
-    }
-});
-
-
 $("#agregarorden").click(function(){
 	$('#mod').modal('show');
 });
