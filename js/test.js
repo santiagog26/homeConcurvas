@@ -6,3 +6,9 @@ $(document).ready(function(){
         validarUsuario(token);
     }
 });
+
+
+$("#logout").click(function(){
+    delete_cookie("token");
+    window.location.assign("login.html");
+});
