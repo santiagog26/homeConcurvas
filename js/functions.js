@@ -1,4 +1,4 @@
-var url="http://184.72.83.24:5000"
+var url="http://184.72.83.24:5000";
 function validarUsuario(token){
     $.ajax({
         url: url+'/validar',
