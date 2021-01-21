@@ -7,7 +7,6 @@ function validarUsuario(token){
             token:token
         },
         dataType:"json",
-        data: JSON.stringify(obj),
         contentType: 'application/json; charset=utf-8', 
         success: function(e){
             console.log(e.value);
