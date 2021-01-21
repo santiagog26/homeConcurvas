@@ -1,3 +1,37 @@
+var url="http://184.72.83.24:5000"
+function validarUsuario(token){
+    $.ajax({
+        url: url+'/validar',
+        type: 'POST',
+        headers:{
+            token:token
+        },
+        dataType:"json",
+        data: JSON.stringify(obj),
+        contentType: 'application/json; charset=utf-8', 
+        success: function(e){
+            console.log(e.value);
+            if (e.value){
+                console.log("Bienvenido");
+            }else{
+                console.log("pa'l lobby");
+            }
+        },
+        error: function(e){
+            console.log(e)
+        }
+    })
+}
+
+$(document).ready(function(){
+    let token=getCookie("token")
+    if (token==""){
+        window.location.assign("login.html");
+    }else{
+        validarUsuario(token);
+    }
+});
+
 function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
