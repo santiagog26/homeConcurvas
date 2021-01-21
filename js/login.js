@@ -18,7 +18,15 @@ function login(obj){
         contentType: 'application/json; charset=utf-8', 
         success: function(e){
             console.log(e);
-            setCookie("token",e.usuario.token,10);
+            if (e.tipo==="OK"){
+                setCookie("token",e.usuario.token,10);
+                window.location.assign("index.html");
+            }
+            else{
+                alert(e.mensaje);
+                
+            }
+            
         },
         error: function(e){
             console.log(e)
