@@ -1,6 +1,6 @@
 var url="http://184.72.83.24:5000";
 
-$("#in").click(function(e){
+$("#login").click(function(e){
     e.preventDefault()
     let usuario=$("#user").val();
     let contraseña=$("#password").val();
