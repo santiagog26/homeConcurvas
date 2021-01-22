@@ -170,7 +170,7 @@ function pintarOrdenes(ordenes){
         <td>
             ${orden.metodoCompra.tipo}
         </td>
-        <td>
+        <td class="ui grid">
             ${str}
         </td>
         <td>
@@ -202,7 +202,7 @@ function pintarOrdenes(ordenes){
 
 
 function productosEnOrdenString(productos){
-    let str='<td class="ui grid">'
+    let str=''
     for(let i=0;i<productos.length;i++){
         let producto=productos[i]
         str+= `
@@ -210,6 +210,5 @@ function productosEnOrdenString(productos){
             ${producto.producto.descripcion} (${producto.cantidad})
         </div>`
     }
-    str+="</td>"
     return str;
 }
