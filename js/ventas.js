@@ -130,7 +130,7 @@ function pintarOrdenes(ordenes){
         let cliente;
         let usuario;
         while (true){
-            if (clientes!==null){
+            if (clientes!==undefined){
                 break;
             }
         }
@@ -141,12 +141,12 @@ function pintarOrdenes(ordenes){
             }
         }
         while(true){
-            if (usuarios!==null){
+            if (usuarios!==undefined){
                 break;
             }
         }
         while(true){
-            if (direcciones!==null){
+            if (direcciones!==undefined){
                 break;
             }
         }
