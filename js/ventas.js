@@ -135,6 +135,7 @@ function pintarOrdenes(ordenes){
 
         let fechaEntrega=orden.fecha_entrega.split("-");
         let fechaEntregaAMostrar=fechaEntrega[1]+"/"+fechaEntrega[2]+"/"+fechaEntrega[0];
+        let str=productosEnOrdenString(orden.productos);
         let txt=`<tr>
         <td>
             ${orden.estado}    
@@ -170,13 +171,13 @@ function pintarOrdenes(ordenes){
             ${orden.metodoCompra.tipo}
         </td>
         <td>
-            ${JSON.stringify(orden.productos)}
+            ${str}
         </td>
         <td>
             ${orden.modalidadPago.modalidad}
         </td>
         <td>
-            ${orden.precio}
+           $ ${orden.precio}
         </td>
         <td>
             ${orden.nota}
@@ -196,4 +197,18 @@ function pintarOrdenes(ordenes){
     $("table").append(txt);
     txt="";
     }
+}
+
+
+
+function productosEnOrdenString(productos){
+    let str='<td class="ui grid">'
+    for(producto in productos){
+        str+= `
+        <div class="row">
+            ${producto.producto.descripcion} (${producto.cantidad})
+        </div>`
+    }
+    str+="</td>"
+    return str;
 }
