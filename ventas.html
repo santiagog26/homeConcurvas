@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concurvas</title>
+    <link href="https://concurvas.com/wp-content/themes/mainteam_Concurvas/imagenes/iconos/concurvas.ico" rel="shortcut icon" type="image/x-icon">
+    <link rel="stylesheet" href="css/estilos.css">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+<body>
+    <header class="header-menu">
+    <img src="https://concurvas.com/wp-content/themes/mainteam_Concurvas/imagenes/iconos/LOGO.png" alt="Logo Concurvas" id="imgL">
+    <div class="container" class="row"> 
+        <div class="btn-menu">
+            <label for="btn-menu">
+            <i id="bar"  class="bars icon"></i>
+            </label>
+        </div>
+        <div id="b" class="ui transparent left icon input">
+            <input id="bus" type="text" placeholder="Buscar cliente...">
+            <i id="lu" class="search icon"></i>
+        </div>
+    </div>
+    </header>
+    <input type="checkbox" id="btn-menu" >
+    <div class="container-menu">
+        <div class="cont-menu">
+            <div id="divMenuF1" class="ui text menu row">
+                <img src="img/avatar.png" alt="Avatar">
+                <div id="imgcar" class="ui dropdown item">
+                    <i id="fle" class="angle right icon"></i>
+                    <div class="menu">
+                      <div class="item">Mi perfil</div>
+                      <div class="item">Cerrar sesión</div>
+                    </div>
+                  </div>
+            </div>
+            <nav id="d">
+                <a class="item">Ventas</a>
+                <a class="item">Estadísticas</a>
+                <a class="item">Inventario</a>
+                <a class="item">Empaque</a>
+                <a class="item">Despacho</a>
+                <a class="item">Distribución</a>
+                <a class="item">Finanzas</a>
+            </nav>
+            <label for="btn-menu" >
+                <i id="x"  class="x icon"></i>
+            </label>
+        </div>
+    </div>
+    <div id="divPrincipal" class="ui grid contenedor">
+        <div id="divMenu" class="ui vertical menu two wide column"> 
+            <div id="divMenuF1" class="ui text menu row">
+                <img src="img/avatar.png" alt="Avatar">
+                <div id="imgcara_icon" class="ui dropdown item">
+                    <i id="micon" class="angle right icon"></i>
+                    <div class="menu">
+                      <div class="item">Mi perfil</div>
+                      <div class="item">Cerrar sesión</div>
+                    </div>
+                  </div>
+            </div>
+            <div id="divMenuF2" class="row">
+                <div class="menu">
+                  <a class="item">Ventas</a>
+                  <a class="item">Estadísticas</a>
+                  <a class="item">Inventario</a>
+                  <a class="item">Empaque</a>
+                  <a class="item">Despacho</a>
+                  <a class="item">Distribución</a>
+                  <a class="item">Finanzas</a>
+                </div>
+            </div>
+            
+        </div>
+        <div id="divContent" class="fourteen wide column">
+            <div id="divContentHeader" class="row">
+                <div id="bc" class="ui transparent left icon input">
+                    <input type="text" placeholder="Buscar cliente...">
+                    <i class="search icon"></i>
+                </div>
+                <img src="https://concurvas.com/wp-content/themes/mainteam_Concurvas/imagenes/iconos/LOGO.png" alt="Logo Concurvas" id="imgLogo">
+            </div>
+            <div id="divContentTitulo" class="row">
+                <div class="letras">
+                    <i id="titulo_venta"><i class="chart bar icon"></i>Ventas <i class="angle down icon"></i></i>
+                    <p id="subti_Ventas">¡Bienvenido! Registra aqui tus ventas</p>
+                </div>
+                <button id="agregarorden" class="ui button"> <i class="plus icon"></i>    Agregar lead</button>
+            </div>
+            <div class="ui modal" id="mod">
+                <div class="header"><i class="cart plus icon"></i> Orden de venta</div>
+                <div class="content">
+                    <form class="ui form">
+                        <h4 class="ui dividing header"></h4>
+                        <div class="field">
+                            <label>Cliente</label>
+                            <div class="two fields">
+                                <div class="field">
+                                    <select id="searchTel" class="ui fluid search dropdown">
+                                        <option value="">Número de Telefono </option>
+                                    </select>
+                                </div>
+                                <div class="field">
+                                    <input type="text" name="Nombre_Cliente" value="" placeholder="Nombre" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Método de Compra</label>  
+                            <select class="ui fluid dropdown" > 
+                                <option value="">Método de Compra</option>
+                            </select>
+                        </div>
+                        <div class="ui form">
+                            <div class="inline fields">
+                                <label>Tipo de Venta : </label>
+                                <div class="field">
+                                    <div class="ui radio checkbox">
+                                        <input type="radio" name="frequency" checked="checked">
+                                        <label>Detal</label>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="ui radio checkbox">
+                                        <input type="radio" name="frequency">
+                                        <label>Por Mayor</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Prenda</label>  
+                            <button id="productos" class="ui button "> <i class="shopping cart icon"></i></button>
+                        </div>
+                        <div class="field">
+                            <label>Modalidad de pago</label>  
+                            <select class="ui fluid dropdown" > 
+                                <option value="">Modalidad de pago</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label>Precio</label>  
+                            <input type="text" name="precio_orden_venta" value="" placeholder="Precio" readonly>
+                        </div>
+                        <div class="field">
+                            <div class="two fields">
+                                <div class="field">
+                                    <label>Motivo</label>  
+                                    <select class="ui fluid dropdown" > 
+                                        <option value="">Motivo</option>
+                                    </select>
+                                </div>
+                                <div class="field">
+                                    <label>Origen</label>  
+                                    <select class="ui fluid dropdown" > 
+                                        <option value="">Origen</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Fecha de Entrega</label>
+                            <input type="date" id="start" name="trip-start "value=""  min="2021-01-01" max="2220-12-31">
+                        </div>
+                        <div class="field">
+                            <label>Notas</label>
+                            <textarea rows="3"></textarea>
+                        </div>
+                        <button id="agregarcliente" class="ui button"> <i class="plus icon"></i>   Agregar Ciente</button>
+                    </form> 
+                </div>
+                <div class="ui modal" id="mod3">
+                    <div class="header"><i class="cart plus icon"></i> Pedido</div>
+                    <div class="content">
+                        <div id="Pedido" class="ui form">
+                            <div class="four fields" >
+                                <div class="field can">
+                                    <label class="escan">Descripcion del Producto</label>
+                                </div>
+                                <div class="field can">
+                                    <label class="escan">Cantidad</label>
+                                </div>
+                                <div class="field can">
+                                    <label class="escan">Precio</label>
+                                </div>
+                                <div class="field can x">
+                                </div>
+                            </div>
+                            <div class="four fields" id="v">
+                                <div class="field can">
+                                    <select id ="p" class="ui fluid search dropdown">
+                                        <option value="">Descripcion del Producto</option>
+                                        <option value="1">buzos</option>
+                                        <option value="2">chaquetas</option>
+                                    </select>
+                                </div>
+                                <div class="field can">
+                                    <div id="cantidad1">
+                                        <div class="mas-menos">
+                                            <i class="minus circle icon"></i>
+                                        </div>
+                                        <div>
+                                            <input id="cantidad" type="text" name="Catidad" value=""  placeholder="1" readonly>
+                                        </div>
+                                        <div class="mas-menos">
+                                            <i class="plus circle icon"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="field can">
+                                    <input type="text" placeholder="">
+                                </div>
+                                <div class="field can x">
+                                    <i id="xv" class="xv2 times circle outline icon"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <button id="agregarpedi" class="ui button "> Agregar Productos</button>
+                    </div>
+                </div>
+                <div class="ui modal" id="mod2">
+                    <div class="header"><i class="id badge outline icon"></i> Cliente </div>
+                    <div class="content">
+                        <form class="ui form">
+                            <div class="field">
+                                <h4 class="ui dividing header">Datos Personales </h4>
+                                <label>Nombres</label>
+                                <div class="two fields">
+                                    <div class="field">
+                                        <input type="text" name="PrimerNombreCliente" placeholder="Primer Nombre">
+                                    </div>
+                                    <div class="field">
+                                        <input type="text" name="SegundoNombreCliente]" placeholder="Segundo Nombre">
+                                    </div>
+                                </div>
+                                <label>Apellidos</label>
+                                <div class="two fields">
+                                    <div class="field">
+                                        <input type="text" name="PrimerApellidoCliente" placeholder="Primer Apellido">
+                                    </div>
+                                    <div class="field">
+                                        <input type="text" name="SegundoApellidoCliente" placeholder="Segundo Apellido">
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label>Telefono</label>
+                                    <input type="text" name="TelefonoCliente" placeholder="Telefono">
+                                </div>
+                                <div class="field">
+                                    <label>Correo</label>
+                                    <input type="text" name="CorreoCliente" placeholder="Correo">
+                                </div>
+                            </div> 
+                            <h4 class="ui dividing header">Direccion </h4>
+                            <div class="two fields">
+                                <div class="field">
+                                    <label>Departamento</label>  
+                                    <select class="ui fluid dropdown" > 
+                                        <option value="">Departamento</option>
+                                    </select>
+                                </div>
+                                <div class="field">
+                                    <label>Ciudad</label>
+                                    <select class="ui fluid dropdown" >
+                                        <option value="">Ciudad</option>
+                                    </select>
+                                </div>
+                            </div>    
+                            <div class="field">
+                                <label>Dirección</label>
+                                <select class="ui fluid search dropdown">
+                                    <option value="">Direccion</option>
+                                    <option value="1">cra 7 #10-45</option>
+                                </select>
+                            </div>            
+                            <div class="field">
+                                <label>Barrio</label>
+                                <input type="text" name="BarrioCliente" placeholder="Barrio">
+                            </div>
+                            <button id="scliente" class="ui button"> <i class="plus icon"></i>   Agregar Ciente</button>
+                            <button id="atras" class="ui button "> <i class="reply icon"></i></button>
+                        </form> 
+                    </div>
+                </div>
+		    </div>    
+            <div id="divContentTabla" class="row">
+                <div id="tabla" style="">
+	                <div  id = " main-container " >  
+                        <table>
+                            <thead>
+                                <th>Estado <i class="angle down icon"></i></th>
+                                <th>Número de orden <i class="angle down icon"></i></th>
+                                <th>Vendedor<i class="angle down icon"></i></th>
+                                <th>Fecha <i class="angle down icon"></i> </th>
+                                <th>Cliente<i class="angle down icon"></i></th>
+                                <th>Telefono<i class="angle down icon"></i></th>
+                                <th>Direccion<i class="angle down icon"></i></th>
+                                <th>Barrio<i class="angle down icon"></i></th>
+                                <th>Población<i class="angle down icon"></i></th>
+                                <th>Departamento<i class="angle down icon"></i></th>                            
+                                <th>Método de compra<i class="angle down icon"></i></th>
+                                <th>Prendas<i class="angle down icon"></i></th>
+                                <th>Modalidad de pago<i class="angle down icon"></i></th>
+                                <th>Precio<i class="angle down icon"></i></th>
+                                <th>Notas<i class="angle down icon"></i></th>
+                                <th>Tipo de venta<i class="angle down icon"></i></th>
+                                <th>Origen<i class="angle down icon"></i></th>
+                                <th>Fecha de entrega<i class="angle down icon"></i></th>
+                                <th></th>
+                            </thead>
+                            <tbody>                           
+                                <tr>
+                                    <td>
+                                        Empacado    
+                                    </td>
+                                    <td>
+                                        3   
+                                    </td>
+                                    <td>
+                                        <img src="img/avatar.png" alt="Pedro Pataquiva">
+                                    </td>
+                                    <td>
+                                        10/20/2021    
+                                    </td>
+                                    <td>
+                                        Carlos Cuéllar
+                                    </td>
+                                    <td>
+                                        3051745484
+                                    </td>
+                                    <td>
+                                        Cra 7 #10-45
+                                    </td>
+                                    <td>
+                                        Las cruces
+                                    </td>
+                                    <td>
+                                        Bogotá D.C.
+                                    </td>
+                                    <td>
+                                        BOGOTÁ D.C.
+                                    </td>
+                                    <td>
+                                        Contra entrega
+                                    </td>
+                                    <td>
+                                        Productos
+                                    </td>
+                                    <td>
+                                        Tarjeta
+                                    </td>
+                                    <td>
+                                        105000
+                                    </td>
+                                    <td>
+                                        Sin notas
+                                    </td>
+                                    <td>
+                                        Ventas
+                                    </td>
+                                    <td>
+                                        Facebook
+                                    </td>
+                                    <td>
+                                        10/30/2021
+                                    </td>
+                                    <td>
+                                        <button class= "boton" type="button " class="submit-btn">Ver historia </button>
+                                    </td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+	                </div>
+                </div>
+            </div>
+    </div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<script src="js/functions.js"></script>
+<script src="js/script.js"></script>
+<!--<script src="js/peticion.js"></script>-->
+<script src="js/login.js"></script>
+<script src="js/test.js"></script>
+<script src="js/ventas.js"></script>
+</html>
