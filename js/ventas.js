@@ -126,7 +126,7 @@ function pintarOrdenes(ordenes){
     for(let i=0;i<ordenes.length; i++){
         let orden=ordenes[i];
         let direccion;
-        consultarDireccion(direccion,orden.direccion_ID)
+        consultarDirecciones()
         let cliente;
         let usuario;
         while (true){
