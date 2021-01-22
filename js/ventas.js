@@ -1,6 +1,8 @@
 var usuarios;
 var clientes;
-
+$(document).ready(function(){
+    ordenes();
+})
 /**
  * 
  */
