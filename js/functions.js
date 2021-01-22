@@ -11,7 +11,7 @@ function validarUsuario(token){
         success: function(e){
             if (!e.value){
                 delete_cookie("token");
-                window.location.assign("login.html");
+                window.location.assign("index.html");
             }
         },
         error: function(e){

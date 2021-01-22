@@ -3,7 +3,9 @@
     margin: none;
 }
 body{
+    background-color:rgb(250, 250, 250) !important; 
     font-family: Aktiv Grotesk,-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+    height: 102.3% !important;
 }
 #subti_Ventas{
     color:rgb(184, 185, 186) ;
@@ -18,11 +20,29 @@ body{
     font-size: 20px;
     margin-left: 200px;
 }
+#b{
+    border-bottom:2px solid rgb(163, 159, 159);
+    padding: 8px;
+    font-size: 20px;
+    margin-top: 5px;
+    float: right;
+    display: none;
+    width:250px !important;
+}
+#bus{
+    padding: 0px !important;
+}
+#lu{
+    margin-left: 90%;
+}
 #divPrincipal{
-    height: 101.8%;
+    height: 100%;
+    width: 100%;
+    
 }
 
 #divMenu{
+    margin-bottom: 0px;
     background-color: rgb(255, 255, 255);
 }
 
@@ -32,10 +52,23 @@ body{
 #divMenuF1{
     display: flex;
     align-items: center;
+    margin-top: 0px;
+}
+#fle{
+    margin-right: 100px;
+    color:  #c7c7c7;
+}
+#imgcar{
+    margin-top: 18px;
+    margin-left: 5%;
+    font-size: 14px;
+}
+#d{
+    margin-top: 150px;
 }
 #imgcara_icon{
     margin-top: 18px;
-    margin-left: -10%;
+    margin-left: -15%;
     color: rgb(73, 68, 68);
     font-size: 14px;
 }
@@ -91,16 +124,13 @@ body{
     margin-bottom: 2px;
 }
 
-
-
-
 #tabla{
     margin: auto;
     margin-top: 50px;
 }
 
 
-table{
+#tabla table{
     background-color:white;
     border-bottom: solid 5px rgb(255, 255, 255);
 	text-align: left;
@@ -108,8 +138,9 @@ table{
 	width: 100%;
 }
 
-th, td{
+#tabla th, td{
     padding: 7px;
+    min-width: 120px;
 }
 
 tr{
@@ -173,9 +204,234 @@ input[type=date]:required:invalid::-webkit-datetime-edit {
 .mas-menos{
     margin-top: 5px ;
 }
+
 .can{
     text-align: center !important;
+    width: 31% !important;
 }
 .escan{
     margin-bottom: 20px !important;
+}
+.xv2{
+    font-size: 15px !important;
+    margin-bottom: 15px !important;
+    margin-left: 17px !important;
+}
+
+.circle:hover{
+    cursor: pointer;
+    transform:scale(1.25);
+}
+
+.x{
+    align-self: flex-end;
+    width: 30px !important;
+}
+.header-menu{
+    width: 100%;
+    height: 90px;
+    position: fixed;
+    top:0;left: 0;
+}
+.container{
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+.container .btn-menu{
+    float:left;
+    line-height: 70px;
+    margin-left: 12px;
+}
+#bar{
+    color:grey;
+    font-size: 25px;
+    cursor: pointer;
+}
+#btn-menu{
+    display: none;
+}
+.container-menu{
+    position: absolute;
+    background: rgba(0,0,0,0.5);
+    width: 100%;
+    height: 100vh;
+    top: 0;left: 0;
+    transition: all 500ms ease;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1;
+}
+
+#btn-menu:checked ~ .container-menu{
+    opacity: 1;
+    visibility: visible;
+}
+.cont-menu{
+    width: 100%;
+    max-width: 250px;
+    background: #1c1c1c;
+    height: 100vh;
+    position: relative;
+    transition: all 500ms ease;
+    transform: translateX(-100%);
+}
+#btn-menu:checked ~ .container-menu .cont-menu{
+    transform: translateX(0%);
+}
+.cont-menu nav{
+    transform: translateY(15%);
+}
+.cont-menu nav a{
+    display: block;
+    text-decoration: none;
+    padding: 9px;
+    margin-left: 50px;
+    color: #c7c7c7;
+    border-left: 5px solid transparent;
+    transition: all 400ms ease;
+}
+.cont-menu nav a:hover{
+    border-left: 5px solid #c7c7c7;
+    background: #1f1f1f ;
+}
+.cont-menu label{
+    position: absolute;
+    right: 5px;
+    top: 10px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+}
+#x{
+    color: #fff;
+    font-size: 14px;
+}
+#imgL{
+    margin-top: 15px;
+    margin-left: 42px;
+    height: 22px;
+    display: none;
+}
+
+
+@media screen and (max-width: 1320px){
+    #divMenu{
+        display: none;
+    }
+    #divContent{
+        width: 100%;   
+
+        margin: 60px auto;     
+    }
+
+}
+@media screen and (max-width: 4000px){
+    .content-all{
+        display: none;
+    }
+}
+@media  screen and (max-width:828px){
+    /* modificar pedido */
+}
+
+@media  screen and (max-width:692px){
+    #imgLogo{
+        display: none;
+    }
+    #imgL{
+        display:flex;
+    }
+    #divContent{
+        margin-top: 120px;
+    }
+    #b{
+        display: flex;
+    }
+    #bc{
+        display: none;
+    }
+    .letras{
+        margin-left: 10px !important;
+    }
+    #agregarorden{
+        margin-right: 1px !important;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+}
+@media  screen and (max-width:1191px){
+    #tabla{
+        overflow-x: scroll;
+    }
+}
+@media  screen and (max-width:774px){
+
+}
+
+#tablap{
+    margin: auto;
+    margin-top: 0px;
+}
+
+#tablep {
+    background-color: rgb(250, 250, 250);
+    margin: auto;
+    border-spacing: 20px 110px;
+    border-collapse: separate; 
+    border-bottom: 0px !important;   
+    padding-left: 20px;
+    table-layout: fixed;
+    width: 90%;
+
+}
+#tablep tbody {
+  position: relative;
+}
+
+#tablap img{
+    height: 130px;
+    width: auto;
+    position: absolute;
+    border-radius: 20px;
+    margin-top: -70px;
+    
+}
+#tablep tr{
+    box-shadow:  8px 20px 10px rgba(218, 215, 215, 0.5), -1px -1px 20px  rgba(212, 206, 206, 0.5);
+    border-radius:9px !important;
+    height: 80px ;
+    
+}
+.espacosth{
+    padding: 0PX;
+}
+#tablep th, td{
+    padding-left: 8px;
+    color: rgb(145, 139, 139);
+}
+#encabep{
+    position: absolute;
+    margin-top: 40px;
+    margin-left: 75px;
+	border-collapse: collapse;
+	width: 81%;
+    
+}
+#encabep th, td{
+    width: 60px !important;
+}
+#botonpr{
+    text-align: center;
+}
+#agregarproducto{
+    width: 350px;
+    height: 50px;
+    background-color: rgb(250, 250, 250);
+    box-shadow:  8px 20px 10px rgba(218, 215, 215, 0.5), -1px -1px 20px  rgba(212, 206, 206, 0.5);
+    color:rgb(145, 139, 139);
+}
+#logoin{
+    position:absolute;
+    float: right;
 }
