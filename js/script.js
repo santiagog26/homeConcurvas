@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 var x=0;
->>>>>>> main
 $("#agregarorden").click(function(){
 	$('#mod').modal('show');
 });
