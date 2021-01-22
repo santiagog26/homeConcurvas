@@ -3,6 +3,7 @@ var clientes;
 $(document).ready(function(){
     ordenes();
 })
+
 /**
  * 
  */
@@ -89,9 +90,41 @@ function obtenerUsuarios(){
     })
 }
 
+/**
+ * 
+ * @param {direccion} direccion 
+ * @param {number} id 
+ */
+function consultarDireccion(direccion,id){
+    $.ajax({
+        url: url+'/direccion/'+id,
+        type: 'GET',
+        dataType:"json",
+        headers:{
+            token:getCookie('token')
+        },
+        contentType: 'application/json; charset=utf-8', 
+        success: function(e){
+            console.log(e);
+            if (e.tipo==="OK"){
+                direccion=e.direccion
+            }
+            else{
+                alert(e.mensaje);
+            }
+            
+        },
+        error: function(e){
+            console.log(e)
+        }
+    })
+}
+
 function pintarOrdenes(ordenes){
     for(let i=0;i<ordenes.length; i++){
         let orden=ordenes[i];
+        let direccion;
+        consultarDireccion(direccion,orden.direccion_ID)
         let cliente;
         let usuario;
         while (true){
@@ -107,6 +140,12 @@ function pintarOrdenes(ordenes){
         }
         while(true){
             if (usuarios!==null){
+                break;
+            }
+        }
+
+        while(true){
+            if (direccion!==null){
                 break;
             }
         }
@@ -134,7 +173,7 @@ function pintarOrdenes(ordenes){
             ${cliente.telefono}
         </td>
         <td>
-            Cra 7 #10-45
+            ${direccion.direccion}
         </td>
         <td>
             ${orden.estado}
