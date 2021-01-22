@@ -101,6 +101,12 @@ function pintarOrdenes(ordenes){
         let direccion=orden.direccion;
         let cliente;
         let usuario;
+        let tipoVenta="";
+        if(orden.tipo_venta==1){
+            tipoVenta="Mayorista"
+        }else{
+            tipoVenta="Minorista"
+        }
         while (true){
             if (clientes!==undefined){
                 break;
@@ -129,8 +135,17 @@ function pintarOrdenes(ordenes){
 
 
         let fechaEntrega=orden.fecha_entrega.split("-");
-        let fechaEntregaAMostrar=fechaEntrega[1]+"/"+fechaEntrega[2]+"/"+fechaEntrega[0]+"/";
+        let fechaEntregaAMostrar=fechaEntrega[1]+"/"+fechaEntrega[2]+"/"+fechaEntrega[0];
         let txt=`<tr>
+        <td>
+            ${orden.estado}    
+        </td>
+        <td>
+            ${orden.orden_ID}   
+        </td>
+        <td>
+            <img src="${usuario.urlImagen}" alt="${usuario.primerNombre} ${usuario.primerApellido}">
+        </td>
         <td>
             ${fechaAImprimir}    
         </td>
@@ -144,21 +159,41 @@ function pintarOrdenes(ordenes){
             ${direccion.direccion}
         </td>
         <td>
-            ${orden.estado}
+            ${direccion.barrio}
+        </td>
+        <td>
+            ${direccion.ciudad.ciudad}.
+        </td>
+        <td>
+            ${direccion.departamento.nombre}
+        </td>
+        <td>
+            ${orden.metodoCompra.tipo}
+        </td>
+        <td>
+            ${orden.productos}
+        </td>
+        <td>
+            ${orden.modalidadPago.modalidad}
+        </td>
+        <td>
+            ${orden.precio}
+        </td>
+        <td>
+            ${orden.notas}
+        </td>
+        <td>
+            ${tipoVenta}
+        </td>
+        <td>
+            ${orden.origen.nombre}
         </td>
         <td>
             ${fechaEntregaAMostrar}
         </td>
         <td>
-            <img src="${usuario.urlImagen}" alt="${usuario.primerNombre} ${usuario.primerApellido}">
-        </td>
-        <td>
-            <img src="img/avatar.png" alt="Avatar">
-        </td>
-        <td>
             <button class= "boton" type="button " class="submit-btn">Ver historia </button>
-        </td>
-    </tr>`
+        </td>`
     $("table").append(txt);
     txt="";
     }
