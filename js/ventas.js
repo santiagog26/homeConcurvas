@@ -170,7 +170,7 @@ function pintarOrdenes(ordenes){
             ${orden.metodoCompra.tipo}
         </td>
         <td>
-            ${orden.productos}
+            ${JSON.stringify(orden.productos)}
         </td>
         <td>
             ${orden.modalidadPago.modalidad}
@@ -179,7 +179,7 @@ function pintarOrdenes(ordenes){
             ${orden.precio}
         </td>
         <td>
-            ${orden.notas}
+            ${orden.nota}
         </td>
         <td>
             ${tipoVenta}
