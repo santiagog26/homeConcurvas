@@ -93,40 +93,12 @@ function obtenerUsuarios(){
 
 /**
  * 
- * @param {number} id 
- */
-function consultarDirecciones(){
-    $.ajax({
-        url: url+'/direccion',
-        type: 'GET',
-        dataType:"json",
-        headers:{
-            token:getCookie('token')
-        },
-        contentType: 'application/json; charset=utf-8', 
-        success: function(e){
-            if (e.tipo==="OK"){
-                direcciones=e.direcciones
-            }
-            else{
-                alert(e.mensaje);
-            }
-            
-        },
-        error: function(e){
-            console.log(e)
-        }
-    })
-}
-/**
- * 
  * @param {Array} ordenes 
  */
 function pintarOrdenes(ordenes){
     for(let i=0;i<ordenes.length; i++){
         let orden=ordenes[i];
-        let direccion;
-        consultarDirecciones()
+        let direccion=orden.direccion;
         let cliente;
         let usuario;
         while (true){
@@ -145,20 +117,9 @@ function pintarOrdenes(ordenes){
                 break;
             }
         }
-        while(true){
-            if (direcciones!==undefined){
-                break;
-            }
-        }
         for (let i = 0; i < usuarios.length; i++) {
             if (orden.usuario_ID===usuarios[i].usuario_ID){
                 usuario=usuarios[i];
-                break;
-            }
-        }
-        for (let i = 0; i < direcciones.length; i++) {
-            if (orden.direccion_ID===direcciones[i].direccion_ID){
-                direccion=direcciones[i];
                 break;
             }
         }
