@@ -29,6 +29,10 @@ $('select.dropdown')
 $('#xv').click(function(){
   $('#v').remove();
 });
+$("#agregarproducto").click(function(){
+  $('#mod4').modal('show');
+});
+
 
 function mostrar_productos(e){
   texto=  '<div class="four fields " id="v'+e+'">'+

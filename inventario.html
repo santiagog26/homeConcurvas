@@ -81,12 +81,11 @@
                        <table id="encabep">
                             <thead>
                                 <th> </th>
-                                <th class="espacosth mas">Referencia</th>
-                                <th class="espacosth mas">Inicial</th>
-                                <th class="espacosth mas">Entrada</th>
+                                <th class="espacosthmas">Referencia</th>
+                                <th class="espacosthmas">Entrada</th>
                                 <th class="espacosth">Salidas Mayoristas</th>
                                 <th class="espacosth">Salidas Concurvas</th>
-                                <th>Total</th>
+                                <th id="total">Total</th>
                             </thead>
                         </table>
                         <table id="tablep">
@@ -105,21 +104,56 @@
                                         0
                                     </td>
                                     <td>
-                                        0
-                                    </td>
-                                    <td>
                                         89
                                     </td>
-                                    <td>
+                                    <td >
                                         89
                                     </td>
                                 </tr>
+                                
                             </tbody>
                         </table>
-                        <div id="botonpr">
-                        <button id="agregarproducto" class="ui button "> + AGREGAR PRODUCTOS </button>
-                        </div>
+        
 	                </div>
+                </div>
+                <div id="botonpr">
+                        <button id="agregarproducto" class="ui button "> + AGREGAR PRODUCTOS </button>
+                </div>
+                <div class="ui modal" id="mod4">
+                    <div class="header"><i class="id badge outline icon"></i> Cliente </div>
+                    <div class="content">
+                        <form class="ui form">
+                            <div class="field">
+                                <h4 class="ui dividing header">Datos Personales </h4>
+                                <label>Nombres</label>
+                                <div class="two fields">
+                                    <div class="field">
+                                        <input type="text" name="PrimerNombreCliente" placeholder="Primer Nombre">
+                                    </div>
+                                    <div class="field">
+                                        <input type="text" name="SegundoNombreCliente]" placeholder="Segundo Nombre">
+                                    </div>
+                                </div>
+                                <label>Apellidos</label>
+                                <div class="two fields">
+                                    <div class="field">
+                                        <input type="text" name="PrimerApellidoCliente" placeholder="Primer Apellido">
+                                    </div>
+                                    <div class="field">
+                                        <input type="text" name="SegundoApellidoCliente" placeholder="Segundo Apellido">
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label>Telefono</label>
+                                    <input type="text" name="TelefonoCliente" placeholder="Telefono">
+                                </div>
+                                <div class="field">
+                                    <label>Correo</label>
+                                    <input type="text" name="CorreoCliente" placeholder="Correo">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
     </div>
