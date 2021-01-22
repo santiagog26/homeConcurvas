@@ -105,7 +105,6 @@ function consultarDireccion(direccion,id){
         },
         contentType: 'application/json; charset=utf-8', 
         success: function(e){
-            console.log(e);
             if (e.tipo==="OK"){
                 direccion=e.direccion
             }
@@ -143,12 +142,13 @@ function pintarOrdenes(ordenes){
                 break;
             }
         }
-
+        console.log("Antes del bucle");
         while(true){
             if (direccion!==null){
                 break;
             }
         }
+        console.log(direccion);
         for (let i = 0; i < usuarios.length; i++) {
             if (orden.usuario_ID===usuarios[i].usuario_ID){
                 usuario=usuarios[i];
