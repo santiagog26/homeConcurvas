@@ -105,7 +105,7 @@ function pintarOrdenes(ordenes){
                 break;
             }
         }
-        let fechaTotal=orden.fechaVenta.split(",");
+        let fechaTotal=orden.fecha_entrega.split(",");
         let fecha=fechaTotal[0].split("-");
         let fechaAImprimir=fecha[1]+"/"+fecha[2]+"/"+fecha[0];
 
