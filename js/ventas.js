@@ -203,7 +203,8 @@ function pintarOrdenes(ordenes){
 
 function productosEnOrdenString(productos){
     let str='<td class="ui grid">'
-    for(producto in productos){
+    for(let i=0;i<productos.length;i++){
+        let producto=productos[i]
         str+= `
         <div class="row">
             ${producto.producto.descripcion} (${producto.cantidad})
