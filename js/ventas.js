@@ -105,12 +105,12 @@ function pintarOrdenes(ordenes){
                 break;
             }
         }
-        let fechaTotal=orden.fecha_entrega.split(",");
+        let fechaTotal=orden.fecha_venta.split(",");
         let fecha=fechaTotal[0].split("-");
         let fechaAImprimir=fecha[1]+"/"+fecha[2]+"/"+fecha[0];
 
 
-        let fechaEntrega=orden.fecha_entrega.split();
+        let fechaEntrega=orden.fecha_entrega.split("-");
         let fechaEntregaAMostrar=fechaEntrega[1]+"/"+fechaEntrega[2]+"/"+fechaEntrega[0]+"/";
         let txt=`<tr>
         <td>
