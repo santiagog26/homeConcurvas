@@ -1,6 +1,5 @@
-var url="http://184.72.83.24:5000";
-
-$("#in").click(function(){
+$("#login").click(function(e){
+    e.preventDefault()
     let usuario=$("#user").val();
     let contraseña=$("#password").val();
     let obj={usuario:usuario,contraseña:contraseña};
@@ -17,7 +16,15 @@ function login(obj){
         contentType: 'application/json; charset=utf-8', 
         success: function(e){
             console.log(e);
-            setCookie("token",e.usuario.token,10);
+            if (e.tipo==="OK"){
+                setCookie("token",e.usuario.token,10);
+                window.location.assign("ventas.html");
+            }
+            else{
+                alert(e.mensaje);
+                
+            }
+            
         },
         error: function(e){
             console.log(e)

@@ -1,3 +1,25 @@
+var url="http://184.72.83.24:5000";
+function validarUsuario(token){
+    $.ajax({
+        url: url+'/validar',
+        type: 'POST',
+        headers:{
+            token:token
+        },
+        dataType:"json",
+        contentType: 'application/json; charset=utf-8', 
+        success: function(e){
+            if (!e.value){
+                delete_cookie("token");
+                window.location.assign("index.html");
+            }
+        },
+        error: function(e){
+            console.log(e)
+        }
+    })
+}
+
 function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
