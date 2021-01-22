@@ -94,9 +94,19 @@ function pintarOrdenes(ordenes){
         let orden=ordenes[i];
         let cliente;
         let usuario;
+        while (true){
+            if (clientes!==null){
+                break;
+            }
+        }
         for (let i = 0; i < clientes.length; i++) {
             if (orden.cliente_ID===clientes[i].cliente_ID){
                 cliente=clientes[i];
+                break;
+            }
+        }
+        while(true){
+            if (usuarios!==null){
                 break;
             }
         }
