@@ -9,10 +9,7 @@ function validarUsuario(token){
         dataType:"json",
         contentType: 'application/json; charset=utf-8', 
         success: function(e){
-            console.log(e);
-            if (e.value){
-                console.log("Bienvenido");
-            }else{
+            if (!e.value){
                 delete_cookie("token");
                 window.location.assign("login.html");
             }
