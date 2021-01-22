@@ -98,7 +98,6 @@ function obtenerUsuarios(){
 function pintarOrdenes(ordenes){
     for(let i=0;i<ordenes.length; i++){
         let orden=ordenes[i];
-        let direccion=orden.direccion;
         let cliente;
         let usuario;
         let tipoVenta="";
@@ -141,7 +140,7 @@ function pintarOrdenes(ordenes){
             ${orden.estado}    
         </td>
         <td>
-            ${orden.orden_ID}   
+            ${orden.ordenVenta_ID}   
         </td>
         <td>
             <img src="${usuario.urlImagen}" alt="${usuario.primerNombre} ${usuario.primerApellido}">
@@ -156,16 +155,16 @@ function pintarOrdenes(ordenes){
             ${cliente.telefono}
         </td>
         <td>
-            ${direccion.direccion}
+            ${orden.direccion.direccion}
         </td>
         <td>
-            ${direccion.barrio}
+            ${orden.direccion.barrio}
         </td>
         <td>
-            ${direccion.ciudad.ciudad}.
+            ${orden.direccion.ciudad.nombre}.
         </td>
         <td>
-            ${direccion.departamento.nombre}
+            ${orden.direccion.departamento.departamento}
         </td>
         <td>
             ${orden.metodoCompra.tipo}
