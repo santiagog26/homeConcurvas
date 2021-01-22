@@ -18,7 +18,7 @@ function login(obj){
             console.log(e);
             if (e.tipo==="OK"){
                 setCookie("token",e.usuario.token,10);
-                window.location.assign("index.html");
+                window.location.assign("ventas.html");
             }
             else{
                 alert(e.mensaje);
