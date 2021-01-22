@@ -1,5 +1,6 @@
 var usuarios;
 var clientes;
+var direcciones;
 $(document).ready(function(){
     ordenes();
 })
@@ -92,12 +93,11 @@ function obtenerUsuarios(){
 
 /**
  * 
- * @param {direccion} direccion 
  * @param {number} id 
  */
-function consultarDireccion(direccion,id){
+function consultarDirecciones(){
     $.ajax({
-        url: url+'/direccion/'+id,
+        url: url+'/direccion',
         type: 'GET',
         dataType:"json",
         headers:{
@@ -106,7 +106,7 @@ function consultarDireccion(direccion,id){
         contentType: 'application/json; charset=utf-8', 
         success: function(e){
             if (e.tipo==="OK"){
-                direccion=e.direccion
+                direcciones=e.direcciones
             }
             else{
                 alert(e.mensaje);
@@ -118,7 +118,10 @@ function consultarDireccion(direccion,id){
         }
     })
 }
-
+/**
+ * 
+ * @param {Array} ordenes 
+ */
 function pintarOrdenes(ordenes){
     for(let i=0;i<ordenes.length; i++){
         let orden=ordenes[i];
@@ -142,16 +145,20 @@ function pintarOrdenes(ordenes){
                 break;
             }
         }
-        console.log("Antes del bucle");
         while(true){
-            if (direccion!==null){
+            if (direcciones!==null){
                 break;
             }
         }
-        console.log(direccion);
         for (let i = 0; i < usuarios.length; i++) {
             if (orden.usuario_ID===usuarios[i].usuario_ID){
                 usuario=usuarios[i];
+                break;
+            }
+        }
+        for (let i = 0; i < direcciones.length; i++) {
+            if (orden.direccion_ID===direcciones[i].direccion_ID){
+                direccion=direcciones[i];
                 break;
             }
         }
