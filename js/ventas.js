@@ -90,7 +90,8 @@ function obtenerUsuarios(){
 }
 
 function pintarOrdenes(ordenes){
-    for(orden in ordenes){
+    for(let i=0;i<ordenes.length; i++){
+        let orden=ordenes[i];
         let cliente;
         let usuario;
         for (let i = 0; i < clientes.length; i++) {
