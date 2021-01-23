@@ -1,5 +1,3 @@
-
-
 function menu(){
     var rolToken;
     while(true){
@@ -7,10 +5,33 @@ function menu(){
             break;
         }
     }
+
     rolToken = usuarioToken.rol;
-    for(let i=0;i<rolToken.permisos.length;i++){
-        if (rolToken.permisos[i]==="Orden.ver"){
-            $("#VentasItemMenu").hide()
-        }
+    permisosUsuario=usuarioToken.permisos;
+    permisosRol=rolToken.permisos;
+    if(!tienePermiso("Orden.ver",permisosUsuario) && !tienePermiso("Orden.ver",permisosRol)){
+        $("#VentasItemMenu").hide();
     }
+    if(!tienePermiso("Inventario.ver",permisosUsuario) && !tienePermiso("Inventario.ver",permisosRol)){
+        $("#InventarioItemMenu").hide();
+    }
+    if(!tienePermiso("Empaque.ver",permisosUsuario) && !tienePermiso("Empaque.ver",permisosRol)){
+        $("#EmpaqueItemMenu").hide();
+    }
+    if(!tienePermiso("Despacho.ver",permisosUsuario) && !tienePermiso("Despacho.ver",permisosRol)){
+        $("#DespachoItemMenu").hide();
+    }
+    if(!tienePermiso("Distribucion.ver",permisosUsuario) && !tienePermiso("Distribucion.ver",permisosRol)){
+        $("#DistribucionItemMenu").hide();
+    }
+}
+
+
+function tienePermiso(permiso,listaPermisos){
+    for (let i = 0; i < listaPermisos.length; i++) {
+        if(permiso===listaPermisos[i].permiso){
+            return true;
+        }  
+    }
+    return false;
 }
