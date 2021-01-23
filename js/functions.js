@@ -89,7 +89,7 @@ function menu(usuarioToken){
     let permisosRol=rolToken.permisos;
     let divMenu=$("#divMenuF2").children()[0];
     if(!tienePermiso("Orden.ver",permisosUsuario) && !tienePermiso("Orden.ver",permisosRol)){
-        divMenu.append('<a href="ventas.html" id="VentasItemMenu" class="item">Ventas</a>');
+        $(divMenu).append('<a href="ventas.html" id="VentasItemMenu" class="item">Ventas</a>');
     }
     if(!tienePermiso("Estadisticas.ver",permisosUsuario) && !tienePermiso("Estadisticas.ver",permisosRol)){
         divMenu.append('<a href="estadisticas.html" id="EstadisticasItemMenu" class="item">Estadísticas</a>');
