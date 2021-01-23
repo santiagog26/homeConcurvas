@@ -2,7 +2,7 @@ var rolToken;
 
 function menu(){
     while(true){
-        if (usuarioToken!=undefined){
+        if (usuarioToken!==undefined){
             rolToken = usuarioToken.rol;
             break;
         }
