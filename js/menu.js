@@ -7,8 +7,8 @@ function menu(){
     }
 
     rolToken = usuarioToken.rol;
-    permisosUsuario=usuarioToken.permisos;
-    permisosRol=rolToken.permisos;
+    let permisosUsuario=usuarioToken.permisos;
+    let permisosRol=rolToken.permisos;
     if(!tienePermiso("Orden.ver",permisosUsuario) && !tienePermiso("Orden.ver",permisosRol)){
         $("#VentasItemMenu").hide();
     }
