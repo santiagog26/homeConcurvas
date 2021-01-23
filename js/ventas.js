@@ -1,16 +1,12 @@
-var usuarios;
-var clientes;
-var direcciones;
+
 $(document).ready(function(){
-    ordenes();
+    obtenerClientes();
 })
 
 /**
  * 
  */
-function ordenes(){
-    obtenerClientes();
-    obtenerUsuarios();
+function ordenes(clientes,usuarios){
     $.ajax({
         url: url+'/orden',
         type: 'GET',
@@ -22,7 +18,7 @@ function ordenes(){
         success: function(e){
             console.log(e);
             if (e.tipo==="OK"){
-                pintarOrdenes(e.ordenes);
+                pintarOrdenes(e.ordenes,clientes,usuarios);
             }
             else{
                 alert(e.mensaje);
@@ -49,7 +45,8 @@ function obtenerClientes(){
         success: function(e){
             console.log(e);
             if (e.tipo==="OK"){
-                clientes=e.clientes
+                let clientes=e.clientes
+                obtenerUsuarios(clientes);
             }
             else{
                 alert(e.mensaje);
@@ -66,7 +63,7 @@ function obtenerClientes(){
 /**
  * 
  */
-function obtenerUsuarios(){
+function obtenerUsuarios(clientes){
     $.ajax({
         url: url+'/usuario',
         type: 'GET',
@@ -78,7 +75,8 @@ function obtenerUsuarios(){
         success: function(e){
             console.log(e);
             if (e.tipo==="OK"){
-                usuarios=e.usuarios
+                let usuarios=e.usuarios
+                ordenes(clientes,usuarios);
             }
             else{
                 alert(e.mensaje);
@@ -95,7 +93,7 @@ function obtenerUsuarios(){
  * 
  * @param {Array} ordenes 
  */
-function pintarOrdenes(ordenes){
+function pintarOrdenes(ordenes,clientes,usuarios){
     for(let i=0;i<ordenes.length; i++){
         let orden=ordenes[i];
         let cliente;
