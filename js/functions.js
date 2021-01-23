@@ -83,7 +83,6 @@ function deleteAllCookies() {
  */
 function menu(usuarioToken){
     var rolToken;
-
     rolToken = usuarioToken.rol;
     let permisosUsuario=usuarioToken.permisos;
     let permisosRol=rolToken.permisos;
