@@ -1,12 +1,10 @@
 // Variables
-url = 'http://184.72.83.24:5000';
+
 let nombreCliente = document.getElementById('nombreCliente');
 let telCliente = document.getElementById('searchTel').value;
 var productos=[];
 var categorias=[];
-var clientes=[];
 var roles=[];
-var usuarios=[];
 
 // Funciones get
 $(function(){
