@@ -7,7 +7,7 @@ function menu(){
             break;
         }
     }
-    for(var i=0;i<rolToken.permisos.length;i++){
+    for(let i=0;i<rolToken.permisos.length;i++){
         if (rolToken.permisos[i]==="Orden.ver"){
             $("#VentasItemMenu").hide()
         }
