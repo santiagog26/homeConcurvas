@@ -1,7 +1,5 @@
 
-$(document).ready(function(){
-    obtenerClientes();
-})
+$(document).ready(obtenerClientes())
 
 /**
  * 
@@ -47,6 +45,7 @@ function obtenerClientes(){
             if (e.tipo==="OK"){
                 let clientes=e.clientes
                 obtenerUsuarios(clientes);
+                llenarTelefonos(clientes);
             }
             else{
                 alert(e.mensaje);
@@ -200,3 +199,45 @@ function productosEnOrdenString(productos){
     }
     return str;
 }
+
+/**
+ * Funciones varias
+ * @param {*} clientes 
+ */
+function llenarTelefonos(clientes){
+    let tels = '';
+    for(let i=0; i<clientes.length; i++){
+        tels = '<option value="'+clientes[i].telefono+'">'+clientes[i].telefono+'</option>';
+    };
+    $('#searchTel').append(tels);
+};
+
+$("#searchTel").click(function(){
+    let telefono=$("#searchTel").val();
+    $.ajax({
+        url: url+'/cliente/'+telefono,
+        type: 'POST',
+        dataType:"json",
+        headers:{
+            token:getCookie('token')
+        },
+        contentType: 'application/json; charset=utf-8', 
+        before: function(e){
+            $("#Nombre_Cliente").empty();
+        },
+        success: function(e){
+            console.log(e);
+            if (e.tipo==="OK"){
+                cliente=e.cliente
+                $("#Nombre_Cliente").append(`${cliente.primerNombre} ${cliente.primerApellido}`);
+            }
+            else{
+                alert(e.mensaje);
+            }
+            
+        },
+        error: function(e){
+            console.log(e)
+        }
+    })
+})
