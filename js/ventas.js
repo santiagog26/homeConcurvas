@@ -212,7 +212,7 @@ function llenarTelefonos(clientes){
     $('#searchTel').append(tels);
 };
 
-$("#searchTel").click(function(){
+$("#searchTel.select.dropdown").click(function(){
     let telefono=$("#searchTel").val();
     $.ajax({
         url: url+'/cliente/'+telefono,
