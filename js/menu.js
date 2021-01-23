@@ -29,7 +29,7 @@ function menu(){
 
 function tienePermiso(permiso,listaPermisos){
     for (let i = 0; i < listaPermisos.length; i++) {
-        if(permiso===listaPermisos[i].permiso){
+        if(permiso===listaPermisos[i].nombre){
             return true;
         }  
     }
