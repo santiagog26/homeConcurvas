@@ -1,15 +1,6 @@
 var url="http://184.72.83.24:5000";
 var usuarioToken;
 
-$(document).ready(function(){
-    let token=getCookie("token")
-    if (token==""){
-        window.location.assign("index.html");
-    }else{
-        validarUsuario(token);
-    }
-});
-
 /**
  * 
  * @param {*} token 
