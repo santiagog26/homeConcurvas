@@ -1,5 +1,5 @@
 var url="http://184.72.83.24:5000";
-var usuario;
+var usuarioToken;
 function validarUsuario(token){
     $.ajax({
         url: url+'/validar',
@@ -14,7 +14,7 @@ function validarUsuario(token){
                 delete_cookie("token");
                 window.location.assign("index.html");
             }
-            usuario = e.usuario;
+            usuarioToken = e.usuario;
         },
         error: function(e){
             console.log(e)
