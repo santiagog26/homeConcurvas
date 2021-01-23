@@ -99,7 +99,7 @@ function pintarOrdenes(ordenes){
     for(let i=0;i<ordenes.length; i++){
         let orden=ordenes[i];
         let cliente;
-        let usuario;
+        let vendedor;
         let tipoVenta="";
         if(orden.tipo_venta==1){
             tipoVenta="Mayorista"
@@ -124,7 +124,7 @@ function pintarOrdenes(ordenes){
         }
         for (let i = 0; i < usuarios.length; i++) {
             if (orden.usuario_ID===usuarios[i].usuario_ID){
-                usuario=usuarios[i];
+                vendedor=usuarios[i];
                 break;
             }
         }
@@ -144,7 +144,7 @@ function pintarOrdenes(ordenes){
             ${orden.ordenVenta_ID}   
         </td>
         <td>
-            <img src="${usuario.urlImagen}" alt="${usuario.primerNombre} ${usuario.primerApellido}">
+            <img src="${vendedor.urlImagen}" alt="${vendedor.primerNombre} ${vendedor.primerApellido}">
         </td>
         <td>
             ${fechaAImprimir}    
