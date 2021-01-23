@@ -86,26 +86,41 @@ function menu(usuarioToken){
     rolToken = usuarioToken.rol;
     let permisosUsuario=usuarioToken.permisos;
     let permisosRol=rolToken.permisos;
+    let txt="";
     if(tienePermiso("Orden.ver",permisosUsuario) && tienePermiso("Orden.ver",permisosRol)){
-        $(".menuLateral").append('<a href="ventas.html" class="VentasItemMenu item"> Ventas</a>');
+        txt='<a href="ventas.html" class="VentasItemMenu item"> Ventas</a>';
+        $("#menuLateral").append(txt);
+        $("#d").append(txt);
     }
     if(tienePermiso("Estadisticas.ver",permisosUsuario) && tienePermiso("Estadisticas.ver",permisosRol)){
-        $(".menuLateral").append('<a href="estadisticas.html" class="EstadisticasItemMenu item">Estadísticas</a>');
+        txt='<a href="estadisticas.html" class="EstadisticasItemMenu item">Estadísticas</a>';
+        $("#menuLateral").append(txt);
+        $("#d").append(txt);
     }
     if(tienePermiso("Inventario.ver",permisosUsuario) && tienePermiso("Inventario.ver",permisosRol)){
-        $(".menuLateral").append('<a href="inventario.html" class="InventarioItemMenu item">Inventario</a>');
+        txt='<a href="inventario.html" class="InventarioItemMenu item">Inventario</a>';
+        $("#menuLateral").append(txt);
+        $("#d").append(txt);
     }
     if(tienePermiso("Empaque.ver",permisosUsuario) && tienePermiso("Empaque.ver",permisosRol)){
-        $(".menuLateral").append('<a href="empaque.html" class="EmpaqueItemMenu item">Empaque</a>');
+        txt='<a href="empaque.html" class="EmpaqueItemMenu item">Empaque</a>';
+        $("#menuLateral").append(txt);
+        $("#d").append(txt);
     }
     if(tienePermiso("Despacho.ver",permisosUsuario) && tienePermiso("Despacho.ver",permisosRol)){
-        $(".menuLateral").append('<a href="despacho.html" class="DespachoItemMenu item">Despacho</a>')
+        txt='<a href="despacho.html" class="DespachoItemMenu item">Despacho</a>';
+        $("#menuLateral").append(txt);
+        $("#d").append(txt);
     }
     if(tienePermiso("Distribucion.ver",permisosUsuario) && tienePermiso("Distribucion.ver",permisosRol)){
-        $(".menuLateral").append('<a href="distribucion.html" class="DistribucionItemMenu item">Distribución</a>')
+        txt='<a href="distribucion.html" class="DistribucionItemMenu item">Distribución</a>';
+        $("#menuLateral").append(txt);
+        $("#d").append(txt);
     }
     if(tienePermiso("Pagodomiciliario.ver",permisosUsuario) && tienePermiso("Pagodomiciliario.ver",permisosRol)){
-        $(".menuLateral").append('<a hfef="finanzas.html" class="FinanzasItemMenu item">Finanzas</a>`')
+        txt='<a hfef="finanzas.html" class="FinanzasItemMenu item">Finanzas</a>'
+        $("#menuLateral").append(txt);
+        $("#d").append(txt);
     }
 }
 
