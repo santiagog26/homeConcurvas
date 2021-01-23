@@ -1,5 +1,19 @@
 var url="http://184.72.83.24:5000";
 var usuarioToken;
+
+$(document).ready(function(){
+    let token=getCookie("token")
+    if (token==""){
+        window.location.assign("index.html");
+    }else{
+        validarUsuario(token);
+    }
+});
+
+/**
+ * 
+ * @param {*} token 
+ */
 function validarUsuario(token){
     $.ajax({
         url: url+'/validar',
@@ -21,7 +35,10 @@ function validarUsuario(token){
         }
     })
 }
-
+/**
+ * 
+ * @param {*} cname 
+ */
 function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
@@ -69,3 +86,9 @@ function deleteAllCookies() {
         document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
     }
 }
+
+
+$("#logout").click(function(){
+    delete_cookie("token");
+    window.location.assign("index.html");
+});
