@@ -87,7 +87,7 @@ function menu(usuarioToken){
     rolToken = usuarioToken.rol;
     let permisosUsuario=usuarioToken.permisos;
     let permisosRol=rolToken.permisos;
-    let divMenu=$("#divMenuF2").children()[0];
+    let divMenu=$("#divMenuF2")[0].children()[0];
     if(!tienePermiso("Orden.ver",permisosUsuario) && !tienePermiso("Orden.ver",permisosRol)){
         $(divMenu).append('<a href="ventas.html" id="VentasItemMenu" class="item">Ventas</a>');
     }
