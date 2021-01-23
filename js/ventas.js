@@ -104,19 +104,9 @@ function pintarOrdenes(ordenes,clientes,usuarios){
         }else{
             tipoVenta="Minorista"
         }
-        while (true){
-            if (clientes!==undefined){
-                break;
-            }
-        }
         for (let i = 0; i < clientes.length; i++) {
             if (orden.cliente_ID===clientes[i].cliente_ID){
                 cliente=clientes[i];
-                break;
-            }
-        }
-        while(true){
-            if (usuarios!==undefined){
                 break;
             }
         }
