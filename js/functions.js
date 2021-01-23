@@ -87,6 +87,7 @@ function menu(usuarioToken){
     let permisosUsuario=usuarioToken.permisos;
     let permisosRol=rolToken.permisos;
     console.log("Entré a la función");
+    console.log(tienePermiso("Orden.ver",permisosUsuario) && tienePermiso("Orden.ver",permisosRol));
     if(tienePermiso("Orden.ver",permisosUsuario) && tienePermiso("Orden.ver",permisosRol)){
         console.log("Entré al if");
         $(".menuLateral").append('<a href="ventas.html" class="VentasItemMenu item"> Ventas</a>');
