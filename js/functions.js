@@ -1,5 +1,4 @@
 var url="http://184.72.83.24:5000";
-var usuarioToken;
 
 /**
  * 
@@ -19,7 +18,7 @@ function validarUsuario(token){
                 delete_cookie("token");
                 window.location.assign("index.html");
             }
-            usuarioToken = e.usuario;
+            menu(e.usuario);
         },
         error: function(e){
             console.log(e)
@@ -77,6 +76,41 @@ function deleteAllCookies() {
         document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
     }
 }
+
+function menu(usuarioToken){
+    var rolToken;
+
+    rolToken = usuarioToken.rol;
+    let permisosUsuario=usuarioToken.permisos;
+    let permisosRol=rolToken.permisos;
+    if(!tienePermiso("Orden.ver",permisosUsuario) && !tienePermiso("Orden.ver",permisosRol)){
+        $("#VentasItemMenu").hide();
+    }
+    if(!tienePermiso("Inventario.ver",permisosUsuario) && !tienePermiso("Inventario.ver",permisosRol)){
+        $("#InventarioItemMenu").hide();
+    }
+    if(!tienePermiso("Empaque.ver",permisosUsuario) && !tienePermiso("Empaque.ver",permisosRol)){
+        $("#EmpaqueItemMenu").hide();
+    }
+    if(!tienePermiso("Despacho.ver",permisosUsuario) && !tienePermiso("Despacho.ver",permisosRol)){
+        $("#DespachoItemMenu").hide();
+    }
+    if(!tienePermiso("Distribucion.ver",permisosUsuario) && !tienePermiso("Distribucion.ver",permisosRol)){
+        $("#DistribucionItemMenu").hide();
+    }
+}
+
+
+function tienePermiso(permiso,listaPermisos){
+    for (let i = 0; i < listaPermisos.length; i++) {
+        if(permiso===listaPermisos[i].nombre){
+            return true;
+        }  
+    }
+    return false;
+}
+
+
 
 
 $("#logout").click(function(){
