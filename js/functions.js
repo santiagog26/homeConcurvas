@@ -122,7 +122,7 @@ function tienePermiso(permiso,listaPermisos){
 
 
 
-$("#logout").click(function(){
+$(".logout").click(function(){
     delete_cookie("token");
     window.location.assign("index.html");
 });
