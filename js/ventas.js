@@ -228,6 +228,7 @@ $(".ui.fluid.search.dropdown.selection").on("click",function(){
         success: function(e){
             console.log(e);
             if (e.tipo==="OK"){
+                console.log('Ajá')
                 cliente=e.cliente
                 $("#Nombre_Cliente").append(`${cliente.primerNombre} ${cliente.primerApellido}`);
             }
