@@ -209,7 +209,7 @@ function llenarTelefonos(clientes){
     for(let i=0; i<clientes.length; i++){
         tels+='<div class="item" data-value="'+clientes[i].telefono+'">'+clientes[i].telefono+' '+clientes[i].primerNombre+' '+clientes[i].primerApellido+'</div>';
     };
-    $('#searchTel').append(tels);
+    $('#searchTelDropdown').append(tels);
 };
 
 $("#searchTel").click(function(){
