@@ -215,7 +215,7 @@ function llenarTelefonos(clientes){
 $("#searchTel").click(function(){
     let telefono=$("#txtTelefono").val();
     $.ajax({
-        url: url+'/cliente/'+telefono,
+        url: url+'/cliente',
         type: 'GET',
         dataType:"json",
         headers:{
@@ -228,7 +228,13 @@ $("#searchTel").click(function(){
         success: function(e){
             console.log(e);
             if (e.tipo==="OK"){
-                cliente=e.cliente
+                let cliente;
+                for (let i = 0; i < e.clientes.length; i++) {
+                    if(e.clientes[i].telefono===telefono){
+                        cliente=e.clientes[i];
+                        break;
+                    }
+                }
                 $("#Nombre_Cliente").append(`${cliente.primerNombre} ${cliente.primerApellido}`);
             }
             else{
