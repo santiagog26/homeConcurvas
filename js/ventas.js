@@ -230,6 +230,7 @@ $("#searchTel").click(function(){
             if (e.tipo==="OK"){
                 let cliente;
                 for (let i = 0; i < e.clientes.length; i++) {
+                    console.log(e.clientes[i].telefono===telefono)
                     if(e.clientes[i].telefono===telefono){
                         cliente=e.clientes[i];
                         break;
