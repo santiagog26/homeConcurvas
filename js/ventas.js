@@ -216,7 +216,7 @@ $("#searchTel").click(function(){
     let telefono=$("#txtTelefono").val();
     $.ajax({
         url: url+'/cliente/'+telefono,
-        type: 'POST',
+        type: 'GET',
         dataType:"json",
         headers:{
             token:getCookie('token')
