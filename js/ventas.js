@@ -212,8 +212,8 @@ function llenarTelefonos(clientes){
     $('#searchTel').append(tels);
 };
 
-$(".ui.search.selection.dropdown").on("click",function(){
-    let telefono=$('.ui.fluid.search.dropdown.selection > .text').prop("value");
+$(".ui.search.selection.dropdown").on("click","searchTel",function(){
+    let telefono=$('#searchTel').prop("value");
     console.log(telefono)
     $.ajax({
         url: url+'/cliente/'+telefono,
