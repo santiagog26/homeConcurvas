@@ -6,12 +6,26 @@
     <title>Prueba</title>
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
 <body>
     <form action="#" method="post" enctype="multipart/form-data">
         <input type="file" name="" id="image">
         <input id="subir" type="submit" value="">
     </form>
+
+    <div id="testDrop" class="ui selection dropdown">
+        <input id="genero" type="hidden" name="gender">
+        <i class="dropdown icon"></i>
+        <div class="default text">Gender</div>
+        <div class="menu">
+          <div class="item" data-value="1">Male</div>
+          <div class="item" data-value="0">Female</div>
+        </div>
+      </div>
+    <input type="text" id="texto" >
 </body>
+
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 <script >
     
     $("#subir").click(function(e){
@@ -20,6 +34,15 @@
         if (file !==null){
             console.log(file);
         }
-    }) 
+    });
+    $("#testDrop").dropdown();
+    var variable;
+    $("#testDrop").click(function(){
+        console.log("Entré al drop")
+        console.log($("#testDrop"))
+
+        variable=$("#testDrop");
+        $("#texto").val($("#genero").val());
+    })
 </script>
 </html>

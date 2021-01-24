@@ -207,14 +207,13 @@ function productosEnOrdenString(productos){
 function llenarTelefonos(clientes){
     let tels = '';
     for(let i=0; i<clientes.length; i++){
-        tels += '<option value="'+clientes[i].telefono+'">'+clientes[i].telefono+'</option>';
+        tels+='<div class="item" data-value="'+clientes[i].telefono+'">'+clientes[i].telefono+' '+clientes[i].primerNombre+' '+clientes[i].primerApellido+'</div>';
     };
     $('#searchTel').append(tels);
 };
 
-$(".ui.search.selection.dropdown").on("click","searchTel",function(){
-    let telefono=$('#searchTel').prop("value");
-    console.log(telefono)
+$("#searchTel").click(function(){
+    let telefono=$("#searchTel").val();
     $.ajax({
         url: url+'/cliente/'+telefono,
         type: 'POST',
@@ -229,7 +228,6 @@ $(".ui.search.selection.dropdown").on("click","searchTel",function(){
         success: function(e){
             console.log(e);
             if (e.tipo==="OK"){
-                console.log('Ajá')
                 cliente=e.cliente
                 $("#Nombre_Cliente").append(`${cliente.primerNombre} ${cliente.primerApellido}`);
             }
