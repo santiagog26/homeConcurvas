@@ -236,7 +236,7 @@ $("#searchTel").click(function(){
                         break;
                     }
                 }
-                $("#Nombre_Cliente").append(`${cliente.primerNombre} ${cliente.primerApellido}`);
+                $("#Nombre_Cliente").val(`${cliente.primerNombre} ${cliente.primerApellido}`);
             }
             else{
                 alert(e.mensaje);
