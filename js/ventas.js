@@ -213,7 +213,7 @@ function llenarTelefonos(clientes){
 };
 
 $("#searchTel").click(function(){
-    let telefono=$("#searchTel").val();
+    let telefono=$("#txtTelefono").val();
     $.ajax({
         url: url+'/cliente/'+telefono,
         type: 'POST',
