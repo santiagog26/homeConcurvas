@@ -207,7 +207,7 @@ function productosEnOrdenString(productos){
 function llenarTelefonos(clientes){
     let tels = '';
     for(let i=0; i<clientes.length; i++){
-        tels = '<option value="'+clientes[i].telefono+'">'+clientes[i].telefono+'</option>';
+        tels += '<option value="'+clientes[i].telefono+'">'+clientes[i].telefono+'</option>';
     };
     $('#searchTel').append(tels);
 };
