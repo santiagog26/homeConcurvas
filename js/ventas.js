@@ -214,6 +214,7 @@ function llenarTelefonos(clientes){
 
 $(".ui.fluid.search.dropdown.selection").on("click",function(){
     let telefono=$(".text").val();
+    console.log(telefono)
     $.ajax({
         url: url+'/cliente/'+telefono,
         type: 'POST',
