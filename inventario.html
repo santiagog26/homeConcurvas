@@ -120,38 +120,42 @@
                         <button id="agregarproducto" class="ui button "> + AGREGAR PRODUCTOS </button>
                 </div>
                 <div class="ui modal" id="mod4">
-                    <div class="header"><i class="id badge outline icon"></i> Cliente </div>
+                    <div class="header"><i class="plus square outline icon"></i> Producto </div>
                     <div class="content">
                         <form class="ui form">
                             <div class="field">
-                                <h4 class="ui dividing header">Datos Personales </h4>
-                                <label>Nombres</label>
-                                <div class="two fields">
-                                    <div class="field">
-                                        <input type="text" name="PrimerNombreCliente" placeholder="Primer Nombre">
-                                    </div>
-                                    <div class="field">
-                                        <input type="text" name="SegundoNombreCliente]" placeholder="Segundo Nombre">
-                                    </div>
-                                </div>
-                                <label>Apellidos</label>
-                                <div class="two fields">
-                                    <div class="field">
-                                        <input type="text" name="PrimerApellidoCliente" placeholder="Primer Apellido">
-                                    </div>
-                                    <div class="field">
-                                        <input type="text" name="SegundoApellidoCliente" placeholder="Segundo Apellido">
-                                    </div>
+                                <label>Referencia del Producto</label>
+                                <div class="field">
+                                    <input type="text" name="ReferenciaProducto" placeholder="Referencia">
                                 </div>
                                 <div class="field">
-                                    <label>Telefono</label>
-                                    <input type="text" name="TelefonoCliente" placeholder="Telefono">
-                                </div>
+                                    <label>Descripcion</label>
+                                    <textarea rows="2"></textarea>
+                                </div> 
+                                <label>Url Imagen</label>
                                 <div class="field">
-                                    <label>Correo</label>
-                                    <input type="text" name="CorreoCliente" placeholder="Correo">
+                                    <input type="text" name="Urlimagen" placeholder="Url">
+                                </div> 
+                                <label>Stock</label>
+                                <div class="field">
+                                    <input type="text" name="stock" placeholder="stock">
+                                </div>  
+                                <label>Precio Costo</label>
+                                <div class="field">
+                                    <input type="text" name="Precio_costo" placeholder="Precio Costo">
+                                </div>        
+                                <div class="two fields">
+                                    <div class="field">
+                                        <label>Precio Minorista</label>
+                                        <input type="text" name="Precio_venta" placeholder="Precio Minorista">
+                                    </div>
+                                    <div class="field">
+                                        <label>Precio Mayorista</label>
+                                        <input type="text" name="Precio_Mayorista" placeholder="Precio Mayorista">
+                                    </div>
                                 </div>
                             </div>
+                            <button id="agreproducto" class="ui button"> <i class="plus icon"></i>   Agregar Producto</button>
                         </form>
                     </div>
                 </div>

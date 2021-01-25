@@ -69,7 +69,6 @@ function mostrar_productos(e){
         '</script>'
         $("#Pedido").append(texto);
         eliminar_productos(e);
-      
 }
 
 function eliminar_productos(e){

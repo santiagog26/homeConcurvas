@@ -192,14 +192,157 @@ function pintarOrdenes(ordenes){
             ${fechaEntregaAMostrar}
         </td>
         <td>
-            <button class= "boton" type="button " class="submit-btn">Ver historia </button>
+            <button id="${orden.ordenVenta_ID}" class= "boton" type="button " class="submit-btn">Ver historia </button>
         </td>`
     $("table").append(txt);
     txt="";
     }
+    mostrar_modal(orden.ordenVenta_ID);
+    modalorden(orden.ordenVenta_ID);
 }
 
+function modalorden(e){
+    $("#"+e).click(function(){
+        $('#mod'+e).modal('show');
+      });
+  }
 
+  function mostrar_modal(e){
+    texto=  ' <div class="ui modal" id="mod"'+e+'>'+
+                '<div class="header"><i class="cart plus icon"></i> Orden de venta</div>'+
+                '<div class="content">'+
+                   '<form class="ui form">'+
+                        '<h4 class="ui dividing header"></h4>'+
+                        '<div class="field">'+
+                            '<label>Cliente</label>'+
+                            '<div class="two fields">'+
+                                '<div class="field">'+
+                                    '<select id="searchTel" class="ui fluid search dropdown">'+
+                                        '<option value="">Número de Telefono </option>'+
+                                    '</select>'+
+                                '</div>'+
+                                '<div class="field">'+
+                                    '<input type="text" name="Nombre_Cliente" value="" placeholder="Nombre" readonly>'+
+                                '</div>'+
+                            '</div>'+
+                        '</div>'+
+                        '<div class="field">'+
+                            '<label>Método de Compra</label>'+
+                            '<select class="ui fluid dropdown" >'+
+                                '<option value="">Método de Compra</option>'+
+                            '</select>'+
+                        '</div>'+
+                        '<div class="ui form">'+
+                            '<div class="inline fields">'+
+                                '<label>Tipo de Venta : </label>'+
+                                '<div class="field">'+
+                                    '<div class="ui radio checkbox">'+
+                                        '<input type="radio" name="frequency" checked="checked">'+
+                                        '<label>Detal</label>'+
+                                    '</div>'+
+                                '</div>'+
+                                '<div class="field">'+
+                                    '<div class="ui radio checkbox">'+
+                                        '<input type="radio" name="frequency">'+
+                                        '<label>Por Mayor</label>'+
+                                    '</div>'+
+                                '</div>'+
+                            '</div>'+
+                        '</div>'+
+                        '<div class="field">'+
+                            '<label>Prenda</label>'+
+                            '<button id="productos" class="ui button "> <i class="shopping cart icon"></i></button>'+
+                        '</div>'+
+                        '<div class="field">'+
+                            '<label>Modalidad de pago</label>'+  
+                            '<select class="ui fluid dropdown" >'+
+                                '<option value="">Modalidad de pago</option>'+
+                            '</select>'+
+                        '</div>'+
+                        '<div class="field">'+
+                            '<label>Precio</label>'+
+                            '<input type="text" name="precio_orden_venta" value="" placeholder="Precio" readonly>'+
+                        '</div>'+
+                        '<div class="field">'+
+                            '<div class="two fields">'+
+                                '<div class="field">'+
+                                    '<label>Motivo</label>'+  
+                                    '<select class="ui fluid dropdown" >'+ 
+                                        '<option value="">Motivo</option>'+
+                                    '</select>'+
+                                '</div>'+
+                                '<div class="field">'+
+                                    '<label>Origen</label>'+
+                                    '<select class="ui fluid dropdown" > '+
+                                        '<option value="">Origen</option>'+
+                                    '</select>'+
+                                '</div>'+
+                            '</div>'+
+                        '</div>'+
+                        '<div class="field">'+
+                            '<label>Fecha de Entrega</label>'+
+                            '<input type="date" id="start" name="trip-start "value=""  min="2021-01-01" max="2220-12-31">'+
+                        '</div>'+
+                        '<div class="field">'+
+                            '<label>Notas</label>'+
+                            '<textarea rows="3"></textarea>'+
+                        '</div>'+
+                        '<button id="agregarcliente" class="ui button"> <i class="plus icon"></i>   Agregar Ciente</button>'+
+                    '</form>'+ 
+                '</div>'+
+                '<div class="ui modal" id="mod3">'+
+                    '<div class="header"><i class="cart plus icon"></i> Pedido</div>'+
+                    '<div class="content">'+
+                        '<div id="Pedido" class="ui form">'+
+                            '<div class="four fields" >'+
+                                '<div class="field can">'+
+                                    '<label class="escan">Descripcion del Producto</label>'+
+                                '</div>'+
+                                '<div class="field can">'+
+                                    '<label class="escan">Cantidad</label>'+
+                                '</div>'+
+                                '<div class="field can">'+
+                                    '<label class="escan">Precio</label>'+
+                                '</div>'+
+                                '<div class="field can x">'+
+                                '</div>'+
+                            '</div>'+
+                            '<div class="four fields" id="v">'+
+                                '<div class="field can">'+
+                                    '<select id ="p" class="ui fluid search dropdown">'+
+                                        '<option value="">Descripcion del Producto</option>'+
+                                        '<option value="1">buzos</option>'+
+                                        '<option value="2">chaquetas</option>'+
+                                    '</select>'+
+                                '</div>'+
+                                '<div class="field can">'+
+                                    '<div id="cantidad1">'+
+                                        '<div class="mas-menos">'+
+                                            '<i class="minus circle icon"></i>'+
+                                        '</div>'+
+                                        '<div>'+
+                                            '<input id="cantidad" type="text" name="Catidad" value=""  placeholder="1" readonly>'+
+                                        '</div>'+
+                                        '<div class="mas-menos">'+
+                                            '<i class="plus circle icon"></i>'+
+                                        '</div>'+
+                                    '</div>'+
+                                '</div>'+
+                                '<div class="field can">'+
+                                    '<input type="text" placeholder="">'+
+                                '</div>'+
+                                '<div class="field can x">'+
+                                    '<i id="xv" class="xv2 times circle outline icon"></i>'+
+                                '</div>'+
+                            '</div>'+
+                        '</div>'+
+                        '<button id="agregarpedi" class="ui button "> Agregar Productos</button>'+
+                    '</div>'+
+                '</div>'+
+            '</div>'
+          $("#vermasorden").append(texto);
+  }
+  
 
 function productosEnOrdenString(productos){
     let str=''
