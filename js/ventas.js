@@ -1,6 +1,21 @@
-
+var clientesGlobal;
+var metodosDeCompraGlobal;
+var motivosDeVentaGlobal;
 $(document).ready(obtenerClientes())
 
+
+
+$("#searchTel").click(function(){
+    let cliente;
+    let telefono=$("#txtTelefono").val();
+    for (let i = 0; i < clientesGlobal.length; i++) {
+        if(clientesGlobal[i].telefono===telefono){
+            cliente=clientesGlobal[i];
+            break;
+        }
+    }
+    $("#Nombre_Cliente").val(`${cliente.primerNombre} ${cliente.primerApellido}`);
+});
 /**
  * 
  */
@@ -41,11 +56,13 @@ function obtenerClientes(){
         },
         contentType: 'application/json; charset=utf-8', 
         success: function(e){
-            console.log(e);
             if (e.tipo==="OK"){
-                let clientes=e.clientes
-                obtenerUsuarios(clientes);
-                llenarTelefonos(clientes);
+                obtenerUsuarios(e.clientes);
+                llenarTelefonos(e.clientes);
+                clientesGlobal=e.clientes
+                metodosDeCompra();
+                motivosDeVenta();
+                modalidadPago();
             }
             else{
                 alert(e.mensaje);
@@ -212,31 +229,20 @@ function llenarTelefonos(clientes){
     $('#searchTelDropdown').append(tels);
 };
 
-$("#searchTel").click(function(){
-    let telefono=$("#txtTelefono").val();
+function metodosDeCompra(){
     $.ajax({
-        url: url+'/cliente',
+        url: url+'/metodoCompra',
         type: 'GET',
         dataType:"json",
         headers:{
             token:getCookie('token')
         },
         contentType: 'application/json; charset=utf-8', 
-        before: function(e){
-            $("#Nombre_Cliente").empty();
-        },
         success: function(e){
             console.log(e);
             if (e.tipo==="OK"){
-                let cliente;
-                for (let i = 0; i < e.clientes.length; i++) {
-                    console.log(e.clientes[i].telefono===telefono)
-                    if(e.clientes[i].telefono===telefono){
-                        cliente=e.clientes[i];
-                        break;
-                    }
-                }
-                $("#Nombre_Cliente").val(`${cliente.primerNombre} ${cliente.primerApellido}`);
+                llenarMetodosDeCompra(e.metodos);
+                metodosDeCompraGlobal=e.metodos;
             }
             else{
                 alert(e.mensaje);
@@ -247,4 +253,87 @@ $("#searchTel").click(function(){
             console.log(e)
         }
     })
-})
+}
+
+function llenarMetodosDeCompra(metodos){
+    let txt = '';
+    for(let i=0; i<metodos.length; i++){
+        txt+='<div class="item" data-value="'+metodos[i].metodo_compra_ID+'">'+metodos[i].tipo+'</div>';
+    };
+    $('#MetodoCompraDropdown').append(txt);
+}
+
+function motivosDeVenta(){
+    $.ajax({
+        url: url+'/motivo',
+        type: 'GET',
+        dataType:"json",
+        headers:{
+            token:getCookie('token')
+        },
+        contentType: 'application/json; charset=utf-8', 
+        success: function(e){
+            console.log(e);
+            if (e.tipo==="OK"){
+                let motivosDeVenta=[];
+                
+                for (let i = 0; i < e.motivos.length; i++) {
+                    
+                    if(e.motivos[i].tipo==="Venta"){
+                        motivosDeVenta.push(e.motivos[i]);
+                    }
+                }
+                motivosDeVentaGlobal=motivosDeVenta;
+                llenarMotivosDeVenta(motivosDeVenta);
+            }
+            else{
+                alert(e.mensaje);
+            }
+            
+        },
+        error: function(e){
+            console.log(e)
+        }
+    })
+}
+
+function llenarMotivosDeVenta(motivosDeVenta){
+    let txt = '';
+    for(let i=0; i<motivosDeVenta.length; i++){
+        txt+='<div class="item" data-value="'+motivosDeVenta[i].motivo_ID+'">'+motivosDeVenta[i].motivo+'</div>';
+    };
+    $('#MotivoDropdown').append(txt);
+}
+
+function modalidadPago(){
+    $.ajax({
+        url: url+'/modalidadPago',
+        type: 'GET',
+        dataType:"json",
+        headers:{
+            token:getCookie('token')
+        },
+        contentType: 'application/json; charset=utf-8', 
+        success: function(e){
+            console.log(e);
+            if (e.tipo==="OK"){
+                let motivosDeVenta=[];
+                for (let i = 0; i < e.motivos.length; i++) {
+                    
+                    if(e.motivos[i].tipo==="Venta"){
+                        motivosDeVenta.push(e.motivos[i]);
+                    }
+                }
+                motivosDeVentaGlobal=motivosDeVenta;
+                llenarMotivosDeVenta(motivosDeVenta);
+            }
+            else{
+                alert(e.mensaje);
+            }
+            
+        },
+        error: function(e){
+            console.log(e)
+        }
+    })
+}
