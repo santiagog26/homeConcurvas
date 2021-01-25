@@ -34,18 +34,12 @@
                     <i id="fle" class="angle right icon"></i>
                     <div class="menu">
                       <div class="item">Mi perfil</div>
-                      <div class="item">Cerrar sesión</div>
+                      <div class="logout item">Cerrar sesión</div>
                     </div>
                   </div>
             </div>
-            <nav id="d">
-                <a class="item">Ventas</a>
-                <a class="item">Estadísticas</a>
-                <a class="item">Inventario</a>
-                <a class="item">Empaque</a>
-                <a class="item">Despacho</a>
-                <a class="item">Distribución</a>
-                <a class="item">Finanzas</a>
+            <nav id="d" class="menuLateral">
+                
             </nav>
             <label for="btn-menu" >
                 <i id="x"  class="x icon"></i>
@@ -60,19 +54,13 @@
                     <i id="micon" class="angle right icon"></i>
                     <div class="menu">
                       <div class="item">Mi perfil</div>
-                      <div class="item">Cerrar sesión</div>
+                      <div class="logout item">Cerrar sesión</div>
                     </div>
                   </div>
             </div>
             <div id="divMenuF2" class="row">
-                <div class="menu">
-                  <a class="item">Ventas</a>
-                  <a class="item">Estadísticas</a>
-                  <a class="item">Inventario</a>
-                  <a class="item">Empaque</a>
-                  <a class="item">Despacho</a>
-                  <a class="item">Distribución</a>
-                  <a class="item">Finanzas</a>
+                <div class="menu menuLateral">
+                  
                 </div>
             </div>
             
@@ -101,20 +89,29 @@
                             <label>Cliente</label>
                             <div class="two fields">
                                 <div class="field">
-                                    <select id="searchTel" class="ui fluid search dropdown">
-                                        <option value="">Número de Telefono </option>
-                                    </select>
+                                    <div id="searchTel" class="ui search selection dropdown">
+                                        <input id="txtTelefono" type="hidden">
+                                        <i class="dropdown icon"></i>
+                                        <div class="default text">Número de teléfono</div>
+                                        <div id="searchTelDropdown"class="menu">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="field">
-                                    <input type="text" name="Nombre_Cliente" value="" placeholder="Nombre" readonly>
+                                    <input id="Nombre_Cliente" type="text" name="Nombre_Cliente" value="" placeholder="Nombre" readonly>
                                 </div>
                             </div>
                         </div>
+                        <label>Método de compra</label>  
                         <div class="field">
-                            <label>Método de Compra</label>  
-                            <select class="ui fluid dropdown" > 
-                                <option value="">Método de Compra</option>
-                            </select>
+                            <div id="searchMetodo" class="ui search selection dropdown">
+                                <input id="txtMetodoCompra" type="hidden">
+                                <i class="dropdown icon"></i>
+                                <div class="default text">Método de compra</div>
+                                <div id="MetodoCompraDropdown"class="menu">
+                                
+                                </div>
+                            </div>
                         </div>
                         <div class="ui form">
                             <div class="inline fields">
@@ -135,13 +132,18 @@
                         </div>
                         <div class="field">
                             <label>Prenda</label>  
-                            <button id="productos" class="ui button "> <i class="shopping cart icon"></i></button>
+                            <button id="productos" class="ui button"> <i class="shopping cart icon"></i></button>
                         </div>
                         <div class="field">
                             <label>Modalidad de pago</label>  
-                            <select class="ui fluid dropdown" > 
-                                <option value="">Modalidad de pago</option>
-                            </select>
+                            <div id="searchModalidadPago" class="ui search selection dropdown">
+                                <input id="txtModalidadPago" type="hidden">
+                                <i class="dropdown icon"></i>
+                                <div class="default text">Modalidad de pago</div>
+                                <div id="ModalidadPagoDropdown"class="menu">
+                                    
+                                </div>
+                            </div>
                         </div>
                         <div class="field">
                             <label>Precio</label>  
@@ -151,15 +153,25 @@
                             <div class="two fields">
                                 <div class="field">
                                     <label>Motivo</label>  
-                                    <select class="ui fluid dropdown" > 
-                                        <option value="">Motivo</option>
-                                    </select>
+                                    <div id="searchMotivo" class="ui search selection dropdown">
+                                        <input id="txtMotivo" type="hidden">
+                                        <i class="dropdown icon"></i>
+                                        <div class="default text">Motivo</div>
+                                        <div id="MotivoDropdown"class="menu">
+                                            
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="field">
                                     <label>Origen</label>  
-                                    <select class="ui fluid dropdown" > 
-                                        <option value="">Origen</option>
-                                    </select>
+                                    <div id="searchOrigen" class="ui search selection dropdown">
+                                        <input id="txtOrigen" type="hidden">
+                                        <i class="dropdown icon"></i>
+                                        <div class="default text">Origen</div>
+                                        <div id="OrigenDropdown"class="menu">
+                                            
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -313,7 +325,6 @@
                                 <th>Tipo de venta<i class="angle down icon"></i></th>
                                 <th>Origen<i class="angle down icon"></i></th>
                                 <th>Fecha de entrega<i class="angle down icon"></i></th>
-                                <th></th>
                             </thead>
                             <tbody>                           
                                 <tr>
@@ -388,7 +399,7 @@
 <script src="js/functions.js"></script>
 <script src="js/script.js"></script>
 <!--<script src="js/peticion.js"></script>-->
-<script src="js/login.js"></script>
-<script src="js/test.js"></script>
+<script src="js/verificar.js"></script>
 <script src="js/ventas.js"></script>
-</html>5
+<!--<script src="js/menu.js"></script>-->
+</html>

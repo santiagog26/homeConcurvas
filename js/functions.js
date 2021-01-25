@@ -1,4 +1,9 @@
 var url="http://184.72.83.24:5000";
+
+/**
+ * 
+ * @param {*} token 
+ */
 function validarUsuario(token){
     $.ajax({
         url: url+'/validar',
@@ -13,13 +18,17 @@ function validarUsuario(token){
                 delete_cookie("token");
                 window.location.assign("index.html");
             }
+            menu(e.usuario);
         },
         error: function(e){
             console.log(e)
         }
     })
 }
-
+/**
+ * 
+ * @param {*} cname 
+ */
 function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
@@ -67,3 +76,53 @@ function deleteAllCookies() {
         document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
     }
 }
+
+/**
+ * 
+ * @param {usuario} usuarioToken 
+ */
+function menu(usuarioToken){
+    var rolToken;
+    rolToken = usuarioToken.rol;
+    let permisosUsuario=usuarioToken.permisos;
+    let permisosRol=rolToken.permisos;
+    if(tienePermiso("Orden.ver",permisosUsuario) || tienePermiso("Orden.ver",permisosRol)){
+        $(".menuLateral").append('<a href="ventas.html" class="VentasItemMenu item"> Ventas</a>');
+    }
+    if(tienePermiso("Estadisticas.ver",permisosUsuario) || tienePermiso("Estadisticas.ver",permisosRol)){
+        $(".menuLateral").append('<a href="estadisticas.html" class="EstadisticasItemMenu item">Estadísticas</a>');
+    }
+    if(tienePermiso("Inventario.ver",permisosUsuario) || tienePermiso("Inventario.ver",permisosRol)){
+        $(".menuLateral").append('<a href="inventario.html" class="InventarioItemMenu item">Inventario</a>');
+    }
+    if(tienePermiso("Empaque.ver",permisosUsuario) || tienePermiso("Empaque.ver",permisosRol)){
+        $(".menuLateral").append('<a href="empaque.html" class="EmpaqueItemMenu item">Empaque</a>');
+    }
+    if(tienePermiso("Despacho.ver",permisosUsuario) || tienePermiso("Despacho.ver",permisosRol)){
+        $(".menuLateral").append('<a href="despacho.html" class="DespachoItemMenu item">Despacho</a>')
+    }
+    if(tienePermiso("Distribucion.ver",permisosUsuario) || tienePermiso("Distribucion.ver",permisosRol)){
+        $(".menuLateral").append('<a href="distribucion.html" class="DistribucionItemMenu item">Distribución</a>')
+    }
+    if(tienePermiso("Pagodomiciliario.ver",permisosUsuario) || tienePermiso("Pagodomiciliario.ver",permisosRol)){
+        $(".menuLateral").append('<a hfef="finanzas.html" class="FinanzasItemMenu item">Finanzas</a>`')
+    }
+}
+
+
+function tienePermiso(permiso,listaPermisos){
+    for (let i = 0; i < listaPermisos.length; i++) {
+        if(permiso===listaPermisos[i].nombre){
+            return true;
+        }  
+    }
+    return false;
+}
+
+
+
+
+$(".logout").click(function(){
+    delete_cookie("token");
+    window.location.assign("index.html");
+});

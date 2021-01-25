@@ -1,16 +1,25 @@
-var usuarios;
-var clientes;
-var direcciones;
-$(document).ready(function(){
-    ordenes();
-})
+var clientesGlobal;
+var metodosDeCompraGlobal;
+var motivosDeVentaGlobal;
+$(document).ready(obtenerClientes())
 
+
+
+$("#searchTel").click(function(){
+    let cliente;
+    let telefono=$("#txtTelefono").val();
+    for (let i = 0; i < clientesGlobal.length; i++) {
+        if(clientesGlobal[i].telefono===telefono){
+            cliente=clientesGlobal[i];
+            break;
+        }
+    }
+    $("#Nombre_Cliente").val(`${cliente.primerNombre} ${cliente.primerApellido}`);
+});
 /**
  * 
  */
-function ordenes(){
-    obtenerClientes();
-    obtenerUsuarios();
+function ordenes(clientes,usuarios){
     $.ajax({
         url: url+'/orden',
         type: 'GET',
@@ -22,7 +31,7 @@ function ordenes(){
         success: function(e){
             console.log(e);
             if (e.tipo==="OK"){
-                pintarOrdenes(e.ordenes);
+                pintarOrdenes(e.ordenes,clientes,usuarios);
             }
             else{
                 alert(e.mensaje);
@@ -47,9 +56,13 @@ function obtenerClientes(){
         },
         contentType: 'application/json; charset=utf-8', 
         success: function(e){
-            console.log(e);
             if (e.tipo==="OK"){
-                clientes=e.clientes
+                obtenerUsuarios(e.clientes);
+                llenarTelefonos(e.clientes);
+                clientesGlobal=e.clientes
+                metodosDeCompra();
+                motivosDeVenta();
+                modalidadPago();
             }
             else{
                 alert(e.mensaje);
@@ -66,7 +79,7 @@ function obtenerClientes(){
 /**
  * 
  */
-function obtenerUsuarios(){
+function obtenerUsuarios(clientes){
     $.ajax({
         url: url+'/usuario',
         type: 'GET',
@@ -78,7 +91,8 @@ function obtenerUsuarios(){
         success: function(e){
             console.log(e);
             if (e.tipo==="OK"){
-                usuarios=e.usuarios
+                let usuarios=e.usuarios
+                ordenes(clientes,usuarios);
             }
             else{
                 alert(e.mensaje);
@@ -95,21 +109,16 @@ function obtenerUsuarios(){
  * 
  * @param {Array} ordenes 
  */
-function pintarOrdenes(ordenes){
+function pintarOrdenes(ordenes,clientes,usuarios){
     for(let i=0;i<ordenes.length; i++){
         let orden=ordenes[i];
         let cliente;
-        let usuario;
+        let vendedor;
         let tipoVenta="";
         if(orden.tipo_venta==1){
             tipoVenta="Mayorista"
         }else{
             tipoVenta="Minorista"
-        }
-        while (true){
-            if (clientes!==undefined){
-                break;
-            }
         }
         for (let i = 0; i < clientes.length; i++) {
             if (orden.cliente_ID===clientes[i].cliente_ID){
@@ -117,14 +126,9 @@ function pintarOrdenes(ordenes){
                 break;
             }
         }
-        while(true){
-            if (usuarios!==undefined){
-                break;
-            }
-        }
         for (let i = 0; i < usuarios.length; i++) {
             if (orden.usuario_ID===usuarios[i].usuario_ID){
-                usuario=usuarios[i];
+                vendedor=usuarios[i];
                 break;
             }
         }
@@ -144,7 +148,7 @@ function pintarOrdenes(ordenes){
             ${orden.ordenVenta_ID}   
         </td>
         <td>
-            <img src="${usuario.urlImagen}" alt="${usuario.primerNombre} ${usuario.primerApellido}">
+            <img src="${vendedor.urlImagen}" alt="${vendedor.primerNombre} ${vendedor.primerApellido}">
         </td>
         <td>
             ${fechaAImprimir}    
@@ -354,4 +358,125 @@ function productosEnOrdenString(productos){
         </div>`
     }
     return str;
+}
+
+/**
+ * Funciones varias
+ * @param {*} clientes 
+ */
+function llenarTelefonos(clientes){
+    let tels = '';
+    for(let i=0; i<clientes.length; i++){
+        tels+='<div class="item" data-value="'+clientes[i].telefono+'">'+clientes[i].telefono+'</div>';
+    };
+    $('#searchTelDropdown').append(tels);
+};
+
+function metodosDeCompra(){
+    $.ajax({
+        url: url+'/metodoCompra',
+        type: 'GET',
+        dataType:"json",
+        headers:{
+            token:getCookie('token')
+        },
+        contentType: 'application/json; charset=utf-8', 
+        success: function(e){
+            console.log(e);
+            if (e.tipo==="OK"){
+                llenarMetodosDeCompra(e.metodos);
+                metodosDeCompraGlobal=e.metodos;
+            }
+            else{
+                alert(e.mensaje);
+            }
+            
+        },
+        error: function(e){
+            console.log(e)
+        }
+    })
+}
+
+function llenarMetodosDeCompra(metodos){
+    let txt = '';
+    for(let i=0; i<metodos.length; i++){
+        txt+='<div class="item" data-value="'+metodos[i].metodo_compra_ID+'">'+metodos[i].tipo+'</div>';
+    };
+    $('#MetodoCompraDropdown').append(txt);
+}
+
+function motivosDeVenta(){
+    $.ajax({
+        url: url+'/motivo',
+        type: 'GET',
+        dataType:"json",
+        headers:{
+            token:getCookie('token')
+        },
+        contentType: 'application/json; charset=utf-8', 
+        success: function(e){
+            console.log(e);
+            if (e.tipo==="OK"){
+                let motivosDeVenta=[];
+                
+                for (let i = 0; i < e.motivos.length; i++) {
+                    
+                    if(e.motivos[i].tipo==="Venta"){
+                        motivosDeVenta.push(e.motivos[i]);
+                    }
+                }
+                motivosDeVentaGlobal=motivosDeVenta;
+                llenarMotivosDeVenta(motivosDeVenta);
+            }
+            else{
+                alert(e.mensaje);
+            }
+            
+        },
+        error: function(e){
+            console.log(e)
+        }
+    })
+}
+
+function llenarMotivosDeVenta(motivosDeVenta){
+    let txt = '';
+    for(let i=0; i<motivosDeVenta.length; i++){
+        txt+='<div class="item" data-value="'+motivosDeVenta[i].motivo_ID+'">'+motivosDeVenta[i].motivo+'</div>';
+    };
+    $('#MotivoDropdown').append(txt);
+}
+
+function modalidadPago(){
+    $.ajax({
+        url: url+'/modalidadPago',
+        type: 'GET',
+        dataType:"json",
+        headers:{
+            token:getCookie('token')
+        },
+        contentType: 'application/json; charset=utf-8', 
+        success: function(e){
+            console.log(e);
+            if (e.tipo==="OK"){
+                let motivosDeVenta=[];
+                for (let i = 0; i < e.motivos.length; i++) {
+                    
+                    if(e.motivos[i].tipo==="Venta"){
+                        motivosDeVenta.push(e.motivos[i]);
+                    }
+                }
+                motivosDeVentaGlobal=motivosDeVenta;
+                llenarMotivosDeVenta(motivosDeVenta);
+            }
+            else{
+                alert(e.mensaje);
+            }
+            
+        },
+        error: function(e){
+            console.log(e)
+        }
+    })
 }
