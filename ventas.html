@@ -94,7 +94,6 @@
                                         <i class="dropdown icon"></i>
                                         <div class="default text">Número de teléfono</div>
                                         <div id="searchTelDropdown"class="menu">
-
                                         </div>
                                     </div>
                                 </div>
@@ -103,11 +102,16 @@
                                 </div>
                             </div>
                         </div>
+                        <label>Método de compra</label>  
                         <div class="field">
-                            <label>Método de Compra</label>  
-                            <select class="ui fluid dropdown" > 
-                                <option value="">Método de Compra</option>
-                            </select>
+                            <div id="searchMetodo" class="ui search selection dropdown">
+                                <input id="txtMetodoCompra" type="hidden">
+                                <i class="dropdown icon"></i>
+                                <div class="default text">Método de compra</div>
+                                <div id="MetodoCompraDropdown"class="menu">
+                                
+                                </div>
+                            </div>
                         </div>
                         <div class="ui form">
                             <div class="inline fields">
@@ -128,13 +132,18 @@
                         </div>
                         <div class="field">
                             <label>Prenda</label>  
-                            <button id="productos" class="ui button "> <i class="shopping cart icon"></i></button>
+                            <button id="productos" class="ui button"> <i class="shopping cart icon"></i></button>
                         </div>
                         <div class="field">
                             <label>Modalidad de pago</label>  
-                            <select class="ui fluid dropdown" > 
-                                <option value="">Modalidad de pago</option>
-                            </select>
+                            <div id="searchModalidadPago" class="ui search selection dropdown">
+                                <input id="txtModalidadPago" type="hidden">
+                                <i class="dropdown icon"></i>
+                                <div class="default text">Modalidad de pago</div>
+                                <div id="ModalidadPagoDropdown"class="menu">
+                                    
+                                </div>
+                            </div>
                         </div>
                         <div class="field">
                             <label>Precio</label>  
@@ -144,15 +153,25 @@
                             <div class="two fields">
                                 <div class="field">
                                     <label>Motivo</label>  
-                                    <select class="ui fluid dropdown" > 
-                                        <option value="">Motivo</option>
-                                    </select>
+                                    <div id="searchMotivo" class="ui search selection dropdown">
+                                        <input id="txtMotivo" type="hidden">
+                                        <i class="dropdown icon"></i>
+                                        <div class="default text">Motivo</div>
+                                        <div id="MotivoDropdown"class="menu">
+                                            
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="field">
                                     <label>Origen</label>  
-                                    <select class="ui fluid dropdown" > 
-                                        <option value="">Origen</option>
-                                    </select>
+                                    <div id="searchOrigen" class="ui search selection dropdown">
+                                        <input id="txtOrigen" type="hidden">
+                                        <i class="dropdown icon"></i>
+                                        <div class="default text">Origen</div>
+                                        <div id="OrigenDropdown"class="menu">
+                                            
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
