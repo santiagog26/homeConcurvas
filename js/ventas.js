@@ -200,8 +200,8 @@ function pintarOrdenes(ordenes,clientes,usuarios){
         </td>`
     $("table").append(txt);
     txt="";
-    }
     modalorden(orden.ordenVenta_ID);
+    }
 }
 
 function modalorden(e){
