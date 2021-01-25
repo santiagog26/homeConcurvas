@@ -460,15 +460,7 @@ function modalidadPago(){
         success: function(e){
             console.log(e);
             if (e.tipo==="OK"){
-                let motivosDeVenta=[];
-                for (let i = 0; i < e.motivos.length; i++) {
-                    
-                    if(e.motivos[i].tipo==="Venta"){
-                        motivosDeVenta.push(e.motivos[i]);
-                    }
-                }
-                motivosDeVentaGlobal=motivosDeVenta;
-                llenarMotivosDeVenta(motivosDeVenta);
+                llenarModalidadesDePago(e.modalidades);
             }
             else{
                 alert(e.mensaje);
@@ -479,4 +471,13 @@ function modalidadPago(){
             console.log(e)
         }
     })
+}
+
+
+function llenarModalidadesDePago(modalidades){
+    let txt = '';
+    for(let i=0; i<modalidades.length; i++){
+        txt+='<div class="item" data-value="'+modalidades[i].modalidad_pago_ID+'">'+modalidades[i].modalidad+'</div>';
+    };
+    $('#ModalidadPagoDropdown').append(txt);
 }
