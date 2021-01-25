@@ -1,4 +1,4 @@
-var url="http://concurvas.com/app";
+var url="https://concurvas.com/app";
 
 /**
  * 
