@@ -201,13 +201,13 @@ function pintarOrdenes(ordenes,clientes,usuarios){
     $("table").append(txt);
     txt="";
     }
-    mostrar_modal(orden.ordenVenta_ID);
     modalorden(orden.ordenVenta_ID);
 }
 
 function modalorden(e){
     $("#"+e).click(function(){
         $('#mod'+e).modal('show');
+        mostrar_modal(e);
       });
   }
 
