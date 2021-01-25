@@ -206,8 +206,8 @@ function pintarOrdenes(ordenes,clientes,usuarios){
 
 function modalorden(e){
     $("#"+e).click(function(){
-        $('#mod'+e).modal('show');
         mostrar_modal(e);
+        $('#mod'+e).modal('show');
       });
   }
 
