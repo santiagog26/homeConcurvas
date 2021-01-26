@@ -1,6 +1,7 @@
 var clientesGlobal;
 var metodosDeCompraGlobal;
 var motivosDeVentaGlobal;
+var ordenN;
 $(document).ready(obtenerClientes())
 
 
@@ -541,7 +542,7 @@ function crearOrden(ordenNueva){
 }
 
 $('#agregarOrdenNueva').click(function(){
-    let ordenN={
+    ordenN={
         motivo_ID: 'a',
         origen_ID: 'a',
         modalidad_pago_ID: 'a',
@@ -557,7 +558,4 @@ $('#agregarOrdenNueva').click(function(){
         precio: 'a'
     }
     console.log(ordenN)
-    while(true){
-        
-    }
 });
