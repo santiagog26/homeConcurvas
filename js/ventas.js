@@ -541,11 +541,20 @@ function crearOrden(ordenNueva){
 }
 
 $('#agregarOrdenNueva').click(function(){
-    let orden={};
-    orden={
+    let ordenN={
         motivo_ID: 'a',
-        origen_ID: 'b'
+        origen_ID: 'a',
+        modalidad_pago_ID: 'a',
+        metodo_compra_ID: 'a',
+        direccion_ID: 'a',
+        cliente_ID: $("#txtTelefono").val(),
+        usuario_ID: 'a',
+        estado: 'a',
+        nota: 'a',
+        fecha_entrega: 'a',
+        tipo_venta: 'a',
+        descuento: 'a',
+        precio: 'a'
     }
-    console.log(orden);
-    alert(orden);
+    console.log(ordenN)
 });
