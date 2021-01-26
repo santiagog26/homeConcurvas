@@ -206,13 +206,14 @@ function pintarOrdenes(ordenes,clientes,usuarios){
 
 function modalorden(e){
     $("#"+e).click(function(){
+        $("#vermasorden").empty();
         mostrar_modal(e);
-        $('#mod'+e).modal('show');
-      });
+        $('#m'+e).modal('show');
+    });
   }
 
   function mostrar_modal(e){
-    texto=  ' <div class="ui modal" id="mod"'+e+'>'+
+    texto=  ' <div class="ui modal" id="m'+e+'">'+
                 '<div class="header"><i class="cart plus icon"></i> Orden de venta</div>'+
                 '<div class="content">'+
                    '<form class="ui form">'+
