@@ -546,6 +546,6 @@ $('#agregarOrdenNueva').click(function(){
         motivo_ID: 'a',
         origen_ID: 'b'
     }
-    alert(orden)
-    console.log(orden)
+    console.log(orden);
+    alert(orden);
 });
