@@ -1,5 +1,5 @@
-var url="https://concurvas.com/app";
-//var url="http://184.72.83.24:5000";
+//var url="https://concurvas.com/app";
+var url="http://184.72.83.24:5000";
 
 /**
  * 
