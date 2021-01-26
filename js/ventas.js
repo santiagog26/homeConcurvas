@@ -557,5 +557,5 @@ $('#agregarOrdenNueva').click(function(){
         precio: 'a'
     }
     console.log(ordenN)
-    sleep(10000)
+    await(100000)
 });
