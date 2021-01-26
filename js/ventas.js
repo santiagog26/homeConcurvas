@@ -541,5 +541,9 @@ function crearOrden(ordenNueva){
 }
 
 $('#agregarOrdenNueva').click(function(){
-    alert('hey');
+    let orden={};
+    orden={
+        motivo_ID: 'a'
+    }
+    alert(orden)
 });
