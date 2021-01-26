@@ -1,14 +1,9 @@
 var clientesGlobal;
-
-
-
 var x=0;
 var productosGlobal;
 var strProductosEnDropdown;
 
 $(document).ready(obtenerClientes())
-
-
 
 $("#searchTel").click(function(){
     let cliente;
@@ -69,6 +64,7 @@ function obtenerClientes(){
                 motivosDeVenta();
                 modalidadPago();
                 obtenerProductos();
+                origen();
             }
             else{
                 alert(e.mensaje);
@@ -80,7 +76,6 @@ function obtenerClientes(){
         }
     })
 }
-
 
 /**
  * 
@@ -212,13 +207,14 @@ function pintarOrdenes(ordenes,clientes,usuarios){
 
 function modalorden(e){
     $("#"+e).click(function(){
+        $("#vermasorden").empty();
         mostrar_modal(e);
-        $('#mod'+e).modal('show');
-      });
+        $('#m'+e).modal('show');
+    });
   }
 
   function mostrar_modal(e){
-    texto=  ' <div class="ui modal" id="mod"'+e+'>'+
+    texto=  ' <div class="ui modal" id="m'+e+'">'+
                 '<div class="header"><i class="cart plus icon"></i> Orden de venta</div>'+
                 '<div class="content">'+
                    '<form class="ui form">'+
@@ -509,6 +505,7 @@ function llenarModalidadesDePago(modalidades){
 /**
  * Función que permite cargar los productos
  */
+
 function obtenerProductos(){
     $.ajax({
         url: url+'/producto',
@@ -521,7 +518,7 @@ function obtenerProductos(){
         success: function(e){
             console.log(e);
             if (e.tipo==="OK"){
-                productos=e.productos
+                productosGlobal=e.productos;
                 modificarDropdownProductos(productos);
             }
             else{
@@ -534,6 +531,32 @@ function obtenerProductos(){
         }
     })
 }
+
+function origen(){
+    $.ajax({
+        url: url+'/origen',
+        type: 'GET',
+        dataType:"json",
+        headers:{
+            token:getCookie('token')
+        },
+        contentType: 'application/json; charset=utf-8', 
+        success: function(e){
+            console.log(e);
+            if (e.tipo==="OK"){
+                llenarOrigen(e.origenes);
+            }
+            else{
+                alert(e.mensaje);
+            }
+            
+        },
+        error: function(e){
+            console.log(e)
+        }
+    })
+}
+
 
 function modificarDropdownProductos(productos){
     for (let i = 0; i < productos.length; i++) {
@@ -589,7 +612,15 @@ texto=  '<div class="four fields productoEnOrden" id="v'+e+'">'+
 }
 
 function eliminar_productos(e){
-$('#xv'+e).click(function(){
+    $('#xv'+e).click(function(){
     $('#v'+e).remove();
-});
+    })}
+
+
+function llenarOrigen(origenes){
+    let txt = '';
+    for(let i=0; i<origenes.length; i++){
+        txt+='<div class="item" data-value="'+origenes[i].origen_ID+'">'+origenes[i].nombre+'</div>';
+    };
+    $('#OrigenDropdown').append(txt);
 }
