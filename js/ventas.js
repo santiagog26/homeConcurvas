@@ -1,6 +1,11 @@
 var clientesGlobal;
-var metodosDeCompraGlobal;
-var motivosDeVentaGlobal;
+
+
+
+var x=0;
+var productosGlobal;
+var strProductosEnDropdown;
+
 $(document).ready(obtenerClientes())
 
 
@@ -63,6 +68,7 @@ function obtenerClientes(){
                 metodosDeCompra();
                 motivosDeVenta();
                 modalidadPago();
+                obtenerProductos();
             }
             else{
                 alert(e.mensaje);
@@ -398,6 +404,10 @@ function metodosDeCompra(){
     })
 }
 
+/**
+ * Función que permite llenar métodos de compra
+ * @param {Array} metodos 
+ */
 function llenarMetodosDeCompra(metodos){
     let txt = '';
     for(let i=0; i<metodos.length; i++){
@@ -406,6 +416,10 @@ function llenarMetodosDeCompra(metodos){
     $('#MetodoCompraDropdown').append(txt);
 }
 
+
+/**
+ * Función que permite cargar los motivos de venta
+ */
 function motivosDeVenta(){
     $.ajax({
         url: url+'/motivo',
@@ -440,6 +454,10 @@ function motivosDeVenta(){
     })
 }
 
+/**
+ * Función que permite llenar los motivos de venta en un dropdown
+ * @param {Array} motivosDeVenta 
+ */
 function llenarMotivosDeVenta(motivosDeVenta){
     let txt = '';
     for(let i=0; i<motivosDeVenta.length; i++){
@@ -448,6 +466,9 @@ function llenarMotivosDeVenta(motivosDeVenta){
     $('#MotivoDropdown').append(txt);
 }
 
+/**
+ * Función que permite cargar modalidades de pago
+ */
 function modalidadPago(){
     $.ajax({
         url: url+'/modalidadPago',
@@ -473,11 +494,102 @@ function modalidadPago(){
     })
 }
 
-
+/**
+ * Función que permite cargar modalidades de pago
+ * @param {Array} modalidades 
+ */
 function llenarModalidadesDePago(modalidades){
     let txt = '';
     for(let i=0; i<modalidades.length; i++){
         txt+='<div class="item" data-value="'+modalidades[i].modalidad_pago_ID+'">'+modalidades[i].modalidad+'</div>';
     };
     $('#ModalidadPagoDropdown').append(txt);
+}
+
+/**
+ * Función que permite cargar los productos
+ */
+function obtenerProductos(){
+    $.ajax({
+        url: url+'/producto',
+        type: 'GET',
+        dataType:"json",
+        headers:{
+            token:getCookie('token')
+        },
+        contentType: 'application/json; charset=utf-8', 
+        success: function(e){
+            console.log(e);
+            if (e.tipo==="OK"){
+                productos=e.productos
+                modificarDropdownProductos(productos);
+            }
+            else{
+                alert(e.mensaje);
+            }
+            
+        },
+        error: function(e){
+            console.log(e)
+        }
+    })
+}
+
+function modificarDropdownProductos(productos){
+    for (let i = 0; i < productos.length; i++) {
+        let producto= productos[i];
+        strProductosEnDropdown+='<option value="'+producto.referenciaProducto+'">'+producto.descripcion+'</option>'
+    }
+    mostrar_productos(x);
+    x=x+1;
+}
+
+$("#agregarpedi").click(function(e){
+    e.preventDefault();
+    mostrar_productos(x);
+    x=x+1;
+  });
+
+
+function mostrar_productos(e){
+texto=  '<div class="four fields productoEnOrden" id="v'+e+'">'+
+            '<div class="field can">'+
+            '<input class="txtProductoEnOrden" type="hidden">'+
+            '<select class="ui search selection dropdown">'+
+                '<option value="">Descripcion del Producto</option>'+
+                strProductosEnDropdown+
+            '</select>'+
+            '</div>'+
+            '<div class="field can">'+
+            '<div id="cantidad1">'+
+                '<div class="mas-menos">'+
+                '<i class="minus circle icon"></i>'+
+                '</div>'+
+            '<div>'+
+                '<input id="cantidad" type="text" name="Catidad" value=""  placeholder="1" readonly>'+
+            '</div>'+
+            '<div class="mas-menos">'+
+                '<i class="plus circle icon"></i>'+
+            '</div>'+
+            '</div>'+
+        '</div>'+
+        '<div class="field can">'+
+            '<input type="text" placeholder="">'+
+        '</div>'+
+        '<div class="field can x">'+
+            '<i id="xv'+e+'" class="xv2 times circle outline icon"></i>'+
+        '</div>'+
+        '</div>'+
+        '<script>'+
+        '$(".ui.dropdown")'+
+        '.dropdown();'+
+        '</script>'
+        $("#Pedido").append(texto);
+        eliminar_productos(e);
+}
+
+function eliminar_productos(e){
+$('#xv'+e).click(function(){
+    $('#v'+e).remove();
+});
 }
