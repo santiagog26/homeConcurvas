@@ -541,17 +541,18 @@ function crearOrden(ordenNueva){
     })
 }
 
-$('#agregarOrdenNueva').click(function(){
+$('#agregarOrdenNueva').click(function(e){
+    e.preventDefault();
     ordenN={
-        motivo_ID: 'a',
-        origen_ID: 'a',
-        modalidad_pago_ID: 'a',
-        metodo_compra_ID: 'a',
+        motivo_ID: $('#txtMotivo').val(),
+        origen_ID: $('#txtOrigen').val(),
+        modalidad_pago_ID: $('#txtModalidadPago').val(),
+        metodo_compra_ID: $('#txtMetodoCompra').val(),
         direccion_ID: 'a',
         cliente_ID: $("#txtTelefono").val(),
         usuario_ID: 'a',
         estado: 'a',
-        nota: 'a',
+        nota: $('#txtNotas').val(),
         fecha_entrega: 'a',
         tipo_venta: 'a',
         descuento: 'a',
