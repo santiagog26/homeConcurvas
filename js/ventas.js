@@ -63,6 +63,7 @@ function obtenerClientes(){
                 metodosDeCompra();
                 motivosDeVenta();
                 modalidadPago();
+                origen();
             }
             else{
                 alert(e.mensaje);
@@ -461,15 +462,7 @@ function modalidadPago(){
         success: function(e){
             console.log(e);
             if (e.tipo==="OK"){
-                let motivosDeVenta=[];
-                for (let i = 0; i < e.motivos.length; i++) {
-                    
-                    if(e.motivos[i].tipo==="Venta"){
-                        motivosDeVenta.push(e.motivos[i]);
-                    }
-                }
-                motivosDeVentaGlobal=motivosDeVenta;
-                llenarMotivosDeVenta(motivosDeVenta);
+                llenarModalidadesDePago(e.modalidades);
             }
             else{
                 alert(e.mensaje);
@@ -480,4 +473,46 @@ function modalidadPago(){
             console.log(e)
         }
     })
+}
+
+
+function llenarModalidadesDePago(modalidades){
+    let txt = '';
+    for(let i=0; i<modalidades.length; i++){
+        txt+='<div class="item" data-value="'+modalidades[i].modalidad_pago_ID+'">'+modalidades[i].modalidad+'</div>';
+    };
+    $('#ModalidadPagoDropdown').append(txt);
+}
+
+function origen(){
+    $.ajax({
+        url: url+'/origen',
+        type: 'GET',
+        dataType:"json",
+        headers:{
+            token:getCookie('token')
+        },
+        contentType: 'application/json; charset=utf-8', 
+        success: function(e){
+            console.log(e);
+            if (e.tipo==="OK"){
+                llenarOrigen(e.origenes);
+            }
+            else{
+                alert(e.mensaje);
+            }
+            
+        },
+        error: function(e){
+            console.log(e)
+        }
+    })
+}
+
+function llenarOrigen(origenes){
+    let txt = '';
+    for(let i=0; i<origenes.length; i++){
+        txt+='<div class="item" data-value="'+origenes[i].origen_ID+'">'+origenes[i].nombre+'</div>';
+    };
+    $('#OrigenDropdown').append(txt);
 }
