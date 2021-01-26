@@ -544,7 +544,7 @@ $('#agregarOrdenNueva').click(function(){
     let orden={};
     orden={
         motivo_ID: 'a',
-        origen_ID= 'b'
+        origen_ID: 'b'
     }
     alert(orden)
     console.log(orden)
