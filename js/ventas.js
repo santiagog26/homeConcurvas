@@ -543,19 +543,31 @@ function crearOrden(ordenNueva){
 
 $('#agregarOrdenNueva').click(function(e){
     e.preventDefault();
+    let clienteDeOrden = buscarClientePorTelefono($("#txtTelefono").val())
     ordenN={
         motivo_ID: $('#txtMotivo').val(),
         origen_ID: $('#txtOrigen').val(),
         modalidad_pago_ID: $('#txtModalidadPago').val(),
         metodo_compra_ID: $('#txtMetodoCompra').val(),
-        direccion_ID: 'a',
-        cliente_ID: $("#txtTelefono").val(),
-        usuario_ID: 'a',
-        estado: 'a',
+        direccion_ID: clienteDeOrden.direccion_ID,
+        cliente_ID: clienteDeOrden.cliente_ID,
+        usuario_ID: usuarioEnSesion.usuario_ID,
+        estado: 'Vendido',
         nota: $('#txtNotas').val(),
         fecha_entrega: 'a',
         tipo_venta: 'a',
         descuento: 'a',
-        precio: 'a'
+        precio: $('#txtPrecio').val()
     }
 });
+
+function buscarClientePorTelefono(telefono){
+    let cliente;
+    for (let i = 0; i < clientesGlobal.length; i++) {
+        if(clientesGlobal[i].telefono===telefono){
+            cliente=clientesGlobal[i];
+            break;
+        }
+    }
+    return cliente;
+}
