@@ -63,6 +63,7 @@ function obtenerClientes(){
                 metodosDeCompra();
                 motivosDeVenta();
                 modalidadPago();
+                origen();
             }
             else{
                 alert(e.mensaje);
@@ -480,4 +481,37 @@ function llenarModalidadesDePago(modalidades){
         txt+='<div class="item" data-value="'+modalidades[i].modalidad_pago_ID+'">'+modalidades[i].modalidad+'</div>';
     };
     $('#ModalidadPagoDropdown').append(txt);
+}
+
+function origen(){
+    $.ajax({
+        url: url+'/origen',
+        type: 'GET',
+        dataType:"json",
+        headers:{
+            token:getCookie('token')
+        },
+        contentType: 'application/json; charset=utf-8', 
+        success: function(e){
+            console.log(e);
+            if (e.tipo==="OK"){
+                llenarOrigen(e.origenes);
+            }
+            else{
+                alert(e.mensaje);
+            }
+            
+        },
+        error: function(e){
+            console.log(e)
+        }
+    })
+}
+
+function llenarOrigen(origenes){
+    let txt = '';
+    for(let i=0; i<origenes.length; i++){
+        txt+='<div class="item" data-value="'+origenes[i].origen_ID+'">'+origenes[i].nombre+'</div>';
+    };
+    $('#OrigenDropdown').append(txt);
 }
