@@ -1,7 +1,6 @@
 var clientesGlobal;
 var metodosDeCompraGlobal;
 var motivosDeVentaGlobal;
-var ordenN;
 $(document).ready(obtenerClientes())
 
 
@@ -544,6 +543,7 @@ function crearOrden(ordenNueva){
 $('#agregarOrdenNueva').click(function(e){
     e.preventDefault();
     let clienteDeOrden = buscarClientePorTelefono($("#txtTelefono").val())
+    let ordenN;
     ordenN={
         motivo_ID: $('#txtMotivo').val(),
         origen_ID: $('#txtOrigen').val(),
@@ -554,9 +554,9 @@ $('#agregarOrdenNueva').click(function(e){
         usuario_ID: usuarioEnSesion.usuario_ID,
         estado: 'Vendido',
         nota: $('#txtNotas').val(),
-        fecha_entrega: 'a',
+        fecha_entrega: $("#start").val(),
         tipo_venta: 'a',
-        descuento: 'a',
+        descuento: '',
         precio: $('#txtPrecio').val()
     }
 });
