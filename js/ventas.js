@@ -516,3 +516,30 @@ function llenarOrigen(origenes){
     };
     $('#OrigenDropdown').append(txt);
 }
+
+/**
+ * 
+ * @param {*} ordenNueva 
+ */
+function crearOrden(ordenNueva){
+    $.ajax({
+        url: url+'/orden',
+        type: 'POST',
+        headers:{
+            token:token
+        },
+        data: ordenNueva,
+        dataType:"json",
+        contentType: 'application/json; charset=utf-8', 
+        success: function(e){
+            alert('Orden creada');
+        },
+        error: function(e){
+            console.log(e)
+        }
+    })
+}
+
+$('#agregarOrdenNueva').click(function(){
+    alert('hey');
+});
