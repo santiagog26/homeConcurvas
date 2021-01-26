@@ -557,5 +557,4 @@ $('#agregarOrdenNueva').click(function(){
         descuento: 'a',
         precio: 'a'
     }
-    console.log(ordenN)
 });
