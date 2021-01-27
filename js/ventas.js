@@ -175,7 +175,7 @@ function pintarOrdenes(ordenes,clientes,usuarios){
         <td>
             ${orden.metodoCompra.tipo}
         </td>
-        <td class="ui grid">
+        <td class="ui grid " id="procenter" >
             ${str}
         </td>
         <td>
@@ -209,10 +209,24 @@ function modalorden(e){
     $("#"+e).click(function(){
         $("#vermasorden").empty();
         mostrar_modal(e);
+        modalagrepro(e);
+        agregarproductos(e);
         $('#m'+e).modal('show');
     });
   }
-
+  function modalagrepro(e){
+    $("#productos"+e).click(function(e){
+        e.preventDefault();
+    });
+    $("#productos"+e).click(function(){
+        $('#modp'+e).modal('show');
+    });
+  }
+  function agregarproductos(e){
+    $("#agregarpedi2"+e).click(function(){
+        mostrar_productos2(e);
+    });
+  }
   function mostrar_modal(e){
     texto=  ' <div class="ui modal" id="m'+e+'">'+
                 '<div class="header"><i class="cart plus icon"></i> Orden de venta</div>'+
@@ -223,9 +237,7 @@ function modalorden(e){
                             '<label>Cliente</label>'+
                             '<div class="two fields">'+
                                 '<div class="field">'+
-                                    '<select id="searchTel" class="ui fluid search dropdown">'+
-                                        '<option value="">Número de Telefono </option>'+
-                                    '</select>'+
+                                    '<input type="text" name="telefono_cliente" value="" placeholder="Telefono" readonly>'+
                                 '</div>'+
                                 '<div class="field">'+
                                     '<input type="text" name="Nombre_Cliente" value="" placeholder="Nombre" readonly>'+
@@ -257,18 +269,20 @@ function modalorden(e){
                         '</div>'+
                         '<div class="field">'+
                             '<label>Prenda</label>'+
-                            '<button id="productos" class="ui button "> <i class="shopping cart icon"></i></button>'+
+                            '<button id="productos'+e+'" class="ui button "> <i class="shopping cart icon"></i></button>'+
                         '</div>'+
-                        '<div class="field">'+
-                            '<label>Modalidad de pago</label>'+  
-                            '<select class="ui fluid dropdown" >'+
-                                '<option value="">Modalidad de pago</option>'+
-                            '</select>'+
-                        '</div>'+
-                        '<div class="field">'+
-                            '<label>Precio</label>'+
-                            '<input type="text" name="precio_orden_venta" value="" placeholder="Precio" readonly>'+
-                        '</div>'+
+                        '<div class="two fields">'+
+                            '<div class="field">'+
+                                '<label>Modalidad de pago</label>'+  
+                                '<select class="ui fluid dropdown" >'+
+                                    '<option value="">Modalidad de pago</option>'+
+                                '</select>'+
+                            '</div>'+
+                            '<div class="field">'+
+                                '<label>Precio</label>'+
+                                '<input type="text" name="precio_orden_venta" value="" placeholder="Precio" readonly>'+
+                            '</div>'+
+                            '</div>'+
                         '<div class="field">'+
                             '<div class="two fields">'+
                                 '<div class="field">'+
@@ -296,10 +310,10 @@ function modalorden(e){
                         '<button id="agregarcliente" class="ui button"> <i class="plus icon"></i>   Agregar Ciente</button>'+
                     '</form>'+ 
                 '</div>'+
-                '<div class="ui modal" id="mod3">'+
+                '<div class="ui modal" id="modp'+e+'">'+
                     '<div class="header"><i class="cart plus icon"></i> Pedido</div>'+
                     '<div class="content">'+
-                        '<div id="Pedido" class="ui form">'+
+                        '<div id="Pedido'+e+'" class="ui form">'+
                             '<div class="four fields" >'+
                                 '<div class="field can">'+
                                     '<label class="escan">Descripcion del Producto</label>'+
@@ -342,14 +356,54 @@ function modalorden(e){
                                 '</div>'+
                             '</div>'+
                         '</div>'+
-                        '<button id="agregarpedi" class="ui button "> Agregar Productos</button>'+
+                        '<button id="agregarpedi2'+e+'" class="ui button "> Agregar Productos</button>'+
                     '</div>'+
                 '</div>'+
             '</div>'
           $("#vermasorden").append(texto);
   }
+  function mostrar_productos2(e){
+    texto=  '<div class="four fields " id="v2'+e+'">'+
+              '<div class="field can">'+
+                '<select class="ui fluid search dropdown">'+
+                  '<option value="">Descripcion del Producto</option>'+
+                  '<option value="1">buzos</option>'+
+                  '<option value="2">chaquetas</option>'+
+                '</select>'+
+              '</div>'+
+              '<div class="field can">'+
+                '<div id="cantidad1">'+
+                  '<div class="mas-menos">'+
+                    '<i class="minus circle icon"></i>'+
+                  '</div>'+
+                '<div>'+
+                  '<input id="cantidad" type="text" name="Catidad" value=""  placeholder="1" readonly>'+
+                '</div>'+
+                '<div class="mas-menos">'+
+                  '<i class="plus circle icon"></i>'+
+                '</div>'+
+              '</div>'+
+            '</div>'+
+            '<div class="field can">'+
+              '<input type="text" placeholder="">'+
+            '</div>'+
+            '<div class="field can x">'+
+              '<i id="xv2'+e+'" class="xv2 times circle outline icon"></i>'+
+            '</div>'+
+          '</div>'+
+          '<script>'+
+          '$(".ui.dropdown")'+
+            '.dropdown();'+
+          '</script>'
+          $("#Pedido"+e).append(texto);
+          eliminar_productos(e);
+  }
   
-
+  function eliminar_productos(e){
+    $('#xv2'+e).click(function(){
+      $('#v2'+e).remove();
+    });
+  }
 function productosEnOrdenString(productos){
     let str=''
     for(let i=0;i<productos.length;i++){

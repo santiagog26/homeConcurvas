@@ -127,6 +127,11 @@ body{
 #tabla{
     margin: auto;
     margin-top: 50px;
+    overflow-x: scroll;
+}
+
+#procenter{
+    margin-top: 10px;
 }
 
 
