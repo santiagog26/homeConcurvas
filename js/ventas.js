@@ -519,7 +519,7 @@ function obtenerProductos(){
             console.log(e);
             if (e.tipo==="OK"){
                 productosGlobal=e.productos;
-                modificarDropdownProductos(productos);
+                modificarDropdownProductos(e.productos);
             }
             else{
                 alert(e.mensaje);
@@ -559,9 +559,10 @@ function origen(){
 
 
 function modificarDropdownProductos(productos){
+    strProductosEnDropdown="";
     for (let i = 0; i < productos.length; i++) {
         let producto= productos[i];
-        strProductosEnDropdown+='<option value="'+producto.referenciaProducto+'">'+producto.descripcion+'</option>'
+        strProductosEnDropdown+='<div class="item" data-value="'+producto.referenciaProducto+'">'+producto.descripcion+'</div>';
     }
     mostrar_productos(x);
     x=x+1;
@@ -573,35 +574,37 @@ $("#agregarpedi").click(function(e){
     x=x+1;
   });
 
-
 function mostrar_productos(e){
 texto=  '<div class="four fields productoEnOrden" id="v'+e+'">'+
             '<div class="field can">'+
-            '<input class="txtProductoEnOrden" type="hidden">'+
-            '<select class="ui search selection dropdown">'+
-                '<option value="">Descripcion del Producto</option>'+
-                strProductosEnDropdown+
-            '</select>'+
+                '<div class="ui search selection dropdown">'+
+                '<input class="txtProductoEnOrden" type="hidden">'+ 
+                '<i class="dropdown icon"></i>'   +
+                '<div class="default text">Descripción del producto</div>'+
+                    '<div class="menu">'+
+                        strProductosEnDropdown+
+                    '</div>'+
+                '</div>'+
             '</div>'+
             '<div class="field can">'+
-            '<div id="cantidad1">'+
-                '<div class="mas-menos">'+
-                '<i class="minus circle icon"></i>'+
+                '<div id="cantidad1">'+
+                    '<button class="circular ui icon button mas-menos">'+
+                        '<i class="minus circle icon"></i>'+
+                    '</button>'+
+                    '<div>'+
+                        '<input id="cantidad" type="text" name="Catidad" value="0" readonly>'+
+                    '</div>'+
+                    '<button class="circular ui icon button mas-menos">'+
+                        '<i class="plus circle icon"></i>'+
+                    '</button>'+
                 '</div>'+
-            '<div>'+
-                '<input id="cantidad" type="text" name="Catidad" value=""  placeholder="1" readonly>'+
             '</div>'+
-            '<div class="mas-menos">'+
-                '<i class="plus circle icon"></i>'+
+            '<div class="field can">'+
+                '<input type="text" placeholder="" value="0">'+
             '</div>'+
+            '<div class="field can x">'+
+                '<i id="xv'+e+'" class="xv2 times circle outline icon"></i>'+
             '</div>'+
-        '</div>'+
-        '<div class="field can">'+
-            '<input type="text" placeholder="">'+
-        '</div>'+
-        '<div class="field can x">'+
-            '<i id="xv'+e+'" class="xv2 times circle outline icon"></i>'+
-        '</div>'+
         '</div>'+
         '<script>'+
         '$(".ui.dropdown")'+
@@ -609,6 +612,7 @@ texto=  '<div class="four fields productoEnOrden" id="v'+e+'">'+
         '</script>'
         $("#Pedido").append(texto);
         eliminar_productos(e);
+        sumarYRestar();
 }
 
 function eliminar_productos(e){
@@ -616,6 +620,42 @@ function eliminar_productos(e){
     $('#v'+e).remove();
     })}
 
+function sumarYRestar(){
+    $(".circular.ui.icon.button.mas-menos").off("click");
+    $(".circular.ui.icon.button.mas-menos").click(function(){
+        let elBotonPresionado=this;
+        let elIcono=$(elBotonPresionado).children();
+        let padre=$(this).parent();
+        let hijos=$(padre).children()
+        let txtCantidad=$(hijos[1]).children();
+        
+        let elPadreTotal=$(padre).parent().parent();
+        let losHijosDelPadreTotal=$(elPadreTotal).children();
+        let txtPrecioIndividual=$(losHijosDelPadreTotal[2]).children();
+        
+
+
+
+        let divDropdown=$(losHijosDelPadreTotal[0]).children().children();
+        let referenciaProducto=$(divDropdown[0]).val();
+        if(referenciaProducto ===""){
+            alert("Debe elegir un producto.");
+        }else{
+            if($(elIcono).hasClass("plus")){
+                $(txtCantidad).val(parseInt($(txtCantidad).val(),10)+1);
+            }else{
+                if(parseInt($(txtCantidad).val(),10)<=1){
+                    alert("Debe establecer cantidades no negativas");
+                }else{
+                    $(txtCantidad).val(parseInt($(txtCantidad).val(),10)-1);
+                }
+            }
+            let producto=consultarProductoIndividual(referenciaProducto);
+            $(txtPrecioIndividual).val(parseInt($(txtCantidad).val()*producto.precioVenta));
+        }
+        
+    });
+}
 
 function llenarOrigen(origenes){
     let txt = '';
@@ -623,4 +663,14 @@ function llenarOrigen(origenes){
         txt+='<div class="item" data-value="'+origenes[i].origen_ID+'">'+origenes[i].nombre+'</div>';
     };
     $('#OrigenDropdown').append(txt);
+}
+
+
+function consultarProductoIndividual(referenciaProducto){
+    for (let i = 0; i < productosGlobal.length; i++) {
+        if(productosGlobal[i].referenciaProducto===referenciaProducto){
+            return productosGlobal[i];
+        }
+    }
+    return null;
 }
