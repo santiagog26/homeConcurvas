@@ -632,8 +632,6 @@ function sumarYRestar(){
         let elPadreTotal=$(padre).parent().parent();
         let losHijosDelPadreTotal=$(elPadreTotal).children();
         let txtPrecioIndividual=$(losHijosDelPadreTotal[2]).children();
-        
-
 
 
         let divDropdown=$(losHijosDelPadreTotal[0]).children().children();
@@ -653,7 +651,7 @@ function sumarYRestar(){
             let producto=consultarProductoIndividual(referenciaProducto);
             $(txtPrecioIndividual).val(parseInt($(txtCantidad).val()*producto.precioVenta));
         }
-        
+        calcularPrecioTotal();
     });
 }
 
@@ -674,3 +672,23 @@ function consultarProductoIndividual(referenciaProducto){
     }
     return null;
 }
+
+/**
+ * Función que calcula el valor total de una orden de venta nueva
+ */
+function calcularPrecioTotal(){
+    let fieldProductoEnOrden=$(".productoEnOrden");
+    let suma=0;
+    for (let i = 0; i < fieldProductoEnOrden.length; i++) {
+        let campo=fieldProductoEnOrden[i];
+        let hijos=$(campo).children();
+        let txtPrecio=$(hijos[2]).children();
+        suma+=parseFloat($(txtPrecio).val());
+    }
+    $("#precio").val(suma);
+}
+
+
+$("#volverALaOrden").click(function(){
+    $('#mod').modal('show');
+});
