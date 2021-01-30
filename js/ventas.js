@@ -786,7 +786,7 @@ $('#agregarOrdenNueva').click(function(e){
         fecha_entrega: $("#start").val(),
         tipo_venta: 'a',
         descuento: '',
-        precio: $('#txtPrecio').val()
+        precio: $('#precio').val()
     }
 });
 
