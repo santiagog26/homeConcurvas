@@ -746,3 +746,57 @@ function calcularPrecioTotal(){
 $("#volverALaOrden").click(function(){
     $('#mod').modal('show');
 });
+/**
+ * 
+ * @param {*} ordenNueva 
+ */
+function crearOrden(ordenNueva){
+    $.ajax({
+        url: url+'/orden',
+        type: 'POST',
+        headers:{
+            token:token
+        },
+        data: ordenNueva,
+        dataType:"json",
+        contentType: 'application/json; charset=utf-8', 
+        success: function(e){
+            alert('Orden creada');
+        },
+        error: function(e){
+            console.log(e)
+        }
+    })
+}
+
+$('#agregarOrdenNueva').click(function(e){
+    e.preventDefault();
+    let clienteDeOrden = buscarClientePorTelefono($("#txtTelefono").val())
+    let ordenN;
+    ordenN={
+        motivo_ID: $('#txtMotivo').val(),
+        origen_ID: $('#txtOrigen').val(),
+        modalidad_pago_ID: $('#txtModalidadPago').val(),
+        metodo_compra_ID: $('#txtMetodoCompra').val(),
+        direccion_ID: clienteDeOrden.direccion_ID,
+        cliente_ID: clienteDeOrden.cliente_ID,
+        usuario_ID: usuarioEnSesion.usuario_ID,
+        estado: 'Vendido',
+        nota: $('#txtNotas').val(),
+        fecha_entrega: $("#start").val(),
+        tipo_venta: 'a',
+        descuento: '',
+        precio: $('#txtPrecio').val()
+    }
+});
+
+function buscarClientePorTelefono(telefono){
+    let cliente;
+    for (let i = 0; i < clientesGlobal.length; i++) {
+        if(clientesGlobal[i].telefono===telefono){
+            cliente=clientesGlobal[i];
+            break;
+        }
+    }
+    return cliente;
+}

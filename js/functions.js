@@ -1,5 +1,6 @@
-var url="https://concurvas.com/app";
-//var url="http://184.72.83.24:5000";
+//var url="https://concurvas.com/app";
+var url="http://184.72.83.24:5000";
+var usuarioEnSesion;
 
 /**
  * 
@@ -83,6 +84,7 @@ function deleteAllCookies() {
  * @param {usuario} usuarioToken 
  */
 function menu(usuarioToken){
+    usuarioEnSesion=usuarioToken;
     var rolToken;
     rolToken = usuarioToken.rol;
     let permisosUsuario=usuarioToken.permisos;
