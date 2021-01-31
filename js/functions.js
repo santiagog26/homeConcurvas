@@ -1,5 +1,5 @@
 //var url="https://concurvas.com/app";
-var url="http://184.72.83.24:5000";
+var url="http://localhost:5000";
 var usuarioEnSesion;
 
 /**
@@ -110,8 +110,29 @@ function menu(usuarioToken){
     if(tienePermiso("Pagodomiciliario.ver",permisosUsuario) || tienePermiso("Pagodomiciliario.ver",permisosRol)){
         $(".menuLateral").append('<a hfef="finanzas.html" class="FinanzasItemMenu item">Finanzas</a>`')
     }
+    if(document.title==="Inventario"){
+        modificarFormularioInventario(permisosUsuario,permisosRol);
+    }
 }
 
+
+
+function modificarFormularioInventario(permisosUsuario,permisosRol){
+    if(tienePermiso("Inventario.editar",permisosUsuario) || tienePermiso("Inventario.editar",permisosRol)){
+        $("#descripcion").after(`<label>Url Imagen</label>
+        <div class="field">
+            <input type="text" name="Urlimagen" placeholder="Url">
+        </div>`);
+        $("#stock").after(`<label>Precio Costo</label>
+        <div class="field">
+            <input type="text" name="Precio_costo" placeholder="Precio Costo">
+        </div> `)
+    }
+    if(tienePermiso("Estadisticas.ver",permisosUsuario) || tienePermiso("Estadisticas.ver",permisosRol)){
+        $(".menuLateral").append('<a href="estadisticas.html" class="EstadisticasItemMenu item">Estadísticas</a>');
+    }
+    
+}
 
 function tienePermiso(permiso,listaPermisos){
     for (let i = 0; i < listaPermisos.length; i++) {
