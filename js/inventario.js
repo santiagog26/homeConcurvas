@@ -5,31 +5,46 @@ $(document).ready(function(){
 
 $('#agregarProductoNuevo').click(function(e){
     e.preventDefault();
-    let producto;
-    producto={
-        referenciaProducto: $('#txtMotivo').val(),
-        descripcion: $('#txtOrigen').val(),
-        urlImagen: $('#txtModalidadPago').val(),
-        stock: $('#txtMetodoCompra').val(),
-        precioCosto: clienteDeOrden.direccion_ID,
-        precioVenta: clienteDeOrden.cliente_ID,
-        precioMayorista: usuarioEnSesion.usuario_ID,
+    var imgInfo=$("#imagenProducto")[0];
+    let producto={
+        referenciaProducto: $('#referenciaProducto').val(),
+        descripcion: $('#txtDescripcion').val(),
+        stock: $('#txtStock').val(),
+        precioCosto: $('#txtPrecioCosto').val(),
+        precioVenta: $('#txtPrecioVenta').val(),
+        precioMayorista: $('#txtPrecioMayorista').val(),
         categorias:[]
     }
+    
+    if(imgInfo!==undefined){
+        let name=imgInfo.files[0].name;
+        let arr=name.split(".");
+        let ext=arr[arr.length-1];
+        producto.urlImagen="img/producto/"+producto.referenciaProducto+"."+ext;
+        console.log(producto);
+        crearProducto(producto);
+        let form=$("#formProducto")[0];
+        var fd = new FormData(form);
+        agregarImagen(fd,producto.referenciaProducto+"."+ext);
+    }else{
+        crearProducto(producto);
+    }
+    
+    
 });
 
-function crearProducto(){
+function crearProducto(obj){
         $.ajax({
-            url: url+'/orden',
+            url: url+'/producto',
             type: 'POST',
             headers:{
-                token:token
+                token:getCookie("token")
             },
-            data: productoueva,
+            data: JSON.stringify(obj),
             dataType:"json",
             contentType: 'application/json; charset=utf-8', 
             success: function(e){
-                alert('Orden creada');
+                alert(e.mensaje);
             },
             error: function(e){
                 console.log(e)
@@ -37,3 +52,19 @@ function crearProducto(){
         })
 }
 
+function agregarImagen(formObj,fileName){
+    $.ajax({
+        type: 'POST',
+        url: url+'/imgProducto',
+        headers:{
+            token:getCookie("token"),
+            fileName:fileName
+        },
+        data: formObj,
+        processData: false,  // tell jQuery not to process the data
+        contentType: false,   // tell jQuery not to set contentType
+        success: function(e){
+            console.log(e.file);
+        }
+    });
+}
