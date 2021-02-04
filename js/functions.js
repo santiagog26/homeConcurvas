@@ -121,16 +121,14 @@ function modificarFormularioInventario(permisosUsuario,permisosRol){
     if(tienePermiso("Inventario.editar",permisosUsuario) || tienePermiso("Inventario.editar",permisosRol)){
         $("#descripcion").after(`<label>Url Imagen</label>
         <div class="field">
-            <input type="text" name="Urlimagen" placeholder="Url">
+            <input id="imagenProducto" type="file" name="file" accept="image/*">
         </div>`);
         $("#stock").after(`<label>Precio Costo</label>
         <div class="field">
-            <input type="text" name="Precio_costo" placeholder="Precio Costo">
-        </div> `)
+            <input id="txtPrecioCosto" type="number" name="precioCosto" placeholder="Precio Costo">
+        </div> `);
     }
-    if(tienePermiso("Estadisticas.ver",permisosUsuario) || tienePermiso("Estadisticas.ver",permisosRol)){
-        $(".menuLateral").append('<a href="estadisticas.html" class="EstadisticasItemMenu item">Estadísticas</a>');
-    }
+    
     
 }
 
