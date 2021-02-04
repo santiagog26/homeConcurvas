@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventario</title>
-    <link href="https://concurvas.com/wp-content/themes/mainteam_Concurvas/imagenes/iconos/concurvas.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="https://concurvas.com/wp-content/themes/mainteam_Concurvas/imagenes/iconos/concurvas.ico"
+        rel="shortcut icon" type="image/x-icon">
     <link rel="stylesheet" href="css/estilos.css">
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+
 <body>
-<header class="header-menu">
-    <div class="container" class="row"> 
-        <div class="btn-menu">
-            <label for="btn-menu">
-            <i id="bar"  class="bars icon"></i>
-            </label>
+    <header class="header-menu">
+        <div class="container" class="row">
+            <div class="btn-menu">
+                <label for="btn-menu">
+                    <i id="bar" class="bars icon"></i>
+                </label>
+            </div>
         </div>
-    </div>
     </header>
-    <input type="checkbox" id="btn-menu" >
+    <input type="checkbox" id="btn-menu">
     <div class="container-menu">
         <div class="cont-menu">
             <div id="divMenuF1" class="ui text menu row">
@@ -27,46 +30,47 @@
                 <div id="imgcar" class="ui dropdown item">
                     <i id="fle" class="angle right icon"></i>
                     <div class="menu">
-                      <div class="item">Mi perfil</div>
-                      <div class="logout item">Cerrar sesión</div>
+                        <div class="item">Mi perfil</div>
+                        <div class="logout item">Cerrar sesión</div>
                     </div>
-                  </div>
+                </div>
             </div>
             <nav id="d" class="menuLateral">
-                
+
             </nav>
-            <label for="btn-menu" >
-                <i id="x"  class="x icon"></i>
+            <label for="btn-menu">
+                <i id="x" class="x icon"></i>
             </label>
         </div>
     </div>
     <div id="divPrincipal" class="ui grid contenedor">
-        <div id="divMenu" class="ui vertical menu two wide column"> 
+        <div id="divMenu" class="ui vertical menu two wide column">
             <div id="divMenuF1" class="ui text menu row">
                 <img src="img/avatar.png" alt="Avatar">
                 <div id="imgcara_icon" class="ui dropdown item">
                     <i id="micon" class="angle right icon"></i>
                     <div class="menu">
-                      <div class="item">Mi perfil</div>
-                      <div class="logout item">Cerrar sesión</div>
+                        <div class="item">Mi perfil</div>
+                        <div class="logout item">Cerrar sesión</div>
                     </div>
-                  </div>
+                </div>
             </div>
             <div id="divMenuF2" class="row">
                 <div class="menu menuLateral">
-                  
+
                 </div>
             </div>
         </div>
-        
+
         <div id="divContent" class="fourteen wide column">
             <div id="divContentHeader" class="row">
-                <img src="https://concurvas.com/wp-content/themes/mainteam_Concurvas/imagenes/iconos/LOGO.png" alt="Logo Concurvas" id="imgLogo">
+                <img src="https://concurvas.com/wp-content/themes/mainteam_Concurvas/imagenes/iconos/LOGO.png"
+                    alt="Logo Concurvas" id="imgLogo">
             </div>
             <div id="divContentTabla" class="row">
                 <div id="tablap" style="">
-	                <div  id = " main-container " >  
-                       <table id="encabep">
+                    <div id=" main-container ">
+                        <table id="encabep">
                             <thead>
                                 <th> </th>
                                 <th class="espacosthmas">Referencia</th>
@@ -77,10 +81,10 @@
                             </thead>
                         </table>
                         <table id="tablep">
-                            <tbody>                           
+                            <tbody>
                                 <tr>
                                     <td>
-                                        <img src="img/buzo.jpg" alt="Avatar">    
+                                        <img src="img/buzo.jpg" alt="Avatar">
                                     </td>
                                     <td>
                                         Chaqueta de Pardo
@@ -94,59 +98,66 @@
                                     <td>
                                         89
                                     </td>
-                                    <td >
+                                    <td>
                                         89
                                     </td>
                                 </tr>
-                                
+
                             </tbody>
                         </table>
-        
-	                </div>
+
+                    </div>
                 </div>
                 <div id="botonpr">
-                        <button id="agregarproducto" class="ui button "> + AGREGAR PRODUCTOS </button>
+                    <button id="agregarproducto" class="ui button "> + AGREGAR PRODUCTOS </button>
                 </div>
                 <div class="ui modal" id="mod4">
                     <div class="header"><i class="plus square outline icon"></i> Producto </div>
                     <div class="content">
-                        <form class="ui form">
-                            <div class="field">
-                                <label>Referencia del Producto</label>
+                        <form class="ui form" id="formProducto">
+                            <div class="two fields">
                                 <div class="field">
-                                    <input type="text" name="ReferenciaProducto" placeholder="Referencia">
+                                    <label for="ReferenciaProducto">Referencia del Producto</label>
+                                    <input id="referenciaProducto" type="text" name="ReferenciaProducto"
+                                        placeholder="Referencia">
                                 </div>
-                                <div id="descripcion" class="field">
-                                    <label>Descripcion</label>
-                                    <textarea rows="2"></textarea>
-                                </div> 
-                                 
-                                <label>Stock</label>
-                                <div id="stock"class="field">
-                                    <input type="text" name="stock" placeholder="stock">
-                                </div>  
-                                       
-                                <div class="two fields">
-                                    <div class="field">
-                                        <label>Precio Minorista</label>
-                                        <input type="text" name="Precio_venta" placeholder="Precio Minorista">
-                                    </div>
-                                    <div class="field">
-                                        <label>Precio Mayorista</label>
-                                        <input type="text" name="Precio_Mayorista" placeholder="Precio Mayorista">
-                                    </div>
+                                <div class="field">
+
                                 </div>
                             </div>
-                            <button id="agreproducto" class="ui right floated button"> <i class="plus icon"></i>   Agregar Producto</button>
+                            <div id="descripcion" class="field">
+                                <label>Descripcion</label>
+                                <textarea rows="2" id="txtDescripcion"></textarea>
+                            </div>
+
+                            <label>Stock</label>
+                            <div id="stock" class="field">
+                                <input id="txtStock" type="number" name="stock" placeholder="stock">
+                            </div>
+
+                            <div class="two fields">
+                                <div class="field">
+                                    <label>Precio Minorista</label>
+                                    <input id="txtPrecioVenta" type="number" name="precioVenta" placeholder="Precio Minorista">
+                                </div>
+                                <div class="field">
+                                    <label>Precio Mayorista</label>
+                                    <input id="txtPrecioMayorista" type="number" name="precioMayorista" placeholder="Precio Mayorista">
+                                </div>
+                            </div>
+
+                            <button id="agregarProductoNuevo" class="ui right floated button"> <i class="plus icon"></i> Agregar Producto</button>
                         </form>
                     </div>
                 </div>
             </div>
-    </div>
+        </div>
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 <script src="js/functions.js"></script>
 <script src="js/script.js"></script>
 <script src="js/verificar.js"></script>
+<script src="js/inventario.js"></script>
+
 </html>
