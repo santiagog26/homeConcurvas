@@ -2,6 +2,8 @@ var clientesGlobal;
 var x=0;
 var productosGlobal;
 var strProductosEnDropdown;
+var departamentosGlobal
+var ciudadesGlobal;
 
 $(document).ready(obtenerClientes())
 
@@ -16,6 +18,10 @@ $("#searchTel").click(function(){
     }
     $("#Nombre_Cliente").val(`${cliente.primerNombre} ${cliente.primerApellido}`);
 });
+
+
+
+
 /**
  * 
  */
@@ -65,6 +71,7 @@ function obtenerClientes(){
                 modalidadPago();
                 obtenerProductos();
                 origen();
+                obtenerDepartamentosYCiudades();
             }
             else{
                 alert(e.mensaje);
@@ -466,7 +473,6 @@ function llenarMetodosDeCompra(metodos){
     $('#MetodoCompraDropdown').append(txt);
 }
 
-
 /**
  * Función que permite cargar los motivos de venta
  */
@@ -799,4 +805,92 @@ function buscarClientePorTelefono(telefono){
         }
     }
     return cliente;
+}
+
+
+function obtenerDepartamentosYCiudades(){
+    $.ajax({
+        url: url+'/departamento',
+        type: 'GET',
+        dataType:"json",
+        headers:{
+            token:getCookie('token')
+        },
+        contentType: 'application/json; charset=utf-8', 
+        success: function(e){
+            console.log(e);
+            if (e.tipo==="OK"){
+                departamentosGlobal=e.departamentos;
+                llenarDepartamentos(e.departamentos);
+            }
+            else{
+                alert(e.mensaje);
+            }
+        },
+        error: function(e){
+            console.log(e)
+        }
+    })
+    $.ajax({
+        url: url+'/ciudad',
+        type: 'GET',
+        dataType:"json",
+        headers:{
+            token:getCookie('token')
+        },
+        contentType: 'application/json; charset=utf-8', 
+        success: function(e){
+            console.log(e);
+            if (e.tipo==="OK"){
+                ciudadesGlobal=e.ciudades;
+            }
+            else{
+                alert(e.mensaje);
+            }
+        },
+        error: function(e){
+            console.log(e)
+        }
+    })
+}
+
+
+/**
+ * 
+ * @param {Array} departamentos 
+ */
+function llenarDepartamentos(departamentos){
+    let txt = '';
+    for(let i=0; i<departamentos.length; i++){
+        txt+='<div class="item" data-value="'+departamentos[i].departamento_ID+'">'+departamentos[i].departamento+'</div>';
+    };
+    $('#DepartamentoDropdown').append(txt);
+    
+}
+$('#searchDepartamento').click(function(){
+    consultarCiudadesPorDepartamento(parseInt($("#txtDepartamento").val(),10));
+});
+function consultarCiudadesPorDepartamento(departamento_ID){
+    
+    let ciudadesAPintar=new Array();
+    for (let i = 0; i < ciudadesGlobal.length; i++) {
+        if(ciudadesGlobal[i].departamento_ID===departamento_ID){
+            ciudadesAPintar.push(ciudadesGlobal[i]);
+        }
+    }
+    llenarCiudades(ciudadesAPintar);
+}
+
+/**
+ * 
+ * @param {Array} ciudades 
+ */
+function llenarCiudades(ciudades){
+    $('#CiudadDropdown').empty();
+    let txt = '';
+    for(let i=0; i<ciudades.length; i++){
+        txt='<div class="item" data-value="'+ciudades[i].ciudad_ID+'">'+ciudades[i].nombre+'</div>';
+        $('#CiudadDropdown').append(txt);
+    };
+    
 }
