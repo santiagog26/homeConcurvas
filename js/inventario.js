@@ -1,5 +1,7 @@
+var categoriasGlobal;
+var productosGlobal;
 $(document).ready(function(){
-    
+    cargarCategorias();
 });
 
 
@@ -13,7 +15,7 @@ $('#agregarProductoNuevo').click(function(e){
         precioCosto: $('#txtPrecioCosto').val(),
         precioVenta: $('#txtPrecioVenta').val(),
         precioMayorista: $('#txtPrecioMayorista').val(),
-        categorias:[]
+        categorias:$("#categorias").val()
     }
     
     if(imgInfo!==undefined){
@@ -67,4 +69,41 @@ function agregarImagen(formObj,fileName){
             console.log(e.file);
         }
     });
+}
+
+function cargarCategorias(){
+    $.ajax({
+        url: url+'/categoria',
+        type: 'GET',
+        dataType:"json",
+        headers:{
+            token:getCookie('token')
+        },
+        contentType: 'application/json; charset=utf-8', 
+        success: function(e){
+            console.log(e);
+            if (e.tipo==="OK"){
+                categoriasGlobal=e.categorias;
+                pintarCategorias(e.categorias);
+            }
+            else{
+                alert(e.mensaje);
+            }
+            
+        },
+        error: function(e){
+            console.log(e)
+        }
+    })
+}
+
+
+function pintarCategorias(categorias){
+    let txt='';
+    txt='<option value="">Categorías</option>';
+    $("#categorias").append(txt);
+    for (let i = 0; i < categorias.length; i++) {
+        txt='<option value="'+categorias[i].id+'">'+categorias[i].nombre+'</option>';
+        $("#categorias").append(txt);
+    }
 }
