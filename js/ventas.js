@@ -35,7 +35,6 @@ function ordenes(clientes,usuarios){
         },
         contentType: 'application/json; charset=utf-8', 
         success: function(e){
-            console.log(e);
             if (e.tipo==="OK"){
                 pintarOrdenes(e.ordenes,clientes,usuarios);
             }
@@ -46,6 +45,9 @@ function ordenes(clientes,usuarios){
         },
         error: function(e){
             console.log(e)
+        },
+        complete: function(e){
+            clearConsole();
         }
     })
 }
@@ -72,6 +74,7 @@ function obtenerClientes(){
                 obtenerProductos();
                 origen();
                 obtenerDepartamentosYCiudades();
+                
             }
             else{
                 alert(e.mensaje);
@@ -80,8 +83,16 @@ function obtenerClientes(){
         },
         error: function(e){
             console.log(e)
+        },
+        complete: function(e){
+            clearConsole();
         }
     })
+}
+function clearConsole() { 
+    if(window.console || window.console.firebug) {
+       console.clear();
+    }
 }
 
 /**
@@ -97,7 +108,6 @@ function obtenerUsuarios(clientes){
         },
         contentType: 'application/json; charset=utf-8', 
         success: function(e){
-            console.log(e);
             if (e.tipo==="OK"){
                 let usuarios=e.usuarios
                 ordenes(clientes,usuarios);
@@ -109,6 +119,9 @@ function obtenerUsuarios(clientes){
         },
         error: function(e){
             console.log(e)
+        },
+        complete: function(e){
+            clearConsole();
         }
     })
 }
@@ -406,11 +419,7 @@ function modalorden(e){
           eliminar_productos(e);
   }
   
-  function eliminar_productos(e){
-    $('#xv2'+e).click(function(){
-      $('#v2'+e).remove();
-    });
-  }
+
 function productosEnOrdenString(productos){
     let str=''
     for(let i=0;i<productos.length;i++){
@@ -445,7 +454,6 @@ function metodosDeCompra(){
         },
         contentType: 'application/json; charset=utf-8', 
         success: function(e){
-            console.log(e);
             if (e.tipo==="OK"){
                 llenarMetodosDeCompra(e.metodos);
                 metodosDeCompraGlobal=e.metodos;
@@ -457,6 +465,9 @@ function metodosDeCompra(){
         },
         error: function(e){
             console.log(e)
+        },
+        complete: function(e){
+            clearConsole();
         }
     })
 }
@@ -486,7 +497,6 @@ function motivosDeVenta(){
         },
         contentType: 'application/json; charset=utf-8', 
         success: function(e){
-            console.log(e);
             if (e.tipo==="OK"){
                 let motivosDeVenta=[];
                 
@@ -506,6 +516,9 @@ function motivosDeVenta(){
         },
         error: function(e){
             console.log(e)
+        },
+        complete: function(e){
+            clearConsole();
         }
     })
 }
@@ -535,7 +548,6 @@ function modalidadPago(){
         },
         contentType: 'application/json; charset=utf-8', 
         success: function(e){
-            console.log(e);
             if (e.tipo==="OK"){
                 llenarModalidadesDePago(e.modalidades);
             }
@@ -546,6 +558,9 @@ function modalidadPago(){
         },
         error: function(e){
             console.log(e)
+        },
+        complete: function(e){
+            clearConsole();
         }
     })
 }
@@ -576,7 +591,6 @@ function obtenerProductos(){
         },
         contentType: 'application/json; charset=utf-8', 
         success: function(e){
-            console.log(e);
             if (e.tipo==="OK"){
                 productosGlobal=e.productos;
                 modificarDropdownProductos(e.productos);
@@ -588,6 +602,9 @@ function obtenerProductos(){
         },
         error: function(e){
             console.log(e)
+        },
+        complete: function(e){
+            clearConsole();
         }
     })
 }
@@ -602,7 +619,6 @@ function origen(){
         },
         contentType: 'application/json; charset=utf-8', 
         success: function(e){
-            console.log(e);
             if (e.tipo==="OK"){
                 llenarOrigen(e.origenes);
             }
@@ -613,6 +629,9 @@ function origen(){
         },
         error: function(e){
             console.log(e)
+        },
+        complete: function(e){
+            clearConsole();
         }
     })
 }
@@ -663,7 +682,9 @@ texto=  '<div class="four fields productoEnOrden" id="v'+e+'">'+
                 '<input type="text" placeholder="" value="0">'+
             '</div>'+
             '<div class="field can x">'+
-                '<i id="xv'+e+'" class="xv2 times circle outline icon"></i>'+
+                '<button class="circular ui icon button eliminar">'+
+                    '<i class="times circle outline icon"></i>'+
+                '</button>'+
             '</div>'+
         '</div>'+
         '<script>'+
@@ -671,13 +692,22 @@ texto=  '<div class="four fields productoEnOrden" id="v'+e+'">'+
         '.dropdown();'+
         '</script>'
         $("#Pedido").append(texto);
-        eliminar_productos(e);
+        eliminar_productos();
         sumarYRestar();
 }
 
-function eliminar_productos(e){
-    $('#xv'+e).click(function(){
-    $('#v'+e).remove();
+var campos;
+function eliminar_productos(){
+    $('.circular.ui.icon.button.eliminar').click(function(){
+        campos=$(this).parent().parent();
+        let camposHijo=$(campos).children();
+        let campoPrecio=$(camposHijo[2]);
+        let txtPrecio=$(campoPrecio).children();
+        let precio=$(txtPrecio).val();
+        if($("#precio").val()!==""){
+            $("#precio").val(parseFloat($("#precio").val())-parseFloat(precio));
+        }
+        $(camposHijo).parent().remove();
     })}
 
 function sumarYRestar(){
@@ -702,14 +732,14 @@ function sumarYRestar(){
             if($(elIcono).hasClass("plus")){
                 $(txtCantidad).val(parseInt($(txtCantidad).val(),10)+1);
             }else{
-                if(parseInt($(txtCantidad).val(),10)<=1){
+                if(parseFloat($(txtCantidad).val())<=1){
                     alert("Debe establecer cantidades no negativas");
                 }else{
                     $(txtCantidad).val(parseInt($(txtCantidad).val(),10)-1);
                 }
             }
             let producto=consultarProductoIndividual(referenciaProducto);
-            $(txtPrecioIndividual).val(parseInt($(txtCantidad).val()*producto.precioVenta));
+            $(txtPrecioIndividual).val(parseFloat($(txtCantidad).val()*producto.precioVenta));
         }
         calcularPrecioTotal();
     });
@@ -771,6 +801,9 @@ function crearOrden(ordenNueva){
         },
         error: function(e){
             console.log(e)
+        },
+        complete: function(e){
+            clearConsole();
         }
     })
 }
@@ -818,7 +851,6 @@ function obtenerDepartamentosYCiudades(){
         },
         contentType: 'application/json; charset=utf-8', 
         success: function(e){
-            console.log(e);
             if (e.tipo==="OK"){
                 departamentosGlobal=e.departamentos;
                 llenarDepartamentos(e.departamentos);
@@ -829,6 +861,9 @@ function obtenerDepartamentosYCiudades(){
         },
         error: function(e){
             console.log(e)
+        },
+        complete: function(e){
+            clearConsole();
         }
     })
     $.ajax({
@@ -840,7 +875,6 @@ function obtenerDepartamentosYCiudades(){
         },
         contentType: 'application/json; charset=utf-8', 
         success: function(e){
-            console.log(e);
             if (e.tipo==="OK"){
                 ciudadesGlobal=e.ciudades;
             }
@@ -850,6 +884,12 @@ function obtenerDepartamentosYCiudades(){
         },
         error: function(e){
             console.log(e)
+        },
+        complete: function(e){
+            clearConsole();
+        },
+        complete: function(e){
+            clearConsole();
         }
     })
 }
