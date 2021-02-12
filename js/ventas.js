@@ -791,28 +791,27 @@ function crearOrden(ordenNueva){
         url: url+'/orden',
         type: 'POST',
         headers:{
-            token:token
+            token:getCookie("token")
         },
-        data: ordenNueva,
+        data: JSON.stringify(ordenNueva),
         dataType:"json",
         contentType: 'application/json; charset=utf-8', 
         success: function(e){
-            alert('Orden creada');
+            alert(e.mensaje);
         },
         error: function(e){
             console.log(e)
         },
         complete: function(e){
-            clearConsole();
+            window.location.assign("ventas.html");
         }
     })
 }
 
 $('#agregarOrdenNueva').click(function(e){
     e.preventDefault();
-    let clienteDeOrden = buscarClientePorTelefono($("#txtTelefono").val())
-    let ordenN;
-    ordenN={
+    let clienteDeOrden = buscarClientePorTelefono($("#txtTelefono").val());
+    let ordenN={
         motivo_ID: $('#txtMotivo').val(),
         origen_ID: $('#txtOrigen').val(),
         modalidad_pago_ID: $('#txtModalidadPago').val(),
@@ -823,10 +822,11 @@ $('#agregarOrdenNueva').click(function(e){
         estado: 'Vendido',
         nota: $('#txtNotas').val(),
         fecha_entrega: $("#start").val(),
-        tipo_venta: 'a',
-        descuento: '',
+        tipo_venta: $("#radioMayor").prop("checked"),
+        /*descuento: '',*/
         precio: $('#precio').val()
     }
+    crearOrden(ordenN);
 });
 
 function buscarClientePorTelefono(telefono){
