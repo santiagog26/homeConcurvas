@@ -114,17 +114,17 @@
                             </div>
                         </div>
                         <div class="ui form">
-                            <div class="inline fields">
+                            <div class="inline fields checkbox">
                                 <label>Tipo de Venta : </label>
                                 <div class="field">
                                     <div class="ui radio checkbox">
-                                        <input type="radio" name="frequency">
+                                        <input id="radioDetal" type="radio" name="tipoVenta" checked="checked">
                                         <label>Detal</label>
                                     </div>
                                 </div>
                                 <div class="field">
-                                    <div class="ui radio checkbox">
-                                        <input type="radio" name="frequency">
+                                    <div class="ui radio">
+                                        <input id="radioMayor" type="radio" name="tipoVenta">
                                         <label>Por Mayor</label>
                                     </div>
                                 </div>
@@ -182,7 +182,7 @@
                             <textarea id="txtNotas" rows="3"></textarea>
                         </div>
                         <button id="agregarcliente" class="ui button"> <i class="plus icon"></i>   Agregar Ciente</button>
-                        <button id="agregarOrdenNueva" class="ui button"> <i class="plus icon"></i>   Agregar Orden</button>
+                        <button id="agregarOrdenNueva" class="ui button right floated"> <i class="plus icon"></i>   Agregar Orden</button>
                     </form> 
                 </div>
                 <div class="ui modal" id="mod3">
