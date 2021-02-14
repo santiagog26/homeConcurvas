@@ -108,7 +108,10 @@ function menu(usuarioToken){
         $(".menuLateral").append('<a href="distribucion.html" class="DistribucionItemMenu item">Distribución</a>')
     }
     if(tienePermiso("Pagodomiciliario.ver",permisosUsuario) || tienePermiso("Pagodomiciliario.ver",permisosRol)){
-        $(".menuLateral").append('<a hfef="finanzas.html" class="FinanzasItemMenu item">Finanzas</a>`')
+        $(".menuLateral").append('<a href="finanzas.html" class="FinanzasItemMenu item">Finanzas</a>')
+    }
+    if(tienePermiso("Usuarios.ver",permisosUsuario) || tienePermiso("Usuarios.ver",permisosRol)){
+        $(".menuLateral").append('<a href="admin.html" class="AdminItemMenu item">Admin</a>')
     }
     if(document.title==="Inventario"){
         modificarFormularioInventario(permisosUsuario,permisosRol);
