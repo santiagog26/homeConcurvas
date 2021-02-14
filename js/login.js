@@ -1,3 +1,8 @@
+$(document).ready(function(){
+    if (getCookie("token")!==""){
+        window.location.assign("ventas.html");
+    }
+})
 $("#login").click(function(e){
     e.preventDefault()
     let usuario=$("#user").val();
