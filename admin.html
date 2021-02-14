@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adminstración</title>
+    <link href="https://concurvas.com/wp-content/themes/mainteam_Concurvas/imagenes/iconos/concurvas.ico"
+        rel="shortcut icon" type="image/x-icon">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+
+<body>
+    <header class="header-menu">
+        <div class="container" class="row">
+            <div class="btn-menu">
+                <label for="btn-menu">
+                    <i id="bar" class="bars icon"></i>
+                </label>
+            </div>
+        </div>
+    </header>
+    <input type="checkbox" id="btn-menu">
+    <div class="container-menu">
+        <div class="cont-menu">
+            <div id="divMenuF1" class="ui text menu row">
+                <img src="img/avatar.png" alt="Avatar">
+                <div id="imgcar" class="ui dropdown item">
+                    <i id="fle" class="angle right icon"></i>
+                    <div class="menu">
+                        <div class="item">Mi perfil</div>
+                        <div class="logout item">Cerrar sesión</div>
+                    </div>
+                </div>
+            </div>
+            <nav id="d" class="menuLateral">
+
+            </nav>
+            <label for="btn-menu">
+                <i id="x" class="x icon"></i>
+            </label>
+        </div>
+    </div>
+    <div id="divPrincipal" class="ui grid contenedor">
+        <div id="divMenu" class="ui vertical menu two wide column">
+            <div id="divMenuF1" class="ui text menu row">
+                <img src="img/avatar.png" alt="Avatar">
+                <div id="imgcara_icon" class="ui dropdown item">
+                    <i id="micon" class="angle right icon"></i>
+                    <div class="menu">
+                        <div class="item">Mi perfil</div>
+                        <div class="logout item">Cerrar sesión</div>
+                    </div>
+                </div>
+            </div>
+            <div id="divMenuF2" class="row">
+                <div class="menu menuLateral">
+
+                </div>
+            </div>
+        </div>
+
+        <div id="divContent" class="fourteen wide column">
+            <div id="divContentHeader" class="row">
+                <img src="https://concurvas.com/wp-content/themes/mainteam_Concurvas/imagenes/iconos/LOGO.png"
+                    alt="Logo Concurvas" id="imgLogo">
+            </div>
+            <div id="divContentTitulo" class="row">
+                <div class="letras">
+                    <i id="titulo_venta"><i class="cog icon"></i>Administración <i class="angle down icon"></i></i>
+                    <p id="subti_Ventas">Gestiona a los empleados</p>
+
+                </div>
+                <button id="addUser" class="ui button"> <i class="plus icon"></i>    Agregar empleado</button>
+            </div>
+            <div id="divContentTabla" class="row">
+                <div id="tablap">
+                    <div id=" main-container ">
+                        <table id="encabep">
+                            <thead>
+                                <th> </th>
+                                <th class="espacosthmas">Documento</th>
+                                <th class="espacosthmas">Usuario</th>
+                                <th class="espacosth">Nombre completo</th>
+                                <th class="espacosth">Rol</th>
+                                <th>Correo</th>
+                                <th>Estado</th>
+                            </thead>
+                        </table>
+                        <table id="tablep">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <img src="img/avatar.png" alt="Avatar">
+                                    </td>
+                                    <td>
+                                        132456
+                                    </td>
+                                    <td>
+                                        aaaa
+                                    </td>
+                                    <td>
+                                        Simón José Antonio de la Santísima Trinidad Bolívar Ponte Palacios y Blanco
+                                    </td>
+                                    <td>
+                                        Despachador
+                                    </td>
+                                    <td>
+                                        simon@example.com
+                                    </td>
+                                    <td>
+                                        Activo
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+                <div id="botonpr">
+                    <button id="agregarproducto" class="ui button "> + AGREGAR PRODUCTOS </button>
+                </div>
+                <div class="ui modal" id="mod4">
+                    <div class="header"><i class="plus square outline icon"></i> Producto </div>
+                    <div class="content">
+                        <form class="ui form" id="formProducto">
+                            <div class="two fields">
+                                <div class="field">
+                                    <label for="ReferenciaProducto">Referencia del Producto</label>
+                                    <input id="referenciaProducto" type="text" name="ReferenciaProducto"
+                                        placeholder="Referencia">
+                                </div>
+                                <div class="field">
+                                    <label for="categorias">Categorías</label>
+                                    <select id="categorias" class="ui fluid search dropdown" multiple="">
+                                        
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="descripcion" class="field">
+                                <label>Descripción</label>
+                                <textarea rows="2" id="txtDescripcion"></textarea>
+                            </div>
+
+                            <label>Stock</label>
+                            <div id="stock" class="field">
+                                <input id="txtStock" type="number" name="stock" placeholder="stock">
+                            </div>
+
+                            <div class="two fields">
+                                <div class="field">
+                                    <label>Precio Minorista</label>
+                                    <input id="txtPrecioVenta" type="number" name="precioVenta" placeholder="Precio Minorista">
+                                </div>
+                                <div class="field">
+                                    <label>Precio Mayorista</label>
+                                    <input id="txtPrecioMayorista" type="number" name="precioMayorista" placeholder="Precio Mayorista">
+                                </div>
+                            </div>
+
+                            <button id="agregarProductoNuevo" class="ui right floated button"> <i class="plus icon"></i> Agregar Producto</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<script src="js/functions.js"></script>
+<script src="js/script.js"></script>
+<script src="js/verificar.js"></script>
+<script src="js/admin.js"></script>
+
+</html>
