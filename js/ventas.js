@@ -90,9 +90,9 @@ function obtenerClientes(){
     })
 }
 function clearConsole() { 
-    /*if(window.console || window.console.firebug) {
+    if(window.console || window.console.firebug) {
        console.clear();
-    }*/
+    }
 }
 
 /**
@@ -798,7 +798,7 @@ function crearOrden(ordenNueva){
         contentType: 'application/json; charset=utf-8', 
         success: function(e){
             alert(e.mensaje);
-            window.location.assign("ventas.html")
+            window.location.assign("ventas.html");
         },
         error: function(e){
             console.log(e)
