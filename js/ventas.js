@@ -90,9 +90,9 @@ function obtenerClientes(){
     })
 }
 function clearConsole() { 
-    if(window.console || window.console.firebug) {
+    /*if(window.console || window.console.firebug) {
        console.clear();
-    }
+    }*/
 }
 
 /**
@@ -131,12 +131,12 @@ function obtenerUsuarios(clientes){
  * @param {Array} ordenes 
  */
 function pintarOrdenes(ordenes,clientes,usuarios){
-    for(let i=0;i<ordenes.length; i++){
-        let orden=ordenes[i];
+    for(let i=ordenes.length;i>0; i--){
+        let orden=ordenes[i-1];
         let cliente;
         let vendedor;
         let tipoVenta="";
-        if(orden.tipo_venta==1){
+        if(orden.tipo_venta===1){
             tipoVenta="Mayorista"
         }else{
             tipoVenta="Minorista"
@@ -798,12 +798,10 @@ function crearOrden(ordenNueva){
         contentType: 'application/json; charset=utf-8', 
         success: function(e){
             alert(e.mensaje);
+            window.location.assign("ventas.html")
         },
         error: function(e){
             console.log(e)
-        },
-        complete: function(e){
-            window.location.assign("ventas.html");
         }
     })
 }
