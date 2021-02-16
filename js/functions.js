@@ -144,7 +144,11 @@ function tienePermiso(permiso,listaPermisos){
     return false;
 }
 
-
+function clearConsole() { 
+    if(window.console || window.console.firebug) {
+       console.clear();
+    }
+}
 
 
 $(".logout").click(function(){
