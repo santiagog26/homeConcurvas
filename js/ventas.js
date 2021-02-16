@@ -89,11 +89,6 @@ function obtenerClientes(){
         }
     })
 }
-function clearConsole() { 
-    if(window.console || window.console.firebug) {
-       console.clear();
-    }
-}
 
 /**
  * 
@@ -248,7 +243,7 @@ function modalorden(e){
     });
   }
   function mostrar_modal(e){
-    texto=  ' <div class="ui modal" id="m'+e+'">'+
+   let texto=  ' <div class="ui modal" id="m'+e+'">'+
                 '<div class="header"><i class="cart plus icon"></i> Orden de venta</div>'+
                 '<div class="content">'+
                    '<form class="ui form">'+
@@ -383,7 +378,7 @@ function modalorden(e){
           $("#vermasorden").append(texto);
   }
   function mostrar_productos2(e){
-    texto=  '<div class="four fields " id="v2'+e+'">'+
+    let texto=  '<div class="four fields " id="v2'+e+'">'+
               '<div class="field can">'+
                 '<select class="ui fluid search dropdown">'+
                   '<option value="">Descripcion del Producto</option>'+
@@ -410,11 +405,7 @@ function modalorden(e){
             '<div class="field can x">'+
               '<i id="xv2'+e+'" class="xv2 times circle outline icon"></i>'+
             '</div>'+
-          '</div>'+
-          '<script>'+
-          '$(".ui.dropdown")'+
-            '.dropdown();'+
-          '</script>'
+          '</div>'
           $("#Pedido"+e).append(texto);
           eliminar_productos(e);
   }
@@ -696,10 +687,9 @@ texto=  '<div class="four fields productoEnOrden" id="v'+e+'">'+
         sumarYRestar();
 }
 
-var campos;
 function eliminar_productos(){
     $('.circular.ui.icon.button.eliminar').click(function(){
-        campos=$(this).parent().parent();
+        let campos=$(this).parent().parent();
         let camposHijo=$(campos).children();
         let campoPrecio=$(camposHijo[2]);
         let txtPrecio=$(campoPrecio).children();
@@ -822,7 +812,8 @@ $('#agregarOrdenNueva').click(function(e){
         fecha_entrega: $("#start").val(),
         tipo_venta: $("#radioMayor").prop("checked"),
         /*descuento: '',*/
-        precio: $('#precio').val()
+        precio: $('#precio').val(),
+        productos: obtenerProductoEnOrden()
     }
     crearOrden(ordenN);
 });
@@ -931,4 +922,34 @@ function llenarCiudades(ciudades){
         $('#CiudadDropdown').append(txt);
     };
     
+}
+
+function obtenerProductoEnOrden(){
+    let productos=new Array();
+    let productosEnOrden=$("#Pedido").children();
+    for (let i = 1; i < productosEnOrden.length; i+=2) {
+        //obtengo referencia
+        let camposProducto=$(productosEnOrden[i]).children();
+        let campoReferencia=$(camposProducto[0]).children();
+        let valoresCampoReferencia=$(campoReferencia).children();
+        let referenciaProducto=$(valoresCampoReferencia[0]).val();
+
+        //Obtengo cantidad
+        let camposCantidad=$(camposProducto[1]);
+        let valoresCamposCantidad=$(camposCantidad).children();
+        let divInternoCantidad=$(valoresCamposCantidad[0]).children();
+        let divCantidad=$(divInternoCantidad[1]).children();
+        let cantidad=$(divCantidad).val();
+
+        //Obtengo precio
+        let campoPrecio=$(camposProducto[2]);
+        var precio=($(campoPrecio[0]).children()).val();
+        let producto={
+            referenciaProducto:referenciaProducto,
+            cantidad:cantidad,
+            precio:precio
+        }
+        productos.push(producto);
+    }
+    return productos;
 }
