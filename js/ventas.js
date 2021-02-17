@@ -8,6 +8,14 @@ var ciudadesGlobal;
 $(document).ready(obtenerClientes())
 
 $("#searchTel").click(function(){
+    consultarCliente();
+});
+
+$("#searchTel").change(function(){
+    consultarCliente
+})
+
+function consultarCliente(){
     let cliente;
     let telefono=$("#txtTelefono").val();
     for (let i = 0; i < clientesGlobal.length; i++) {
@@ -17,8 +25,7 @@ $("#searchTel").click(function(){
         }
     }
     $("#Nombre_Cliente").val(`${cliente.primerNombre} ${cliente.primerApellido}`);
-});
-
+}
 
 
 
@@ -48,6 +55,8 @@ function ordenes(clientes,usuarios){
         },
         complete: function(e){
             clearConsole();
+            $("#agregarorden").removeClass("loading");
+            $("#divContentTabla").find(".ui.segment").remove();
         }
     })
 }
@@ -63,6 +72,15 @@ function obtenerClientes(){
             token:getCookie('token')
         },
         contentType: 'application/json; charset=utf-8', 
+        beforeSend: function(e){
+            $("#agregarorden").addClass("loading");
+            $("#divContentTabla").append(`<div class="ui segment">
+                <div class="ui active inverted dimmer">
+                <div class="ui text loader">Cargando...</div>
+                </div>
+                <p></p>
+            </div>`)
+        },
         success: function(e){
             if (e.tipo==="OK"){
                 obtenerUsuarios(e.clientes);
@@ -647,7 +665,7 @@ $("#agregarpedi").click(function(e){
 function mostrar_productos(e){
 texto=  '<div class="four fields productoEnOrden" id="v'+e+'">'+
             '<div class="field can">'+
-                '<div class="ui search selection dropdown">'+
+                '<div class="ui search selection dropdown productosDropdown">'+
                 '<input class="txtProductoEnOrden" type="hidden">'+ 
                 '<i class="dropdown icon"></i>'   +
                 '<div class="default text">Descripción del producto</div>'+
@@ -685,21 +703,46 @@ texto=  '<div class="four fields productoEnOrden" id="v'+e+'">'+
         $("#Pedido").append(texto);
         eliminar_productos();
         sumarYRestar();
+        autoRellenoProductos();
 }
 
 function eliminar_productos(){
     $('.circular.ui.icon.button.eliminar').click(function(){
         let campos=$(this).parent().parent();
         let camposHijo=$(campos).children();
-        let campoPrecio=$(camposHijo[2]);
-        let txtPrecio=$(campoPrecio).children();
-        let precio=$(txtPrecio).val();
-        if($("#precio").val()!==""){
-            $("#precio").val(parseFloat($("#precio").val())-parseFloat(precio));
-        }
         $(camposHijo).parent().remove();
+        calcularPrecioTotal();
     })}
 
+function autoRellenoProductos(){
+    $(".ui.search.selection.dropdown.productosDropdown").click(function(){
+        let campos=$($(this).parent().parent()).children();
+        let elementos=$(this).children();
+        let dropd=$(elementos[0]);
+        let referenciaProducto=$(dropd[0]).val();
+        if (referenciaProducto!==undefined){
+            console.log(referenciaProducto);
+            let producto=consultarProductoIndividual(referenciaProducto);
+            if(producto!==null){
+                let producto=consultarProductoIndividual(referenciaProducto);
+                let camposCantidad=$(campos[1]).children().children();
+                $($(camposCantidad[1]).children()).val(1);
+                if ($("#radioMayor").prop("checked")){
+                    $($(campos[2]).children()[0]).val(producto.precioMayorista);
+                }else{
+                    $($(campos[2]).children()[0]).val(producto.precioVenta);
+                }
+                calcularPrecioTotal();
+            }
+        }
+        
+        
+    });
+}
+
+/**
+ * Función que permite sumar o restar cantidad de producto cuando se presiona un botón
+ */
 function sumarYRestar(){
     $(".circular.ui.icon.button.mas-menos").off("click");
     $(".circular.ui.icon.button.mas-menos").click(function(){
@@ -729,10 +772,16 @@ function sumarYRestar(){
                 }
             }
             let producto=consultarProductoIndividual(referenciaProducto);
-            $(txtPrecioIndividual).val(parseFloat($(txtCantidad).val()*producto.precioVenta));
+            if ($("#radioMayor").prop("checked")){
+                $(txtPrecioIndividual).val(parseFloat($(txtCantidad).val()*producto.precioMayorista));
+            }else{
+                $(txtPrecioIndividual).val(parseFloat($(txtCantidad).val()*producto.precioVenta));
+            }
+            
         }
         calcularPrecioTotal();
     });
+    
 }
 
 function llenarOrigen(origenes){
@@ -953,3 +1002,45 @@ function obtenerProductoEnOrden(){
     }
     return productos;
 }
+
+$(".ui.radio.checkbox").change(function(){
+    if ($(($(this).children())[0]).prop("id")==="radioMayor"){
+        recalcularPrecios("mayorista");
+
+    }else{
+        recalcularPrecios("minorista");
+    }
+});
+
+function recalcularPrecios(tipoVenta){
+    let productosEnOrden=$("#Pedido").children();
+    for (let i = 1; i < productosEnOrden.length; i+=2) {
+        //obtengo referencia
+        let camposProducto=$(productosEnOrden[i]).children();
+        let campoReferencia=$(camposProducto[0]).children();
+        let valoresCampoReferencia=$(campoReferencia).children();
+        let referenciaProducto=$(valoresCampoReferencia[0]).val();
+
+        //Obtengo cantidad
+        let camposCantidad=$(camposProducto[1]);
+        let valoresCamposCantidad=$(camposCantidad).children();
+        let divInternoCantidad=$(valoresCamposCantidad[0]).children();
+        let divCantidad=$(divInternoCantidad[1]).children();
+        let cantidad=$(divCantidad).val();
+
+        //Obtengo precio
+        let campoPrecio=$(camposProducto[2]);
+        
+        let producto=consultarProductoIndividual(referenciaProducto);
+        if (producto!==null){
+            if (tipoVenta==="mayorista"){
+                ($(campoPrecio[0]).children()).val((producto.precioMayorista*cantidad));
+            }else{
+                ($(campoPrecio[0]).children()).val((producto.precioVenta*cantidad));
+            }
+        }  
+    }
+    calcularPrecioTotal();
+}
+
+
