@@ -102,37 +102,49 @@
                                 </div>
                             </div>
                         </div>
-                        <label>Método de compra</label>  
-                        <div class="field">
-                            <div id="searchMetodo" class="ui search selection dropdown">
-                                <input id="txtMetodoCompra" type="hidden">
-                                <i class="dropdown icon"></i>
-                                <div class="default text">Método de compra</div>
-                                <div id="MetodoCompraDropdown"class="menu">
-                                
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ui form">
-                            <div class="inline fields checkbox">
-                                <label>Tipo de Venta : </label>
-                                <div class="field">
-                                    <div class="ui radio checkbox">
-                                        <input id="radioDetal" type="radio" name="tipoVenta" checked="checked">
-                                        <label>Detal</label>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="ui radio">
-                                        <input id="radioMayor" type="radio" name="tipoVenta">
-                                        <label>Por Mayor</label>
+                        <div class="two fields">
+                            <div class="field">
+                                <div class="ui form">
+                                    <div class="inline checkbox">
+                                        <div class="field">
+                                        <label>Tipo de Venta </label>
+                                            <div class="ui radio checkbox">
+                                                <input id="radioDetal" type="radio" name="tipoVenta" checked="checked">
+                                                <label>Detal</label>
+                                            </div>
+                                            <div class="ui radio checkbox">
+                                                <input id="radioMayor" type="radio" name="tipoVenta">
+                                                <label>Por Mayor</label>
+                                            </div>
+                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="field">
+                                <label>Prendas</label>  
+                                <button id="productos" class="ui button"> <i class="shopping cart icon"></i>Seleccione las prendas</button>
+                            </div>
                         </div>
-                        <div class="field">
-                            <label>Prenda</label>  
-                            <button id="productos" class="ui button"> <i class="shopping cart icon"></i></button>
+                        
+                        
+                        <div class="two fields">
+                            <div class="field">
+                                <label>Método de compra</label>
+                                <div id="searchMetodo" class="ui search selection dropdown">
+                                    <input id="txtMetodoCompra" type="hidden">
+                                    <i class="dropdown icon"></i>
+                                    <div class="default text">Método de compra</div>
+                                    <div id="MetodoCompraDropdown"class="menu">
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label>Precio</label>  
+                                <input id="precio" type="text" name="precio_orden_venta" value="" placeholder="Precio" readonly>
+                            </div>
                         </div>
                         <div class="two fields">
                             <div class="field">
@@ -144,11 +156,12 @@
                                     <div id="ModalidadPagoDropdown"class="menu"></div>
                                 </div>
                             </div>
+                            <div class="field">
+                                <label>Fecha de Entrega</label>
+                                <input type="date" id="start" name="trip-start "value=""  min="2021-01-01" max="2220-12-31">
+                            </div>
                         </div>
-                        <div class="field">
-                            <label>Precio</label>  
-                            <input id="precio" type="text" name="precio_orden_venta" value="" placeholder="Precio" readonly>
-                        </div>
+                        
                         <div class="field">
                             <div class="two fields">
                                 <div class="field">
@@ -172,10 +185,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="field">
-                            <label>Fecha de Entrega</label>
-                            <input type="date" id="start" name="trip-start "value=""  min="2021-01-01" max="2220-12-31">
                         </div>
                         <div class="field">
                             <label>Notas</label>
