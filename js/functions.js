@@ -1,5 +1,5 @@
-//var url="https://concurvas.com/app";
-var url="http://localhost:5000";
+var url="https://concurvas.com/app";
+//var url="http://localhost:5000";
 var usuarioEnSesion;
 
 /**
@@ -15,6 +15,9 @@ function validarUsuario(token){
         },
         dataType:"json",
         contentType: 'application/json; charset=utf-8', 
+        beforeSend: function(e){
+            cargarLoaders();
+        },
         success: function(e){
             if (!e.value){
                 delete_cookie("token");
@@ -24,8 +27,19 @@ function validarUsuario(token){
         },
         error: function(e){
             console.log(e)
+        },
+        complete: function(e){
+            removerLoaders();
         }
     })
+}
+
+function cargarLoaders(){
+    $(".menuLateral").append(`<div class="ui active inline loader"></div>`);
+}
+
+function removerLoaders(){
+    $(".ui.active.inline.loader").remove();
 }
 /**
  * 
