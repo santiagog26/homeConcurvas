@@ -3,6 +3,7 @@ $(document).ready(function(){
         window.location.assign("ventas.html");
     }
 })
+
 $("#login").click(function(e){
     e.preventDefault()
     let usuario=$("#user").val();
@@ -20,16 +21,13 @@ function login(obj){
         data: JSON.stringify(obj),
         contentType: 'application/json; charset=utf-8', 
         success: function(e){
-            console.log(e);
             if (e.tipo==="OK"){
                 setCookie("token",e.usuario.token,10);
                 window.location.assign("ventas.html");
             }
             else{
-                alert(e.mensaje);
-                
+                alert(e.mensaje); 
             }
-            
         },
         error: function(e){
             console.log(e)
